@@ -1,0 +1,29 @@
+<div id="banner-1-{{sign}}" v-cloak>
+    <div class="banner-1-content">
+        <div class="banner-bannerImg">
+            <ul>
+                {{#each cont}}
+                    {{#if picPath}}
+                        <li class="bannerImg_li">
+                            <a href="{{{href}}}" target="_self">
+                                <img src="{{{picPath}}}" alt="中国供销海外购">
+                            </a>
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <template v-if="!gradientHide">
+            <span class="banner-gradientImg">
+                <img src="/images/platform/banner/general/gradient.png" alt="中国供销海外购">
+            </span>
+        </template>
+        <span class="banner-carousel-spots">
+            {{#each cont}}
+                {{#if picPath}}
+                    <span class="spot {{toSetAttr @index 0 "active"}}"></span>
+                {{/if}}
+            {{/each}}
+        </span>
+    </div>
+</div>

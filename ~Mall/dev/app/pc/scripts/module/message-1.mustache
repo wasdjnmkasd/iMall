@@ -1,0 +1,22 @@
+<div id="message-1-{{sign}}" v-cloak>
+    <div class="message-1-content" v-if="content">
+        <div class="message-header">
+            <span class="message-text">
+                {{!title}}
+            </span>
+        </div>
+        <div class="message-body">
+            <span>{{!content}}</span>
+        </div>
+        <div class="message-footer">
+            <span class="message-btnGroup">
+                <a class="btn btn_cancel" v-if="cancelBtn" @click="cancelClick">
+                    {{!returnCancelText}}
+                </a>
+                <a class="btn btn_confirm" v-if="confirmBtn" @click="confirmClick">
+                    {{!returnConfirmText}}
+                </a>
+            </span>
+        </div>
+    </div>
+</div>

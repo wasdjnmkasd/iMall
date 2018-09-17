@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/*
+ * amount-access-1样式
+ */
+[id^="amount-access-1-"] {
+  width: 100%;
+  min-width: 1240px;
+  display: block;
+}
+.amount-access-1-content{
+  width:1240px;
+  margin: 0 auto;
+  overflow:hidden;
+  display:block;
+  & > img {
+    float:left;
+    width:100%;
+    cursor:pointer;
+  }
+}

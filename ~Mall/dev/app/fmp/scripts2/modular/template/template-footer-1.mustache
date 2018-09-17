@@ -1,0 +1,37 @@
+<div class="component-footer-content">
+    {{#region.config.home}}
+        <div class="component-footer-shortcutIcon icon_3">
+            <a href="{{#if region.config.isCall}}/index.html{{else}}javascript:void(0){{/if}}" class="icon icon_home {{region.config.home}}"></a>
+        </div>
+    {{/region.config.home}}
+
+    {{#region.config.shoppingCart}}
+        <div class="component-footer-shortcutIcon icon_3">
+            <a href="{{#if region.config.isCall}}/shoppingCart.html{{else}}javascript:void(0){{/if}}" class="icon icon_shoppingCart {{region.config.shoppingCart}}">
+               {{#if region.config.isLogin}}
+                   {{#if region.response.count}}
+                       <span class="number">{{region.response.count}}</span>
+                   {{/if}}
+               {{/if}}
+            </a>
+        </div>
+    {{/region.config.shoppingCart}}
+
+    {{#region.config.personalCenter}}
+        <div class="component-footer-shortcutIcon icon_3">
+            <a href="{{#if region.config.isCall}}/personal-center.html{{else}}javascript:void(0){{/if}}" class="icon icon_personal {{region.config.personalCenter}}"></a>
+        </div>
+    {{/region.config.personalCenter}}
+
+    {{#region.config.goodsDetail}}
+        <div class="component-footer-goodsDetail">
+            <div class="btnBox">
+                <a href="javascript:void(0)" class="btn icon_top small"></a>
+                <a href="javascript:void(0)" class="btn icon_back small"></a>
+                <a href="javascript:void(0)" class="btn text_toBuy large">立即购买</a>
+                <a href="javascript:void(0)" class="btn text_addShopCart large">加入购物车</a>
+            </div>
+        </div>
+    {{/region.config.goodsDetail}}
+
+</div>

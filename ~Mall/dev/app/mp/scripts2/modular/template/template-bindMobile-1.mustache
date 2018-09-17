@@ -1,0 +1,16 @@
+<div class="component-bindMobile-content">
+    <div class="component-bindMobile-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="tel" pattern="[0-9]*" id="account" name="account" placeholder="请输入手机号..." can-value="region.request.account"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-bindMobile-validation {{validation_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="validation" name="validation" placeholder="请输入验证码..." can-value="region.request.validation"/>
+        <span class="textRight getValidation">
+            <span class="doing">发送中<span class="val" style="color:red;padding:0 3px;"></span>s</span>
+            <span class="control">获取验证码</span>
+        </span>
+    </div>
+    <a href="javascript:void(0)" class="btn component-bindMobile-bingBtn {{bingBtn_state}}">完成绑定</a>
+</div>

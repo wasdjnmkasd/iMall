@@ -1,0 +1,440 @@
+@charset "utf-8";
+
+/*
+ * component-orderList-1部分样式
+ */
+component-orderList-1{
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  &>.component-orderList-content{
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    &>.component-orderList-stateGroup{
+      width: 750px;
+      height: 90px;
+      overflow: hidden;
+      &>.stateGroup-content{
+        width: 750px;
+        height: 90px;
+        background-color: #eeeeee;
+        position: fixed;
+        top: 88px;
+        left: 0;
+        z-index: 9999;
+        &>.state{
+          width: 20%;
+          height: 80px;
+          background-color: #ffffff;
+          float: left;
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 29px;
+          line-height: 80px;
+          color: #666666;
+          text-align: center;
+          display: inline-block;
+          position: relative;
+          cursor: pointer;
+          &:active,
+          &.active{
+            color: #b4282d;
+          }
+          &>.number{
+            width: 28px;
+            height: 28px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 28px;
+            text-align: center;
+            border-radius: 14px;
+            background-color: #f34d4d;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+    &>.component-orderList-orderDetails{
+      width: 100%;
+      height: auto;
+      margin-bottom: 28px;
+      &>.orderItem{
+        width: 100%;
+        height: auto;
+        margin-bottom: 25px;
+        &>.header{
+          width: 100%;
+          height: 80px;
+          padding: 0 20px 0 30px;
+          overflow: hidden;
+          background-color: #ffffff;
+          border: solid 1px #dfdfdf;
+          &>.circle{
+            width: 30px;
+            height: 30px;
+            margin-top: 25px;
+            margin-right: 10px;
+            float: left;
+            border-radius: 20px;
+            background-color: #8fca68;
+          }
+          &>.text{
+            width: calc(100% - 210px);
+            height: 80px;
+            float: left;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 30px;
+            line-height: 80px;
+            color: #333333;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            overflow: hidden;
+            &>span{
+              height: 80px;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              font-size: 28px;
+              line-height: 80px;
+              color: #666666;
+              float: left;
+              display: inline-block;
+              &:last-child{
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 24px;
+                line-height: 79px;
+                margin-left: 5px;
+                color: #888888;
+              }
+            }
+          }
+          &>.state{
+            width: 120px;
+            height: 80px;
+            float: right;
+            text-align: right;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 25px;
+            line-height: 80px;
+            color: #666666;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            overflow: hidden;
+            &.state_finished{
+              color: #68944b;
+            }
+          }
+        }
+        &>.body{
+          width: 100%;
+          height: auto;
+          &>.order-commodity{
+            width: 100%;
+            height: 180px;
+            padding: 0 20px 0 40px;
+            overflow: hidden;
+            display: block;
+            background-color: #ffffff;
+            position: relative;
+            &:not(:first-child){
+              &::after{
+                content: "";
+                width: calc(100% - 58px);
+                height: auto;
+                position: absolute;
+                left: 30px;
+                border-top: dashed 1px #dfdfdf;
+              }
+            }
+            &>.commodity-img{
+              width: 160px;
+              height: 160px;
+              float: left;
+              overflow: hidden;
+              margin-top: 10px;
+              margin-right: 15px;
+              display: inline-block;
+              position: relative;
+              text-align: center;
+              &>a{
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+                border: solid 1px #dfdfdf;
+                &>img{
+                  max-width: 95%;
+                  max-height: 95%;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  margin: auto;
+                  &.corner_mark{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    margin: 0;
+                    max-width: 90px;
+                    height: auto;
+                  }
+                }
+              }
+            }
+            &>.commodity-info{
+              width: calc(100% - 350px);
+              height: 180px;
+              float: left;
+              padding-top: 32px;
+              overflow: hidden;
+              display: inline-block;
+              &>.commodity-name{
+                width: 100%;
+                height: 50px;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 30px;
+                line-height: 42px;
+                color: #333333;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                overflow: hidden;
+                display: inline-block;
+                & > a {
+                  width: 100%;
+                  height: 100%;
+                  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                  font-size: 30px;
+                  line-height: 42px;
+                  color: #333333;
+                  text-overflow:ellipsis;
+                  white-space:nowrap;
+                  overflow: hidden;
+                  margin-bottom: 20px;
+                  display: block;
+                }
+              }
+              &>.commodity-itemId{
+                width: 100%;
+                height: 42px;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 27px;
+                line-height: 42px;
+                color: #333333;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                display: inline-block;
+              }
+            }
+            &>.commodity-number{
+              width: 170px;
+              height: 180px;
+              float: right;
+              display: inline-block;
+              &>.commodity-price{
+                width: 100%;
+                padding-right: 10px;
+                margin-top: 46px;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 28px;
+                color: #666666;
+                text-align: right;
+                display: inline-block;
+                &::before{
+                  content: "￥";
+                  margin-right: 5px;
+                }
+              }
+              &>.commodity-quantity{
+                width: 100%;
+                padding-right: 10px;
+                margin-top: 10px;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 28px;
+                color: #666666;
+                text-align: right;
+                display: inline-block;
+                &::before{
+                  content: "X";
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+          &>.commodity-totalPrice{
+            width: 100%;
+            height: 85px;
+            padding: 0 10px 0 30px;
+            display: block;
+            background-color: #ffffff;
+            position: relative;
+            &::before{
+              content: "";
+              width: calc(100% - 30px);
+              border-top: solid 1px #dfdfdf;
+              position: absolute;
+              top: 0;
+              left: 30px;
+            }
+            &>.commodity-totalAmount{
+              width: 100%;
+              height: 85px;
+              float: left;
+              position: relative;
+              &.isMiddle{
+                padding-top: 16px;
+              }
+              &>.logistics{
+                padding-right: 15px;
+                float: right;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 24px;
+                color: #666666;
+                line-height: 55px;
+                display: inline-block;
+                &::after{
+                  content: ")";
+                  color: #666666;
+                }
+              }
+              &>.taxFee{
+                padding-right: 15px;
+                float: right;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 24px;
+                color: #666666;
+                line-height: 55px;
+                display: inline-block;
+                &::before{
+                  content: "(";
+                  color: #666666;
+                }
+              }
+              &>.text{
+                padding-right: 15px;
+                float: right;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 30px;
+                color: #666666;
+                line-height: 55px;
+                display: inline-block;
+                &::after{
+                  content: ":";
+                }
+              }
+              &>.symbol{
+                float: right;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 30px;
+                font-weight: 500;
+                color: #333333;
+                line-height: 55px;
+                display: inline-block;
+              }
+              &>.money{
+                padding-right: 10px;
+                float: right;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 30px;
+                color: #333333;
+                line-height: 55px;
+                display: inline-block;
+              }
+            }
+            &>.commodity-deliverDes{
+              position: absolute;
+              bottom: 7px;
+              font-size: 21px;
+              color: #f34d4d;
+              right: 22px;
+            }
+          }
+          &>.order-btnControl{
+            width: 100%;
+            height: 75px;
+            background-color: #ffffff;
+            border-top: solid 1px #dfdfdf;
+            overflow: hidden;
+            display: block;
+            &>.btnBox{
+              width: 100%;
+              height: 100%;
+              float: right;
+              overflow: hidden;
+              display: inline-block;
+              &>.btn{
+                width: 172px;
+                height: 75px;
+                float: right;
+                padding: 0 15px;
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 30px;
+                font-weight: 400;
+                line-height: 75px;
+                border-top: none;
+                border-bottom: none;
+                text-align: center;
+                background-color: #f9f9f9;
+                color: #777777;
+                &:not(:last-child){
+                  border-left: solid 1px #dfdfdf;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &>.isLoading{
+      width: 100%;
+      height: 56px;
+      margin: 20px 0;
+      background-color: #eeeeee;
+      overflow: hidden;
+      display: block;
+      &>.component-load-text{
+        width: 100%;
+        height: 56px;
+        text-align: center;
+        &>span{
+          display: inline-block;
+          font-size: 27px;
+          height: 56px;
+          line-height: 58px;
+          color: #999;
+          letter-spacing: 5px;
+        }
+      }
+    }
+    &>.order-empty{
+      width: 100%;
+      height: 600px;
+      text-align: center;
+      position: relative;
+      & > img{
+        width: 500px;
+        height: 388px;
+        display: inline-block;
+        margin: 80px auto 0 auto;
+      }
+      &>.text{
+        height: 88px;
+        margin: 0 auto;
+        padding-left: 20px;
+        display: inline-block;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 32px;
+        line-height: 88px;
+        color: #888888;
+        font-weight: 400;
+        letter-spacing: 8px;
+      }
+    }
+  }
+}

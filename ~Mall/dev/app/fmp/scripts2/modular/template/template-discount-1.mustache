@@ -1,0 +1,103 @@
+<div class="component-discount-content">
+
+    {{#retrunStatus region.config.type "personalCenter"}}
+        <div class="component-discount-type">
+            <ul>
+                <li class="{{addElementClass region.config.status 0 "active"}}" type="0">可使用</li>
+                <li class="{{addElementClass region.config.status 1 "active"}}" type="1">已使用</li>
+            </ul>
+        </div>
+        {{#returnObject region.response}}
+            <div class="component-discount-list personalCenter">
+                {{#each region.response}}
+                    <div class="list-item {{returnType type region.config.status}}">
+                        <ul>
+                            <li>{{returnPrice rule.deductibleValue rule.valueType}}</li>
+                            <li>{{name}}</li>
+                            <li>{{returnRegion rule.range}}</li>
+                            <li>{{returnTime startTime endTime}}</li>
+                        </ul>
+                        {{#retrunRule rule.range 0}}
+                            <div class="availableAll">
+                                <b>前去购买</b>
+                            </div>
+                        {{/retrunRule}}
+                        {{#retrunRule rule.range 1}}
+                            <div class="classification" index="{{@index}}">
+                                <b>查看分类</b>
+                                <i><span>注:</span><span>跳转至可使用该优惠券的商品分类界面</span></i>
+                            </div>
+                        {{/retrunRule}}
+                        {{#retrunRule rule.range 2}}
+                            <div class="classification" index="{{@index}}">
+                                <b>查看分类</b>
+                                <i><span>注:</span><span>跳转至可使用该优惠券的商品分类界面</span></i>
+                            </div>
+                        {{/retrunRule}}
+                        {{#retrunRule rule.range 3}}
+                            <div class="classification" index="{{@index}}">
+                                <b>查看分类</b>
+                                <i><span>注:</span><span>跳转至可使用该优惠券的商品分类界面</span></i>
+                            </div>
+                        {{/retrunRule}}
+                        {{#retrunRule rule.range 4}}
+                            <div class="lookGoodsDetail" index="{{@index}}">
+                                <b>查看商品</b>
+                                <i><span>注:</span><span>随机跳转至可使用该优惠券的某商品详情</span></i>
+                            </div>
+                        {{/retrunRule}}
+                    </div>
+                {{/each}}
+            </div>
+        {{/returnObject}}
+        {{^returnObject region.response}}
+            <div class="component-discount-list nothing">
+                <span class="text">{{returnText region.config.status}}</span>
+            </div>
+        {{/returnObject}}
+    {{/retrunStatus}}
+
+    {{#retrunStatus region.config.type "orderConfirm"}}
+        {{#returnOrder region.response.orderDiscount}}
+            <div class="component-discount-list orderConfirm">
+                {{#returnInfo region.response.orderDiscount.info region.config.showDiscount}}
+                    {{#each .}}
+                        {{#each .}}
+                            <div discountType="{{../@key}}" couponId="{{couponId}}" class="list-item
+                                {{returnType type}}
+                                {{returnSelect ../@key couponId region.config.chooseArr region.config.choose}}
+                                {{returnLose ../@key couponId region.config.chooseArr region.config.choose region.config.showDiscount}}">
+                                <ul>
+                                    <li>{{returnPrice rule.deductibleValue rule.valueType}}</li>
+                                    <li>{{name}}</li>
+                                    <li>{{returnRegion rule.range}}</li>
+                                    <li>{{returnTime startTime endTime}}</li>
+                                </ul>
+                                {{#retrunRule rule.superposition 1}}
+                                    <div class="superposition">
+                                        <b class="{{returnSelect ../@key couponId region.config.chooseArr region.config.choose}}">正在使用</b>
+                                        <b class="{{returnLose ../@key couponId region.config.chooseArr region.config.choose region.config.showDiscount}}">已被使用</b>
+                                        <b class="
+                                             {{returnSelect ../@key couponId region.config.chooseArr region.config.choose}}{{returnLose ../@key couponId region.config.chooseArr region.config.choose region.config.showDiscount}}
+                                         ">可叠加使用</b>
+                                    </div>
+                                {{/retrunRule}}
+                                {{#retrunRule rule.superposition 0}}
+                                    <div class="unSuperposition">
+                                        <b class="{{returnSelect ../@key couponId region.config.chooseArr region.config.choose}}">正在使用</b>
+                                        <b class="{{returnLose ../@key couponId region.config.chooseArr region.config.choose region.config.showDiscount}}">已被使用</b>
+                                        <b class="
+                                             {{returnSelect ../@key couponId region.config.chooseArr region.config.choose}}
+                                             {{returnLose ../@key couponId region.config.chooseArr region.config.choose region.config.showDiscount}}
+                                         ">不可叠加使用</b>
+                                    </div>
+                                {{/retrunRule}}
+                            </div>
+                        {{/each}}
+                    {{/each}}
+                {{/returnInfo}}
+            </div>
+        {{/returnOrder}}
+    {{/retrunStatus}}
+
+</div>

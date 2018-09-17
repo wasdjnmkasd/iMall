@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+/*
+ * component-logistics-1部分样式
+ */
+component-logistics-1{
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  &>.component-logistics-content{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    &>.component-logistics-item{
+      &>.component-logistics-basic{
+        width: 100%;
+        height: 135px;
+        padding: 0 10px 0 20px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        background-color: #ffffff;
+        &>.commodityDescription{
+          width: calc(100% - 200px);
+          height: 135px;
+          padding-top: 25px;
+          float: left;
+          display: block;
+          margin-left: 30px;
+          &>.text{
+            width: 100%;
+            height: 36px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: block;
+            &>.name{
+              width: 140px;
+              height: 100%;
+              float: left;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              font-size: 28px;
+              line-height: 36px;
+              color: #333333;
+              display: inline-block;
+              &::after{
+                content: ":";
+                margin-left: -7px;
+              }
+            }
+            &>.value{
+              width: calc(100% - 140px);
+              height: 100%;
+              float: left;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              font-size: 28px;
+              line-height: 36px;
+              color: #666666;
+              display: inline-block;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              &.state_inTransit{
+                color: #f34d4d;
+              }
+              &.state_finished{
+                color: #68944b;
+              }
+            }
+          }
+        }
+        &>.commodityBtnBox{
+          width: 160px;
+          height: 135px;
+          float: right;
+          overflow: hidden;
+          display: inline-block;
+          &>.btn{
+            height: 50px;
+            padding: 0 15px;
+            margin: 40px 20px 0 0;
+            float: right;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 49px;
+            color: #ffffff;
+            text-align: center;
+            background-color: #b4282d;
+            border-radius: 15px;
+            display: inline-block;
+          }
+        }
+        &.isMore{
+          height: 180px;
+          &>.commodityDescription{
+            height: 180px;
+          }
+          &>.commodityBtnBox{
+            height: 180px;
+            &>.btn{
+              margin: 63px 20px 0 0;
+            }
+          }
+        }
+      }
+      &>.component-logistics-details{
+        width: 100%;
+        height: auto;
+        min-height: 540px;
+        padding: 45px 20px 0 30px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        background-color: #ffffff;
+        position: relative;
+        &::before{
+          content: "";
+          width: 2px;
+          height: calc(100% - 120px);
+          background-color: #dfdfdf;
+          position: absolute;
+          top: 60px;
+          left: 44px
+        }
+        &>.logisticsItem{
+          width: 100%;
+          height: auto;
+          padding-left: 42px;
+          display: block;
+          position: relative;
+          &::before{
+            content: "";
+            border: solid 10px #e4e4e4;
+            border-radius: 10px;
+            position: absolute;
+            top: 10px;
+            left: 5px;
+          }
+          &.newest{
+            &::before{
+              content: "";
+              border: solid 15px #b6d89e;
+              border-radius: 15px;
+              position: absolute;
+              top: 5px;
+              left: 0;
+            }
+            &::after{
+              content: "";
+              border: solid 10px #7cba52;
+              border-radius: 10px;
+              position: absolute;
+              top: 10px;
+              left: 5px;
+            }
+          }
+          &>.text{
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+            &>.description{
+              width: 100%;
+              height: auto;
+              margin-bottom: 10px;
+              display: inline-block;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              font-size: 28px;
+              line-height: 42px;
+              color: #333333;
+            }
+            &>.time{
+              width: 100%;
+              height: auto;
+              padding-left: 7px;
+              margin-bottom: 22px;
+              display: inline-block;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              font-size: 24px;
+              line-height: 36px;
+              color: #999999;
+            }
+            &::after{
+              content: "";
+              width: calc(100% - 15px);
+              height: 1px;
+              background-color: #e4e4e4;
+              position: absolute;
+              top: auto;
+              left: 0;
+              bottom: 0;
+            }
+          }
+          &:last-child{
+            &>.text{
+              &::after{
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                position: relative;
+                top: auto;
+                left: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

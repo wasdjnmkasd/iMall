@@ -1,0 +1,56 @@
+<div id="customerService-1-{{sign}}" v-cloak>
+    <div class="customerService-1-content">
+        <div class="customerService-1-prompt">
+            <span class="prompt-text" style="width: 118px;margin-left:10px;">温馨提示<span class="fa fa-volume-up fa-fw"></span>:</span>
+            <span class="prompt-text" style="width: calc(100% - 140px);">客服在线时间为周一至周五9:00 - 18:00，敬请谅解！</span>
+        </div>
+        <div class="customerService-1-main">
+            <div class="mainCont name">
+                <span class="name">公司名称</span>
+                <span class="content">
+                    <span class="icon"></span>
+                    <span class="cont name">
+                        <input type="text" id="name" name="name" v-model="name" readonly="readonly">
+                    </span>
+                </span>
+            </div>
+            <div class="mainCont address">
+                <span class="name">公司地址</span>
+                <span class="content">
+                    <span class="icon"></span>
+                    <span class="cont address">
+                        <input type="text" id="address" name="address" v-model="address" readonly="readonly">
+                    </span>
+                </span>
+            </div>
+            <div class="mainCont telephone">
+                <span class="name">客服热线</span>
+                <span class="content">
+                    <span class="icon"></span>
+                    <span class="cont telephone">
+                        <input type="text" id="telephone" name="telephone" v-model="telephone" readonly="readonly">
+                    </span>
+                </span>
+            </div>
+            <div class="mainCont emailBox">
+                <span class="name">客服邮箱</span>
+                <span class="content">
+                    <span class="icon"></span>
+                    <span class="cont emailBox">
+                        <input type="text" id="emailBox" name="emailBox" v-model="emailBox" readonly="readonly">
+                    </span>
+                </span>
+            </div>
+            <div class="mainCont QQ">
+                <span class="name">客服QQ</span>
+                <span class="content">
+                    <span class="icon"></span>
+                    <span class="cont QQ">
+                        <input type="text" id="QQ" name="QQ" v-model="QQ" readonly="readonly">
+                    </span>
+                </span>
+            </div>
+        </div>
+        <a :href="isCall? 'tel:' + telephone: 'javascript:void(0)'" class="customerService-1-commit" @touchstart="callTelephone">拨打热线</a>
+    </div>
+</div>

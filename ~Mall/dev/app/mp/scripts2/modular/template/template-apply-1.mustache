@@ -1,0 +1,35 @@
+<div class="component-apply-content">
+    <div class="component-apply-userName {{userName_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="userName" name="userName" placeholder="请输入您的姓名..." can-value="region.request.userName"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-apply-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="account" name="account" readonly="readonly" placeholder="未获取到您的账号..." can-value="region.config.phone"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-apply-validation {{validation_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="validation" name="validation" placeholder="请输入验证码..." can-value="region.request.validation"/>
+        <span class="textRight getValidation">
+                <span class="doing">发送中<span class="val" style="color:red;padding:0 3px;"></span>s</span>
+                <span class="control">获取验证码</span>
+           </span>
+    </div>
+    <div class="component-apply-promotion {{promotion_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="promotion" name="promotion" placeholder="请输入您所擅长的渠道" can-value="region.request.promotion"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-apply-inviter {{inviter_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="inviter" name="inviter" readonly="readonly" placeholder="暂无邀请人..." can-value="region.request.inviter"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-apply-shopName">
+        <span class="iconLeft"></span>
+        <input type="text" gradeId="{{region.config.shopId}}" id="shopName" name="shopName" placeholder="所属微店名称..." can-value="region.config.shopName" readonly="readonly"/>
+    </div>
+    <a href="javascript:void(0)" class="btn component-apply-submitBtn {{submitBtn_state}}">提交申请</a>
+</div>

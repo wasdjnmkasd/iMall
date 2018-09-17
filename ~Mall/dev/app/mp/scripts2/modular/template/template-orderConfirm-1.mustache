@@ -1,0 +1,136 @@
+<div class="component-orderConfirm-content">
+    {{#notShow}}
+        <div class="component-orderConfirm-prompt">
+            <span class="prompt-text" style="width: 118px">温馨提示<span class="fa fa-volume-up fa-fw"></span>:</span>
+            <span class="prompt-text" style="width: calc(100% - 125px);">如果您购买跨境保税商品，则须提交身份证且与订单支付人、收货人保持一致，以确保订单顺利清关，尽快到达您的身边！</span>
+        </div>
+    {{/notShow}}
+    {{#region.config.address}}
+        <a href="/address-manage.html?formOrder=1&jumpUrl={{region.config.pathUrl}}" target="_self" class="component-orderConfirm-deliveryInfo">
+        <span class="textGroup">
+            <span class="text delivery-name">
+                <span class="name" style="letter-spacing:9px;">收货人</span>
+                <span class="value">{{receiveName}}</span>
+            </span>
+            <span class="text delivery-iphone">
+                <span class="name">联系电话</span>
+                <span class="value">{{receivePhone}}</span>
+            </span>
+            <span class="text delivery-address">
+                <span class="name">收货地址</span>
+                <span class="value">{{province}}{{city}}{{area}}{{address}}</span>
+            </span>
+        </span>
+        </a>
+    {{/region.config.address}}
+    {{spoceOrder region.response.ordersInfo}}
+    {{#region.response.ordersInfo}}
+        <div class="component-orderConfirm-orderDetails">
+            {{#each typeObj}}
+                {{#each .}}
+                    <div class="goodsList" type="{{type}}" supplierId="{{supplierId}}">
+                        <div class="header">
+                            <span class="circle"></span>
+                            <span class="text">仓库: {{returnSupplierName supplierName}}{{#if typeName}} ---- {{typeName}}{{/if}}</span>
+                            <span class="icon"></span>
+                        </div>
+                        <div class="body">
+                            {{#each itemObj}}
+                                <div class="itemList" itemId="{{itemId}}" goodsId="{{goodsId}}">
+                                    <span class="commodity-info">
+                                        <span class="commodity-img">
+                                            {{#if itemImg}}
+                                                <img src="{{{itemImg}}}" alt="{{goodsName}}">
+                                            {{else}}
+                                                <img src="/images/platform/account/default_img.jpg" alt="{{goodsName}}">
+                                            {{/if}}
+                                            {{#returnIsShow type}}
+                                                <img class="corner_mark" src="{{returnImgSrc type}}" alt="中国供销海外购">
+                                            {{/returnIsShow}}
+                                        </span>
+                                        <span class="commodity-description">
+                                            <span class="commodity-name">
+                                                <span class="text">{{goodsName}}</span>
+                                            </span>
+                                            {{#info}}
+                                                <span class="commodity-specifications">
+                                                    {{#returnSpec info}}
+                                                       <span class="name">规格</span>
+                                                       <span class="value">{{#each .}}{{.}}、 {{/each}}</span>
+                                                    {{/returnSpec}}
+                                                </span>
+                                            {{/info}}
+                                            {{#carton}}
+                                                <span class="commodity-gauge">
+                                                    <span class="text">箱规: {{carton}}</span>
+                                                </span>
+                                            {{/carton}}
+                                            {{#notShow}}
+                                                <span class="commodity-itemId">
+                                                    <span class="text">商品编号: {{itemId}}</span>
+                                                </span>
+                                            {{/notShow}}
+                                        </span>
+                                        <span class="commodity-number">
+                                           <span class="commodity-price">{{returnPrice realPrice}}</span>
+                                           <span class="commodity-quantity">{{quantity}}</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            {{/each}}
+                            <span class="commodity-priceInfo">
+                                <span class="commodity-taxFee">
+                                    <span class="commodity-price">
+                                        <span class="money">{{returnTaxFee taxFee type}}</span>
+                                        <span class="text">税费</span>
+                                    </span>
+                                </span>
+                                <span class="commodity-postFee">
+                                    <span class="commodity-price">
+                                        {{{returnPostFee type postFee}}}
+                                        <span class="text">运费</span>
+                                    </span>
+                                </span>
+                                <span class="commodity-totalPrice">
+                                    <span class="commodity-price">
+                                        <span class="money">{{totalPrice}}</span>
+                                        <span class="symbol">￥</span>
+                                        <span class="text">商品总价</span>
+                                    </span>
+                                </span>
+                            </span>
+                            <a class="commodity-coupon">
+                                <span class="text">优惠券<b>(优惠金额：<i>￥{{returnPrice discountPrice}})</i></b></span>
+                                <span class="icon icon_right icon_href"></span>
+                            </a>
+                            <span class="commodity-remark">
+                                <input type="text" placeholder="买家留言：选填，填写内容已和客服确认">
+                            </span>
+                            <span class="commodity-payInfo">
+                                <span class="commodity-actualPrice">
+                                    <span class="commodity-price">
+                                        <span class="money">{{orderDiscountPrice}}</span>
+                                        <span class="symbol">￥</span>
+                                        <span class="text">实际价格</span>
+                                    </span>
+                                </span>
+                                <span class="commodity-payBtn">
+                                    {{#if committed}}
+                                        <span>{{commitText}}</span>
+                                    {{else}}
+                                        {{#if commitText}}
+                                            <span class="btn btn_commit">{{commitText}}</span>
+                                        {{else}}
+                                            <span class="btn btn_commit">提交订单</span>
+                                        {{/if}}
+                                    {{/if}}
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                {{/each}}
+            {{/each}}
+        </div>
+    {{/region.response.ordersInfo}}
+    <div region="payChoose"></div>
+</div>

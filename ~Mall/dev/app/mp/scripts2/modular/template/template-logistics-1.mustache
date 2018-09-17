@@ -1,0 +1,45 @@
+<div class="component-logistics-content">
+    {{#each region.response.orderInfo.orderExpressList}}
+        <div class="component-logistics-item">
+            <div class="component-logistics-basic {{#if region.config.isMore}}isMore{{/if}}">
+                <div class="commodityDescription">
+                    {{#if region.config.isMore}}
+                        <div class="text shop">
+                            <div class="name">商品名称</div>
+                            <div class="value">{{itemName}}</div>
+                        </div>
+                    {{/if}}
+                    <div class="text code">
+                        <div class="name">运单编号</div>
+                        <div class="value">{{#if expressId}}{{expressId}}{{else}}暂无{{/if}}</div>
+                    </div>
+                    <div class="text carrier">
+                        <div class="name">承运信息</div>
+                        <div class="value">{{#if expressName}}{{expressName}}{{else}}暂无{{/if}}</div>
+                    </div>
+                </div>
+                {{#returnLength region.config.length}}
+                    <span class="commodityBtnBox">
+                        <span class="btn btn_open" index="{{@index}}">展开详情</span>
+                    </span>
+                {{/returnLength}}
+            </div>
+            {{#if infoArr}}
+                <div class="component-logistics-details" {{#returnLength region.config.length}}style="display:none;"{{/returnLength}}>
+                    {{#each infoArr}}
+                        <span class="logisticsItem newest">
+                            <span class="text">
+                                <span class="description">
+                                    {{AcceptStation}}
+                                </span>
+                                <span class="time">
+                                    {{AcceptTime}}
+                                </span>
+                            </span>
+                        </span>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,17 @@
+<div class="component-searchHistory-content">
+    {{#returnHistory region.config.historyCache}}
+        <div class="component-searchHistory-cache">
+            <h1>历史记录</h1>
+            <span class="icon_delete">
+               <img src="/images/platform/header/i_delete.png" alt="福利商城">
+            </span>
+            <ul>
+                {{#each region.config.historyCache}}
+                    {{#setRenderRange @index 0 9}}
+                        <li firstId="{{firstId}}" secondId="{{secondId}}" thirdId="{{thirdId}}">{{goodsName}}</li>
+                    {{/setRenderRange}}
+                {{/each}}
+            </ul>
+        </div>
+    {{/returnHistory}}
+</div>

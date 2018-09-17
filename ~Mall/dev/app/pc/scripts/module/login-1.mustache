@@ -1,0 +1,90 @@
+<div id="login-1-{{sign}}" v-cloak>
+    <div class="login-1-content">
+        <div class="chooseShop" v-if="isBackEnter" type="0">
+            选择店铺
+        </div>
+        <div class="login-list">
+            <div class="login-list-header">
+                <ul v-if="status && isBackEnter">
+                    <li>账户登录</li>
+                    <li>帐号注册</li>
+                </ul>
+                <p v-if="status && !isBackEnter">
+                    <span>返回登录</span>
+                </p>
+                <h1 v-if="!status && isBackEnter">修改密码</h1>
+            </div>
+            <div class="login-list-body">
+                <div class="login-list-enter">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="手机号码" maxlength="11" class="account" @blur="authCheckEnter">
+                        </li>
+                        <li>
+                            <input type="password" placeholder="输入密码" class="password">
+                        </li>
+                        <li class="chooseShopId">
+                            <input type="text" placeholder="请输入店铺名称/店铺ID" class="shopId shopShow" :shopId="iShopId" :domain="iDomain" @blur="shopQueryBlur" @input="chooseShopQuery">
+                            <ul>
+                                <li v-for="item in shopArr" :shopName="item.name" :shopId="item.id" :domain="item.url" @click="chooseShopClick">{{!item.name}}</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <img src="/images/platform/btn_sign_normal.png" class="btn_login" @click="authLogin" alt="中国供销海外购">
+                        </li>
+                        <li>
+                            <span><input type="checkbox" id="auto" checked="checked"><label for="auto">记住密码</label></span>
+                            <b>忘记密码?</b>
+                        </li>
+                    </ul>
+                </div>
+                <div class="login-list-sign">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="手机号码" maxlength="11" class="account" @blur="authCheckSign">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="手机验证码" class="validation">
+                            <span class="getValidation" @click="thirdPhone">
+                                    <span class="doing">发送中<span class="val" style="color:red;padding:0 3px;"></span>s</span>
+                                    <span class="control">获取验证码</span>
+                                </span>
+                        </li>
+                        <li><input type="password" placeholder="输入密码" class="password"></li>
+                        <li><input type="password" placeholder="确认密码"  class="confirmPassword"></li>
+                        <li class="chooseShopId">
+                            <input type="text" placeholder="请输入店铺名称/店铺ID" class="shopId shopShow" :shopId="bShopId" :domain="bDomain" @input="chooseShopQuery">
+                            <ul>
+                                <li v-for="item in shopArr" :shopName="item.name" :shopId="item.id" :domain="item.url" @click="chooseShopClick">{{!item.name}}</li>
+                            </ul>
+                        </li>
+                        <li><img src="/images/platform/btn_finish_normal.png" class="btn_register" @click="userRegister" alt="中国供销海外购"></li>
+                    </ul>
+                </div>
+                <div class="login-list-forget">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="手机号码" maxlength="11" class="account" @blur="authCheckForget">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="手机验证码" class="validation">
+                            <span class="getValidation" @click="thirdPhone">
+                                    <span class="doing">发送中<span class="val" style="color:red;padding:0 3px;"></span>s</span>
+                                    <span class="control">获取验证码</span>
+                                </span>
+                        </li>
+                        <li>
+                            <input type="password" placeholder="输入新密码" class="password">
+                        </li>
+                        <li>
+                            <input type="password" placeholder="确认新密码"  class="confirmPassword">
+                        </li>
+                        <li>
+                            <img src="/images/platform/btn_submit_normal.png" class="btn_submit" @click="authPwdChange" alt="中国供销海外购">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="component-address-edit-content">
+    <div class="component-address-edit-prompt">
+        <span class="prompt-text" style="width: 118px">温馨提示<span class="fa fa-volume-up fa-fw"></span>:</span>
+        <span class="prompt-text" style="width: calc(100% - 125px);">如果您购买跨境保税商品，则须提交身份证且与订单支付人、收货人保持一致，以确保订单顺利清关，尽快到达您的身边！</span>
+    </div>
+    <div class="component-address-edit-info picker-country" id="{{region.response.id}}">
+        <div class="consignee">
+            <span class="name">收货人</span>
+            <span class="text">
+                <input type="text" id="consignee" name="consignee" class="receiveName_state" can-value="region.response.receiveName">
+            </span>
+        </div>
+        <div class="telephone">
+            <span class="name">联系电话</span>
+            <span class="text">
+                <input type="tel" pattern="[0-9]*" id="telephone" name="telephone" class="receivePhone_state" can-value="region.response.receivePhone">
+            </span>
+        </div>
+        <div class="province obvious">
+            <span class="name">选择省份</span>
+            <span class="text">
+                <select id="province" name="province" class="picker-province province_state" data-name="{{region.response.province}}">
+                </select>
+            </span>
+        </div>
+        <div class="city obvious">
+            <span class="name">选择城市</span>
+            <span class="text">
+                <select id="city" name="city" class="picker-city city_state"  data-name="{{region.response.city}}">
+                </select>
+            </span>
+        </div>
+        <div class="city obvious">
+            <span class="name">选择市区</span>
+            <span class="text">
+                <select id="area" name="area" class="picker-area area_state" data-name="{{region.response.area}}">
+                </select>
+            </span>
+        </div>
+        <div class="address">
+            <span class="name">详细地址</span>
+            <span class="text">
+                <input type="text" id="address" name="address" class="address_state" can-value="region.response.address">
+            </span>
+        </div>
+    </div>
+    <div class="component-address-edit-defaultSetting">
+        <div class="text">
+            设置为默认收货地址
+        </div>
+        <div class="btnBox {{#region.response.setDefault}}active{{/region.response.setDefault}}">
+            <span class="btnSet">
+                <span class="btn"></span>
+            </span>
+        </div>
+    </div>
+
+    {{#if region.response.id}}
+        <div class="component-address-edit-commit">保存收货地址</div>
+    {{else}}
+        <div class="component-address-edit-commit">创建收货地址</div>
+    {{/if}}
+</div>

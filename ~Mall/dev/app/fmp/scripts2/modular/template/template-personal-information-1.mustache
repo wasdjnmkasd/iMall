@@ -1,0 +1,94 @@
+<div class="component-personal-information-content">
+
+    <div class="component-personal-information-prompt">
+        <span class="prompt-text" style="width: 118px">温馨提示<span class="fa fa-volume-up fa-fw"></span>:</span>
+        <span class="prompt-text" style="width: calc(100% - 125px);">如果您购买跨境保税商品，则须提交身份证且与订单支付人、收货人保持一致，以确保订单顺利清关，尽快到达您的身边！</span>
+    </div>
+
+    <div class="component-personal-information-main">
+        <div class="mainCont headPortrait big">
+            <span class="name">头像</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="icon headPortrait">
+                    <img src="/images/platform/personal/headPortrait.jpg" alt="福利商城">
+                </span>
+            </span>
+        </div>
+        <div class="mainCont nickname">
+            <span class="name">昵称</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="cont nickname">
+                    <input type="text" id="nickname" name="nickname" value="{{region.response.userDetail.nickName}}">
+                </span>
+            </span>
+        </div>
+        <div class="mainCont realname">
+            <span class="name important">真实姓名</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="cont realname">
+                    <input type="text" id="realname" name="realname" value="{{region.response.userDetail.name}}">
+                </span>
+            </span>
+        </div>
+        <div class="mainCont gender">
+            <span class="name important">性别</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="cont gender">
+                    <select id="gender" name="gender">
+                        <option value ="1"
+                            {{#returnSelected region.response.userDetail.sex 1}}
+                                selected="selected"
+                            {{/returnSelected}}>女性</option>
+                        <option value ="0"
+                            {{#returnSelected region.response.userDetail.sex 0}}
+                                selected="selected"
+                            {{/returnSelected}}>男性</option>
+                    </select>
+                </span>
+            </span>
+        </div>
+        <div class="mainCont location">
+            <span class="name">所在地</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="cont location">
+                    <input type="text" id="location" name="location" value="{{region.response.userDetail.location}}">
+                </span>
+            </span>
+        </div>
+        <div class="mainCont identification">
+            <span class="name important">身份证</span>
+            <span class="content">
+                <span class="icon"></span>
+                <span class="cont identification">
+                    <input type="text" id="identification" name="identification" value="{{region.response.userDetail.idNum}}">
+                </span>
+            </span>
+        </div>
+    </div>
+
+    {{#notShow}}
+        <div class="component-personal-information-other">
+            <div class="otherCont">
+                <span class="name">其他</span>
+                <span class="content">
+                <span class="icon"></span>
+                <span class="cont">
+                    <input type="text" id="" name="" value="其他内容">
+                </span>
+            </span>
+            </div>
+        </div>
+    {{/notShow}}
+
+    {{#if region.config.detailExist}}
+        <div class = "edit component-personal-information-commit">保存个人信息</div>
+    {{else}}
+        <div class = "add component-personal-information-commit">创建个人信息</div>
+    {{/if}}>
+
+</div>

@@ -1,0 +1,469 @@
+@charset "utf-8";
+
+/*
+ * component-login-1部分样式
+ */
+component-login-1{
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  &>.component-login-content{
+    width: 100%;
+    height: auto;
+    padding-top: 90px;
+    &>.component-login-account{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/people.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: 0;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-login-password{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #ffffff;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/lock.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        border: none;
+        outline: none;
+        background-color: #fff;
+        background-image: none;
+        display: table-cell;
+        &:focus{
+          outline: 0;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/eye.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+        &.active{
+          background-image: url("/images/platform/account/eye_active.png");
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    &>.component-login-shopInfo{
+      width: calc(100% - 88px);
+      height: 88px;
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #f0f0f0;
+      background-image: none;
+      border-radius: 15px;
+      position: relative;
+      display: table;
+      &.isOpen{
+        background-color: #ffffff;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/shop.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.textRight{
+        width: 102px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 26px;
+        color: #777777;
+        padding: 0 0 0 20px;
+        vertical-align: middle;
+        display: table-cell;
+        position: relative;
+        cursor: pointer;
+        &::before{
+          content: "";
+          width: 1px;
+          height: 44px;
+          background-color: #cfcfcf;
+          position: absolute;
+          top: 22px;
+          left: 0;
+        }
+        &.shopHide{
+          &>text{
+            display: inline-block;
+          }
+        }
+      }
+      &>.choose{
+        width: 596px;
+        height: 240px;
+        background-color: #ffffff;
+        border-radius: 7px;
+        overflow: scroll;
+        position: absolute;
+        top: 92px;
+        left: 32px;
+        &>li{
+          width: 100%;
+          height: 60px;
+          padding: 0 30px 0 45px;
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 27px;
+          line-height: 60px;
+          color: #666666;
+          position: relative;
+          -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Chrome/Safari/Opera */
+          -khtml-user-select: none; /* Konqueror */
+          -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently not supported by any browser */
+          &:not(:last-child){
+            &::after{
+              content: "";
+              width: calc(100% - 60px);
+              height: 1px;
+              background-color: #f0f0f0;
+              position: absolute;
+              left: 30px;
+              bottom: 0;
+            }
+          }
+          &:active{
+            background-color: #ffeeee;
+            &:not(:last-child){
+              &::after{
+                background-color: #f0f0f0;
+              }
+            }
+          }
+        }
+      }
+    }
+    &>.component-login-loginBtn{
+      width: calc(100% - 88px);
+      height: 92px;
+      font-family: PingFangSC-Light,helvetica,'Heiti SC';
+      font-size: 36px;
+      color: #ffffff;
+      line-height: 92px;
+      text-align: center;
+      margin: 60px auto 60px auto;
+      background-color: #b4282d;
+      border-radius: 15px;
+      display: block;
+    }
+    &>.component-login-prompt{
+      width: calc(100% - 88px);
+      margin: 0 auto 110px auto;
+      text-align: center;
+      &>a{
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 26px;
+        color: #666666;
+        text-decoration: none;
+        margin: 0 50px;
+        &:focus,
+        &:active{
+          color: #666666;
+          outline: none;
+        }
+        &:hover{
+          color: #b4282d;
+          outline: none;
+        }
+      }
+    }
+    &>.component-login-third{
+      width: calc(100% - 150px);
+      height: auto;
+      text-align: center;
+      margin: 0 auto 30px auto;
+      overflow: hidden;
+      position: relative;
+      &::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #e4e4e4;
+        top: 16px;
+        left: 0;
+        z-index: -1;
+      }
+      &>.header{
+        height: 36px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 26px;
+        color: #999999;
+        line-height: 36px;
+        padding: 0 16px;
+        margin-bottom: 30px;
+        background-color: #eeeeee;
+        display: inline-block;
+      }
+      &>.body{
+        &>a{
+          width: 96px;
+          height: 96px;
+          display: inline-block;
+          margin: 0 30px;
+          text-align: center;
+          &>img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &>.component-login-bombBox{
+      width: 100%;
+      height: calc(100% - 88px);
+      min-height: 736px;
+      background-color: rgba(0,0,0,.7);
+      position: fixed;
+      top: 88px;
+      left: 0;
+      &>.content{
+        width: calc(100% - 100px);
+        height: 736px;
+        padding: 15px 25px;
+        margin: -380px auto 0 auto;
+        background-color: #f6f6f6;
+        border-radius: 20px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        &>.header{
+          width: 100%;
+          height: 90px;
+          padding-left: 10px;
+          border-bottom: solid 1px #c0c0c0;
+          margin: auto;
+          &>input{
+            width: 415px;
+            height: 60px;
+            margin-top: 10px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 24px;
+            padding-left: 15px;
+            color: #666666;
+            border: solid 1px #b6b6b6;
+            border-radius: 8px;
+            &[disabled]{
+              color: #666666;
+              -webkit-opacity: 1;
+              opacity: 1;
+            }
+          }
+          &>a{
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 24px;
+            color: #ffffff;
+            line-height: 68px;
+            float: right;
+            border-radius: 35px;
+            display: inline-block;
+            border: solid 1px #969696;
+            box-shadow: 1px 1px 3px #969696;
+            margin: 0 5px 0 7px;
+            &.btn_sure{
+              background-color: #4cae4c;
+            }
+            &.btn_ignore{
+              background-color: #f34d4d;
+            }
+          }
+        }
+        &>.body{
+          width: calc(100% - 10px);
+          height: 600px;
+          margin: 5px auto 0 auto;
+          padding: 0 15px;
+          border-radius: 15px;
+          overflow: scroll;
+          &>li{
+            width: 100%;
+            height: 60px;
+            padding-left: 15px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 23px;
+            line-height: 60px;
+            color: #666666;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            border-bottom: solid 1px #d3d3d3;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -khtml-user-select: none; /* Konqueror */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently not supported by any browser */
+            &.lose{
+              height: 72px;
+              font-size: 30px;
+              line-height: 72px;
+              border: none;
+            }
+            &:not(.lose):active{
+              background-color: #ffeeee;
+              &:not(:last-child){
+                &::after{
+                  background-color: #f0f0f0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

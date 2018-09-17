@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+/*
+ * shop-show-1样式
+ */
+[id^="shop-show-1-"] {
+  width: 100%;
+  min-width: 1240px;
+  display: block;
+}
+.shop-show-1-content{
+  width:1240px;
+  margin: 0 auto;
+  overflow:hidden;
+  display:block;
+  &>.shop-show-type{
+    margin: 70px 0 40px 0;
+    font-size:20px;
+    color: #333;
+    text-align: center;
+    &>ul{
+      overflow: hidden;
+      display: inline-block;
+      &>li{
+        float:left;
+        margin-right:60px;
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 5px;
+        &:last-child{
+          margin-right:0;
+        }
+        &:after{
+          display: block;
+          content: '';
+          width: 50px;
+          height: 2px;
+          background: transparent;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          margin-left: -25px;
+        }
+        &.active{
+          color:#75a923;
+          font-weight:700;
+          &:after{
+            background:#75a923;
+          }
+        }
+      }
+    }
+  }
+  &>.item-content{
+    display: none;
+    &>ul{
+      overflow: hidden;
+      padding: 0 26px;
+      &>li{
+        float: left;
+        overflow: hidden;
+        margin-right: 54px;
+        margin-bottom: 54px;
+        &:nth-child(3n){
+          margin-right:0;
+        }
+        &>img{
+          float:left;
+          width:360px;
+          height:260px;
+        }
+      }
+    }
+    &.active{
+      display: block;
+    }
+  }
+}

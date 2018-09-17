@@ -1,0 +1,49 @@
+<div id="header-2-{{sign}}" v-cloak>
+    <div class="header-2-content">
+        <div class="header-logo">
+            <a href="/">
+                <img src="/images/platform/logo_pc.png">
+            </a>
+        </div>
+        <div class="header-input">
+            <input type="text" :placeholder="title" class="input_search" v-model="searchCont" autocomplete="off">
+            <a class="btn btn_search"><img src="/images/platform/icon_search.png" style="margin-top:9px;" alt="中国供销海外购"></a>
+        </div>
+        <div class="header-iconGroup">
+            <ul>
+                <li>
+                    <a href="/shopCart.html">
+                        <img class="shopCart" src="/images/platform/icon_shopCart.png" style="margin-top:10px" alt="中国供销海外购-购物车">
+                        <span v-if="isLogin">{{!cartCount}}</span>
+                        <span v-if="!isLogin">0</span>
+                    </a>
+                </li>
+                <li class="hasList">
+                    <a href="/personal.html"><img class="myself" src="/images/platform/icon_myself.png" alt="中国供销海外购-用户中心"></a>
+                    <div class="list list_login">
+                        <div class="btn_login">
+                            <a v-if="isLogin" class="btn_clear" style="margin:10px 0 20px 0;">帐号退出</a>
+                            <a v-if="!isLogin" href="/login.html">立即登录</a>
+                            <p v-if="!isLogin" >没有账号？ <a href="/login.html?type=register">注册</a></p>
+                        </div>
+                        <div class="login-list-content">
+                            <ul>
+                                <li><a href="/personal.html?childType=order">我的订单</a></li>
+                                {{#notShow}}
+                                    <li><a href="/personal.html?childType=discount">我的优惠券</a></li>
+                                {{/notShow}}
+                                <li><a href="/personal.html?childType=userInfo">个人信息</a></li>
+                                <li><a href="/personal.html?childType=address">收货地址</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/personal.html?childType=help&childId=11">
+                        <img class="help" src="/images/platform/icon_help.png" alt="中国供销海外购-帮助中心">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

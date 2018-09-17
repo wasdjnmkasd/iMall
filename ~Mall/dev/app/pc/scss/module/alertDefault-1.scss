@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/*
+ * alertDefault-1样式
+ */
+[id^='alertDefault-1-'] {
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.alertDefault-1-content {
+  position:fixed;
+  top:50%;
+  left:50%;
+  margin-top:-77px;
+  margin-left:-217px;
+  z-index: 500;
+  &>span{
+    box-sizing:border-box;
+    background:url('/images/platform/alertDefaultBgImg.png') no-repeat center;
+    display:inline-block;
+    width:434px;
+    height:118px;
+    padding:32px;
+    font-size:16px;
+    color:#666;
+    text-align:center;
+    &>span:last-child{
+      color:#333;
+      margin-top:7px;
+      display:inline-block;
+    }
+  }
+}

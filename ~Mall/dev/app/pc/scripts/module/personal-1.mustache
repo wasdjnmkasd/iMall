@@ -1,0 +1,693 @@
+<div id="personal-1-{{sign}}" v-cloak>
+    <div class="personal-1-content">
+        <div region="location">
+            <div class="location-content">
+                <div class="location-name">
+                    <b class="fa fa-map-marker fa-fw"></b><span>个人中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="personal-content-left">
+            <div class="personal-content-left-msg">
+                <ul>
+                    <li><img src="/images/platform/personal_img01.jpg" alt="中国供销海外购"></li>
+                    <li>{{!showName? showName: '游客'}}</li>
+                    <li>账户安全：<span>较高</span></li>
+                    <li><a href="javascript:void(0)" @click='leftItemAClick' childType="change">修改密码</a></li>
+                </ul>
+            </div>
+            <div class="personal-item-list">
+
+                <div class="personal-content-left-item">
+                    <h1>个人设置</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="userInfo">个人信息</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="address">收货地址</a></li>
+                    </ul>
+                </div>
+
+                <div class="personal-content-left-item">
+                    <h1>订单中心</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="order">我的订单</a></li>
+                    </ul>
+                </div>
+
+                {{#notShow}}
+                    <div class="personal-content-left-item">
+                        <h1>我的活动</h1>
+                        <ul>
+                            <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="discount">我的优惠券</a></li>
+                        </ul>
+                    </div>
+                {{/notShow}}
+
+                <div class="personal-content-left-item">
+                    <h1>安全中心</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="change">修改密码</a></li>
+                    </ul>
+                </div>
+
+                <div class="personal-content-left-item">
+                    <h1>购买指南</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="11">注册流程</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="12">购买流程</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="13">常见问题</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="14">商品组成</a></li>
+                    </ul>
+                </div>
+
+                <div class="personal-content-left-item">
+                    <h1>支付与配送</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="21">通关税费</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="22">配送方式</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="23">支付方式</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="24">物流跟踪</a></li>
+                    </ul>
+                </div>
+
+                <div class="personal-content-left-item">
+                    <h1>服务体系</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="31">会员介绍</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="32">意见反馈</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="33">服务承诺</a></li>
+                    </ul>
+                </div>
+
+                <div class="personal-content-left-item">
+                    <h1>关于</h1>
+                    <ul>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="41">公司介绍</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="42">联系我们</a></li>
+                        <li><a href="/amount-access.html">商务合作</a></li>
+                        <li @click="leftItemClick"><a href="javascript:void(0)" @click='leftItemAClick' childType="help" childId="43">消费者告知书</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="personal-content-right">
+            <div region="personalMsg">
+                <div class="personal-msg-content" :style="{display:isHide? 'none': 'block'}">
+                    <div class="index-content-msg">
+                        <img src="/images/platform/member_msg.jpg" class="member_msg" alt="中国供销海外购">
+                        <ul>
+                            <li orderState="needPay">
+                                <dl>
+                                    <dt><img src="/images/platform/personal_img02.jpg" alt="中国供销海外购"></dt>
+                                    <dd>待付款 <span>{{!needPayCount}}</span></dd>
+                                </dl>
+                            </li>
+                            <li orderState="needDeliver">
+                                <dl>
+                                    <dt><img src="/images/platform/personal_img02.jpg" alt="中国供销海外购"></dt>
+                                    <dd>待发货 <span>{{!needDeliverCount}}</span></dd>
+                                </dl>
+                            </li>
+                            <li orderState="needReceipt">
+                                <dl>
+                                    <dt><img src="/images/platform/personal_img03.jpg" alt="中国供销海外购"></dt>
+                                    <dd>待收货 <span>{{!needReceiptCount}}</span></dd>
+                                </dl>
+                            </li>
+                            <li orderState="finished">
+                                <dl>
+                                    <dt><img src="/images/platform/personal_img03.jpg" alt="中国供销海外购"></dt>
+                                    <dd>已完成 <span>{{!finishedCount}}</span></dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div region="personalBody">
+                <div class="personal-order-content" v-if="childType == 'order'">
+                    <div class="personal-order-info">
+                        <p>
+                            <b>我的订单</b>
+                            <span class="btn_search" @click="orderSearchEnter"></span>
+                            <input  class="contSearch" type="text" placeholder="订单编号" v-model="orderCode" @keyup.enter="orderSearchEnter">
+                        </p>
+                        <div class="personal-order-list">
+                            <div class="personal-order-list-header">
+                                <ul>
+                                    <li>商品信息</li>
+                                    <li>收货人</li>
+                                    <li>金额</li>
+                                    <li>
+                                        <p class="filterState" @click="filterStateShow">
+                                            <b>
+                                                <span>{{!getFilterText}}</span>
+                                                <span class="fa fa-angle-down fa-fw"></span>
+                                            </b>
+                                        </p>
+                                        <ul>
+                                            <li status = "0" @click="filterStateSelect">全部</li>
+                                            <li status = "1" @click="filterStateSelect">待付款</li>
+                                            <li status = "2" @click="filterStateSelect">待发货</li>
+                                            <li status = "3" @click="filterStateSelect">待收货</li>
+                                            <li status = "4" @click="filterStateSelect">已完成</li>
+                                        </ul>
+                                    </li>
+                                    <li>操作</li>
+                                </ul>
+                            </div>
+                            <div class="personal-order-list-body" v-if="orderList && orderList.length">
+                                <div class="personal-order-list-item" :class="getStatusClass(item.status)" v-for="item in orderList">
+                                    <h1>
+                                        {{!item.createTime.substring(0,item.length-2)}}<span>订单编号：<b>{{!item.orderId}}</b></span>
+                                        <span class="createType">{{!getStatusDes(item.createType,item.status)}}</span>
+                                    </h1>
+                                    <table cellpadding="0" cellspacing="0" :orderId="item.orderId">
+                                        <tr v-for="(item2, index2) in item.orderGoodsList">
+                                            <td>
+                                                <ul>
+                                                    <li style="background-size:calc(100% - 16px) calc(100% - 10px);" :style="getLiBackground(item2.itemImg, '/images/platform/default_img.jpg')">
+                                                        <div class="img" :style="getImgBackground(item.orderFlag)"></div>
+                                                    </li>
+                                                    <li>
+                                                        <a :href="item2.href">{{!item2.itemName}}</a>
+                                                        <div>
+                                                            <template v-for="item3 in ergodicInfoList(item2.itemInfo)">
+                                                                <span>{{!item3}}</span>
+                                                            </template>
+                                                        </div>
+                                                    </li>
+                                                    <li>￥{{!item2.actualPrice.toFixed(2)}}</li>
+                                                    <li>x{{!item2.itemQuantity}}</li>
+                                                </ul>
+                                            </td>
+                                            <template v-if="index2 === 0">
+                                                <td :rowspan="item.orderGoodsList.length">
+                                                    {{!item.orderDetail.receiveName}}
+                                                </td>
+                                                <td :rowspan="item.orderGoodsList.length">
+                                                    <ul>
+                                                        <li>总额￥{{!item.orderDetail.payment.toFixed(2)}}</li>
+                                                    </ul>
+                                                </td>
+                                                <td :rowspan="item.orderGoodsList.length">
+                                                    <ul>
+                                                        <li>{{!getStatusText(item.status,item.orderExpressList,item.orderDetail.payType)}}</li>
+                                                        <li><a :href="'/orderDetail.html?orderId=' + item.orderId">订单详情>></a></li>
+                                                    </ul>
+                                                </td>
+                                                <td :rowspan="item.orderGoodsList.length">
+                                                    <template v-if="item.status === 6">
+                                                        <a href="javascript:void(0)" class="btn btn_confirmDelivery" @click="confirmDeliveryClick(item.orderId)">确认收货</a>
+                                                    </template>
+                                                    <template v-if="item.status === 0">
+                                                        {{#notShow}}
+                                                            <a href="javascript:void(0)" class="btn btn_toPay btn_yl" style="width:78px;height:30px;padding:0;" @click="toPayClick('yl', item.orderId, item.orderDetail.payment)">
+                                                                <img src="/images/platform/yl.png" style="height:30px;width:72px" alt="中国供销海外购">
+                                                            </a>
+                                                        {{/notShow}}
+                                                        <a href="javascript:void(0)" class="btn btn_toPay btn_wx" style="width:78px;height:30px;padding:0;" @click="toPayClick('wx', item.orderId, item.orderDetail.payment)">
+                                                            <img src="/images/platform/wx.png" style="height:30px;width:72px" alt="中国供销海外购">
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="btn btn_toPay btn_zfb" style="width:78px;height:30px;padding:0;"  @click="toPayClick('zfb', item.orderId, item.orderDetail.payment)">
+                                                            <img src="/images/platform/zfb.png" style="height:30px;width:72px" alt="中国供销海外购">
+                                                        </a>
+                                                    </template>
+                                                    <template v-if="item.status !== 0 && item.status !== 7 && item.status !== 8 && item.status !== 9 && item.status !== 21">
+                                                        <a href="javascript:void(0)" class="btn btn_refund" @click="refundClick">申请退款</a>
+                                                    </template>
+                                                    <template v-if="item.status === 7 || item.status === 8 || item.status === 9">
+                                                        <a href="javascript:void(0)" class="btn btn_delOrder" @click="delOrderClick(item.orderId)">删除订单</a>
+                                                    </template>
+                                                    <template v-if="item.status === 0">
+                                                        <a href="javascript:void(0)" class="btn btn_closeOrder" @click="closeOrderClick(item.orderId)">关闭订单</a>
+                                                    </template>
+                                                </td>
+                                            </template>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="emptyOrder" v-if="!orderList || !orderList.length">
+                                <p>您还没有订单，马上去 <a href="/">挑选商品</a> 吧！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal-info-content" v-if="childType == 'userInfo'">
+                    <div class="personal-info-msg">
+                        <p>
+                            <b>个人信息</b>
+                        </p>
+                        <div class="my_msg-list">
+                            <ul>
+                                <li>尊敬的用户，填写真实的资料，有助于保障您的权益。<span>（手机号码不可再次修改!）</span></li>
+                                <li>温馨提示：如果您购买的是跨境保税商品，则您须提交的身份证号码，且与订单支付人、收货人保持一致，以确保订单顺利清关，尽快到达您的身边。</li>
+                                <li style="margin-bottom: 0">
+                                    {{#hide}}
+                                        <span>当前头像：</span>
+                                        <div class="img_content">
+                                            <img :src="region.response.userDetail.headImg? region.response.userDetail.headImg: '/images/platform/icon_normal_msg.png'" alt="中国供销海外购">
+                                            <div class="btn btn_editHeadImg">编辑头像</div>
+                                        </div>
+                                    {{/hide}}
+                                </li>
+                                <li>
+                                    <span>用户昵称：</span>
+                                    <input type="text" class="nickName" id="nickName" name="nickName" :class="userInfoNickNameState === false? 'state_error': ''"
+                                           :disabled="request.userInfo.id && !editing" v-model="request.userInfo.userDetail.nickName" @focus="userInfoFocus('nickName')" @blur="userInfoBlur('nickName')">
+                                </li>
+                                <li>
+                                    <span>真实姓名：</span>
+                                    <input type="text" class="realname" id="realname" name="realname" :class="userInfoRealNameState === false? 'state_error': ''"
+                                           :disabled="request.userInfo.id && !editing" v-model="request.userInfo.userDetail.name" @focus="userInfoFocus('realname')" @blur="userInfoBlur('realname')">
+                                </li>
+                                <li>
+                                    <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+                                    <ul>
+                                        <li>
+                                            <input type="radio" id="0" name="sex"
+                                                   :disabled="request.userInfo.id && !editing"
+                                                   :checked="request.userInfo.userDetail.sex == 0" @change="userInfoChange(0)">
+                                            <label for="man">男性</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="1" name="sex"
+                                                   :disabled="request.userInfo.id && !editing"
+                                                   :checked="request.userInfo.userDetail.sex == 1" @change="userInfoChange(1)">
+                                            <label for="women">女性</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>身份证号：</span>
+                                    <input type="text" maxlength="18" class="idNum" id="idNum" name="idNum" :class="userInfoIdNumState === false? 'state_error': ''"
+                                           :disabled="request.userInfo.id && !editing" v-model="request.userInfo.userDetail.idNum" @focus="userInfoFocus('idNum')" @blur="userInfoBlur('idNum')">
+                                </li>
+                                <li>
+                                    <span>手机号码：</span>
+                                    <input type="text" maxlength="11" class="phone" id="phone" name="phone" readonly="readonly" :class="userInfoPhoneState === false? 'state_error': ''"
+                                           :disabled="request.userInfo.id && !editing" v-model="request.userInfo.phone" @focus="userInfoFocus('phone')" @blur="userInfoBlur('phone')">
+                                </li>
+                                <li>
+                                    <span>居住地址：</span>
+                                    <input type="text" style="width:350px" class="location" id="location" name="location" :class="userInfoLocationState === false? 'state_error': ''"
+                                           :disabled="request.userInfo.id && !editing" v-model="request.userInfo.userDetail.location" @focus="userInfoFocus('location')" @blur="userInfoBlur('location')">
+                                </li>
+                            </ul>
+                            <div class="list-btn">
+                                <span class="btn btn_save" v-if="detailExist && editing" @click="userInfoSubmit">保存</span>
+                                <span class="btn btn_edit" v-if="detailExist && !editing" @click="userInfoEdit">修改</span>
+                                <span class="btn btn_create" v-if="!detailExist" @click="userInfoSubmit">创建</span>
+                            </div>
+                        </div>
+                        <div class="my_msg-changeImg" v-if="selectHeadImg">
+                            <p>尊敬的用户，设置您的头像，能完善您的形象哦！</p>
+                            <ul class="my_msg-changeImg-btn">
+                                <li class="btn_local">
+                                    <img src="/images/platform/icon_changeImg01.png" alt="中国供销海外购">
+                                    <input type="file" id="headImg" accept="image/gif,image/jpeg,image/jpg,image/png">
+                                </li>
+                                <li class="btn_photo"><img src="/images/platform/icon_changeImg02.png"></li>
+                            </ul>
+                            <h1>可支持JPG、PNG、GIF图片文件，且文件小于5M</h1>
+                            <img src="/images/platform/icon_normal_msg.png" alt="中国供销海外购">
+                            <div class="changeImg-btn">
+                                <span class="btn btn_saveImg">保存</span>
+                                <span class="btn btn_cancelImg">取消</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal-address-content" v-if="childType == 'address'">
+                    <p class="personal-address-title">
+                        <b>收货地址</b>
+                    </p>
+                    <div class="personal-address-list">
+                        <table class="address-table" border="0">
+                            <thead>
+                            <tr>
+                                <th style="width: 10%">收货人</th>
+                                <th style="width: 20%">所在地区</th>
+                                <th style="width: 30%">详细地址</th>
+                                <th style="width: 10%">邮编</th>
+                                <th style="width: 10%">手机</th>
+                                <th style="width: 20%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <template v-if="addressList.length">
+                                    <tr :addressId="item.id" v-for="item in addressList">
+                                        <td>{{!item.receiveName}}</td>
+                                        <td>{{!item.province}}{{!item.city}}{{!item.area}}</td>
+                                        <td>{{!item.address}}</td>
+                                        <td>{{!item.zipCode}}</td>
+                                        <td>{{!item.receivePhone}}</td>
+                                        <td>
+                                            <ul>
+                                                <li class="btn_edit" @click="addressEditClick">修改</li>
+                                                <li class="btn_remove" @click="addressItemDel">删除</li>
+                                                <li class="btn btn_default" v-if="item.setDefault"><span>默认地址</span></li>
+                                                <li class="btn btn_setDefault" v-else @click="addressDefaultClick"><span>设置默认</span></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <template v-if="!addressList.length">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        您已保存了{{!addressList.length}}个地址</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="personal-address-show">
+                        <div class="address-content">
+                            <p>新增地址<b class="btn_add" @click="addressAddClick"> + 新增地址</b></p>
+                            <div class="address-show-info" :addressId="request.address.id" v-if="request.address.show" style="display: none">
+                                <ul>
+                                    <li>
+                                        <span>所在地区</span>
+                                        <div class="picker-country">
+                                            <select class="picker-province" :class="province_state === false? 'state_error': ''" :data-name="request.address.province" @change="pickerChange" type="province"></select>
+                                            <select class="picker-city"     :class="city_state === false? 'state_error': ''"     :data-name="request.address.city"  @change="pickerChange" type="city"></select>
+                                            <select class="picker-area"     :class="area_state === false? 'state_error': ''"     :data-name="request.address.area"  @change="pickerChange" type="area"></select>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span>详细地址</span>
+                                        <textarea cols="30" rows="10" :class="address_state === false? 'state_error': ''" v-model="request.address.address" @focus="addressFocus('address')" @blur="addressBlur('address')"></textarea>
+                                    </li>
+                                    <li>
+                                        <span>邮政编码</span>
+                                        <input type="text" maxlength="6" v-model="request.address.zipCode" :class="zipCode_state === false? 'state_error': ''" @focus="addressFocus('zipCode')" @blur="addressBlur('zipCode')">
+                                    </li>
+                                    <li>
+                                        <span>真实姓名</span>
+                                        <input type="text" v-model="request.address.receiveName" :class="receiveName_state === false? 'state_error': ''" @focus="addressFocus('receiveName')" @blur="addressBlur('receiveName')">
+                                    </li>
+                                    <li>
+                                        <span>手机号码</span>
+                                        <input type="text" maxlength="11" v-model="request.address.receivePhone"  :class="receivePhone_state === false? 'state_error': ''"  @focus="addressFocus('receivePhone')" @blur="addressBlur('receivePhone')">
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" class="checkDefault" v-model="request.address.setDefault">
+                                        <i>设置为默认地址</i>
+                                    </li>
+                                </ul>
+                                <div class="address-show-btn">
+                                    <span class="btn btn_save" @click="addressSubmit">保存</span>
+                                    <span class="btn btn_cancel" @click="addressCancel">取消</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal-change-content" v-if="childType == 'change'">
+                    <div class="personal-change-msg">
+                        <p>
+                            <b>修改密码</b>
+                        </p>
+                        <div class="my_msg-list">
+                            <ul>
+                                <li>尊敬的用户，经常修改密码能增加账户的安全性能。<span>（密码不要设置的过于简单!）</span></li>
+                                <li>
+                                    <span><b>手机号码</b><span></span></span>
+                                    <input type="text" maxlength="11" class="account" v-model="request.change.account" readonly>
+                                </li>
+                                <li>
+                                    <span><b>验证码</b><span></span></span>
+                                    <input type="text"  class="validation" :class="changeValidationState === false? 'state_error': ''" v-model="request.change.validation" @focus="changeFocus('validation')" @blur="changeBlur('validation')">
+                                    <i>
+                                        <span class="doing" v-show="changeTimerVal">发送中<span class="val" style="color:red;padding:0 3px;">{{!changeTimerVal}}</span>s</span>
+                                        <span class="control" v-show="!changeTimerVal" @click="getValidationClick">获取验证码</span>
+                                    </i>
+                                </li>
+                                <li>
+                                    <span><b>新密码</b><span></span></span>
+                                    <input type="password" class="password" :class="changePasswordState === false? 'state_error': ''" v-model="request.change.password" @focus="changeFocus('password')" @blur="changeBlur('password')">
+                                </li>
+                                <li>
+                                    <span><b>确认新密码</b><span></span></span>
+                                    <input type="password" class="confirmPassword" :class="changeConfirmPasswordState === false? 'state_error': ''" v-model="request.change.confirmPassword" @focus="changeFocus('confirmPassword')" @blur="changeBlur('confirmPassword')">
+                                </li>
+                            </ul>
+                            <div class="list-btn">
+                                <span class="btn btn_change" @click="changeSubmitClick">提交修改</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal-help-content" v-if="childType == 'help'">
+                    <template v-if="childId == 11">
+                        <h1>注册流程</h1>
+                        <p>（一）消费者点击中国供销海外购平台首页【注册】，进入注册页面。<br>
+                            （二）输入【账户信息】获取【手机验证码】输入验证码、点击【同意协议并注册】。<br>
+                            （三）恭喜您，注册成功！点击【马上登陆】进行完善个人信息。<br>
+                            （四）点击【我的收货地址】进入【设置】页面，添加【新增收货地址】。<br>
+                            （五）点击【个人资料】输入消费者真实身份证相关信息。<br>
+                            （注：购买跨境购商品需提交真实身份证信息在海关申报系统备案审核，如填写错误信息，将影响通关和发货。）<br>
+                            （六）完善信息成功，消费者将会收到跨境购平台发送的短信及密码，请妥善保管。
+                        </p>
+                    </template>
+                    <template v-if="childId == 12">
+                        <h1>购买流程</h1>
+                        <p>（一）消费者进入中国供销海外购首页，选择心仪的商品，可【加入购物车】和选择【立即购买】<br>
+                            （二）添加商品成功！可【去购物车结算】<br>
+                            （三）注意查看商品数量，提交【结算】按钮<br>
+                            （四）核对【收货人信息】，选择便捷的【发货方式】即【配送方式】确认无误后，提交订单<br>
+                            （五）选择【待付款订单】点击【现在付款】<br>
+                            （六）进入支付页面，支付方式可供选择【支付宝】【微信】<br>
+                            （七）确认收货。消费者进入【买家首页】，进入【待确认收货】进行【确认收货】<br>
+                            （八）评价及分享。
+                        </p>
+                    </template>
+                    <template v-if="childId == 13">
+                        <h1>常见问题</h1>
+                        <p>Q:为什么消费者要进行实名认证？<br>
+                            A:根据海关总署规定，跨境试点商品以“个人自用、合理数量”为原则，因此个人消费者在下单前，须进行个人姓名、身份证等真实信息注册，身份和订单信息会递送给海关进行审核认证。<br><br>
+                            Q:跨境购商品与我平时代购的商品有什么区别？<br>
+                            A:跨境购商品会受到国家相关部门的保障，顾客购买的商品经过国家相关海关商检部门严格审查，使顾客购买的商品更安全更可靠，同时缩短了顾客购买商品的时间和运输成本，解决灰色通关问题，是真正意义上的“阳光海淘”。另外跨境贸易电子商务的形式解决了顾客交关税难的问题，很多通过直邮的方式运输的商品缴纳关税十分麻烦，需要顾客本身携带相关身份证件去相应邮局办理，现在只需要顾客委托电商商户代为缴纳即可，方便快捷。<br><br>
+                            Q:中国供销海外购网上的商品是正宗国外进口的吗？<br>
+                            A:中国供销海外购是宁波跨境贸易电子商务试点商户，我们从国外采购后，以一般贸易方式批量进境保税存储在国内保税区，国内保税区实行“境内关外”运作方式，每批次货物出关前都经过宁波海关的抽查和国检的检验检疫，确保每一件递送到消费者上的跨境商品都是正宗进口，品质有保证。<br><br>
+                            Q:如果买到的商品不满意该如何退换货？<br>
+                            A:消费者向中国供销海外购提出退换货申请，供销海外购通过后台系统向海关提出申请，海关审核同意后，我们会通知消费者将商品回寄到保税区监管仓库，（由于监管仓库是一个特殊区域，目前只允许试点物流企业邮政速递进入，因此消费者回寄时必须选择这两家快递），监管仓库收货后，核对商品信息，反馈给我们，我们确认无误后，完成退换货。<br><br>
+                            Q:退换货时产生的运费由谁承担？<br>
+                            A:如果是产品质量问题导致的退换货，运费将由我们承担；如果是非质量问题导致的退换货，运费由消费者自己承担。由其他原因导致的退换货，请联系客服处理。<br><br>
+                            Q:提交退货后，大概多久钱会退还到账户？<br>
+                            A:订单未发货由客户发起的退款，以及临时缺货由平台发起的退款，将在工作日（周一至周五，非工作日顺延）24小时内退到客户在中国供销海外购的个人账户，如果要提现要在个人中心发起申请后5个工作日内转账到客户指定的账号。其中跨境购的订单付款后由于海关审核不通过的退款会实时退到客户的来源账户（支付宝或者微信）。<br><br>
+                            Q:在供销海外购购买的商品一般多久能送到？<br>
+                            A:跨境购商品由宁波海关专用物品监管仓打包发货,订单数据提交海关进行审核，审放后，由邮政速递EMS进行包裹派送，一般情况下，消费者在仓库发货后的1至3天内可以收到包裹(偏远地区除外)。<br><br>
+                            Q:订单显示发货了，但快递信息为什么还没有更新？<br>
+                            A:您在中国供销海外购订单页面看到的物流查询信息由快递公司传递提供。由于快递公司信息更新会有一定延迟，请您多多谅解。<br><br>
+                            Q:是否每次购买都需要提供身份证？<br>
+                            A:消费者首次购买宁波跨境贸易电子商务进口商品必须在宁波跨境贸易电子商务服务平台进行“用户注册”，提交的姓名与身份证号码必须相符且真实有效，再次购买不需要重复注册。<br><br>
+                            Q:消费者在供销海外购购买跨境商品金额和数量有限制吗？<br>
+                            A:根据海关总署规定，顾客订单均以个人消费品为标准，数量不能超过个人合理自用范围，所以国家做了相应的金额限制，单笔订单总价不可以超过2000元，但如果一个订单内的商品为不可分割的单个商品，价格在2000元以上也是允许的，每人每年有限制交易的额度为20000元人民币，超过将不能够继续购买。<br><br>
+                            Q:跨境购商品是从哪里发货的，会被调包吗？<br>
+                            A:所有跨境购商品都是统一放在宁波保税区海关监管仓库，由监管仓库工作人员统一打包发货，交由邮政速递派送，试点电商不能介入发货环节，无法调包。<br><br>
+                            Q:什么叫海外直邮？<br>
+                            A:海外直邮，是指货物直接从海外发货地直接邮递到买家手中，中间不经过任何分包、转运的手续，最大程度上避免了货物在中途被掉包、替换，确保货物品质。<br><br>
+                            Q:手机为什么收不到验证码？<br>
+                            A:首先确认您的手机能正常接收短信，如果您的手机没有问题，麻烦将您的问题反馈给客服，我们会尽快为您解决。<br><br>
+                            Q:扫描防伪溯源二维码能查到什么信息？<br>
+                            A:每一件保存在宁波保税区的跨境商品，都会贴有防伪溯源二维码。扫描防伪二维码可获知商品的进口商、进口口岸、进口日期、原产国、报关单位等信息，确保正品。
+                        </p>
+                    </template>
+                    <template v-if="childId == 14">
+                        <h1>商品组成</h1>
+                        <p>1. 产品分类 <br>
+                            母婴用品（奶粉、辅食、婴童用品、妈妈用品）；<br>
+                            营养保健（营养滋补、保健食品、用品）；<br>
+                            居家日用（生活日用、生活家电、厨卫用品、家纺、办公文具、数码电器等）；<br>
+                            个护彩妆（护肤、彩妆、香水、美容工具、洗发沐浴等）；<br>
+                            鞋服箱包（男女装、箱包鞋靴、手表配饰、户外运动等）；<br>
+                            食品粮油（休闲食品、酒水饮料、粮油副食等）；<br><br>
+                            2. 产品来源<br>
+                            我们的产品来自世界各地，有德国、美国、荷兰、日本、韩国、澳大利亚、新西兰等，中国供销海外购的理念是让您成为一名与世界同步的消费者。
+                            <br><br>
+                            3. 产品品牌<br>
+                            中国供销海外购致力于为国内消费者提供海内外的最优质的产品，因此中国供销海外购挑选的都是国外口碑最好的品牌，确保让您安心。
+                            <br><br>
+                            4、 板块指南<br>
+                            1.全球购——直邮代购产品<br>
+                            全球购商品一般是直邮代购商品，从海外发货地直接邮递到买家手中，中间不经过任何分包、转运的手续，最大程度上避免了货物在中途被掉包、替换的可能性，确保货物品质。如果您购买的是小数量海外商品，那么直邮代购是您较好的选择。在全球购板块中，您可以买到来自世界各地的商品，真正让您实现淘遍全球的梦想。
+                            <br>
+                            2.跨境购——跨境现货产品<br>
+                            跨境购是指消费者购买的进口商品是从宁波保税区仓库出发，保税区商品是集中采购、保税存储，消费者下订单后，短时间内配送到达（全国大部分城市3-5天内到达），并解决退换货问题。消费者收到的跨境购商品，会贴有宁波跨境贸易电子商务进口商品防伪溯源二维码，，通过手机扫描查询，可以看到商品详细的进口信息，包括进口商、进口口岸、进口日期、国别、报关单等，确保正品。
+                            <br>
+                            3.闪电购——国内现货的进口商品<br>
+                            闪电购随着消费者消费需求的增加，小数量商品已不能满足消费者的需求。闪电购对于运输的数量比较宽松，商品一般已经过转运、海关检查等流程到达国内，因此运送速度很快。消费者可以比较来自世界各国的优质商品，然后选择自己心仪的商品，能很好的满足消费者的购物需求。
+                        </p>
+                    </template>
+                    <template v-if="childId == 21">
+                        <h1>通关税费</h1>
+                        <p>
+                            中国供销海外购通过正规的清关渠道进行清关，一切遵照海关相关法律、法规进行操作，并且尽量保障清关时效。<br>
+                            1.目前对于购买跨境电商平台上的商品，国家的相关政策是怎样的？<br>
+                            依据《关于跨境电子商务零售进口税收政策的通知》，跨境电子商务零售进口商品的单次交易限值为人民币2000元，个人年度交易限值为人民币20000元。<br>
+                            在限值以内进口的跨境电子商务零售进口商品，关税税率暂设为0%；进口环节增值税、消费税取消免征税额，暂按法定应纳税额的70%征收。<br>
+                            超过单次限值、累加后超过个人年度限值的单次交易，以及完税价格超过2000元限值的单个不可分割商品，均按照一般贸易方式全额征税。<br>
+                            2.购买中国供销海外购海购进口的商品是否需要缴税？<br>
+                            根据政策规定，跨境电子商务零售进口商品按照货物征收关税和进口环节增值税、消费税，购买跨境电子商务零售进口商品的个人作为纳税义务人，实际交易价格（包括货物零售价格、运费和保险费）作为完税价格，电子商务企业、电子商务交易平台企业或物流企业可作为代收代缴义务人。<br>
+                            3.如果产生进口税，是否需要自己亲自缴纳？<br>
+                            在中国供销海外购上购买的“跨境购商品”无需自己再到相应的海关部门单独缴纳，供销海外购将会根据顾客的订单统一向海关缴纳关税，消费者可以在服务平台查询电子税单。
+                        </p>
+                    </template>
+                    <template v-if="childId == 22">
+                        <h1>配送方式</h1>
+                        <p>
+                            1、保税仓商品配送<br>
+                            国内保税仓商品：商品将由保税区海关监督仓库的工作人员统一打包发货，交由国内第三方物流公司派送。<br><br>
+                            <img src="/images/platform/sendf_01.png" alt="中国供销海外购"><br>
+                            2、海外仓商品配送<br>
+                            海外直邮商品：商品将由国际物流邮寄到您手中。<br><br>
+                            <img src="/images/platform/sendf_02.png" alt="中国供销海外购"><br>
+                            3、注意事项：<br>
+                            (1)暂时不支持港澳台地区的派送。<br>
+                            (2)如遇双十一等大型活动期间，或者遇台风、暴雨、大雾等不可抗力的原因下，订单到达时间将根据具体到达情况而定。<br>
+                            (3)中国供销海外购提供的订单物流跟踪功能所查询的信息均来源于合作快递公司官网，部分官网信息由于同步不及时，有可能出现更新延迟现象，为您带来的不便敬请谅解。
+                        </p>
+                    </template>
+                    <template v-if="childId == 23">
+                        <h1>支付方式</h1>
+                        <p>消费者在供销海外购下单支付，<br>
+                            必须用与在跨境电子商务服务平台实名注册的姓名一致的银联卡（包括信用卡、借记卡）支付，<br>
+                            消费者还可选择支付宝支付。<br>
+                            我们支持的银行包括：工商银行、农业银行、建设银行、中国银行、招商银行、中国邮政储蓄、浦发银行、光大银行、交通银行、兴业银行等。
+                        </p>
+                    </template>
+                    <template v-if="childId == 24">
+                        <h1>物流跟踪</h1>
+                        <p>
+                            <strong>您可以登录您的供销海外购账户，在我的订单—订单详情页面中查看您订单的实时配送情况。</strong><br>
+                            部分快递公司物流信息系统显示会略有延迟，如订单已显示为发货状态，但无物流信息显示，请您稍等约24小时左右，即可查询到。或者您可以直接物流公司官网进行实时订单物流状态查询。<br>
+                            请您签收货品时，尽量在快递人员在场时当面检查商品（如果快递人员坚持先前签收再验货，可以在签收之后立刻检查）。<br>
+                            <strong>请注意：</strong>快递包装是否有破损、渗漏、缺少等现象，若出现以上情况，建议您尽快与我们客服联系，并拍照存档，把照片发给我们的客服人员，以便我们对物流快递公司进行追责。
+                        </p>
+                    </template>
+                    <template v-if="childId == 31">
+                        <h1>会员介绍</h1>
+                        <p>注：您购买的商品会对应相应积分，会员等级按积分多少来区分，部分会员特权尚在开发中，将逐步开放，敬请期待！</p>
+                    </template>
+                    <template v-if="childId == 32">
+                        <h1>意见反馈</h1>
+                        <p>您在购买前对产品包装、颜色、运输、库存等方面进行咨询，我们有专人进行回复。 </p>
+                    </template>
+                    <template v-if="childId == 33">
+                        <h1>服务承诺</h1>
+                        <p>
+                            （1）100%海关检验<br>
+                            供销海外购承诺线上销售的所有商品100%原装进口，100%经海关检验，对产品质量严格把关，确保您所购得的商品均为合格正品，让您有一个安心的购物之旅。<br>
+                            （2）在线服务<br>
+                            周一至周五：9:00-18:00
+                        </p>
+                    </template>
+                    <template v-if="childId == 41">
+                        <h1>公司简介</h1>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“中国供销海外购”发源于中国供销集团，目标是给农村市场提供质优价廉的全球进口商品，通过赋能区域合作伙伴，共同为终端消费者提供优质商品和服务的B2B2C模式和线上线下一体化经营的O2O模式，充分利用和激活中国供销集团各级各地供销合作社的线下网点资源，下沉销售渠道，领跑新零售。<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“中国供销海外购”于2015年4月开始筹备，2016年1月9日线上平台正式上线，2016年3月4日首家线下实体店正式开业。经过3年多时间的发展，在全国18个省、22个城市开设线下实体店1,500多家，主营母婴、美妆个护、营养保健品、零食酒水等进口商品，交易额稳步增长，亮眼成绩取得社会各界的广泛认可。<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2018年，“中国供销海外购”项目由宁波鑫海通达跨境电子商务有限公司独立运作，秉承推进农村流通现代化和国际化的理念，宁波鑫海通达跨境电子商务有限公司自主研发跨境电商B2B、B2C系统、广泛招募社会各界优秀人才，积极拓展各种线下实体销售渠道，不断与海外品牌达成直采协议，通过自身强大的供应链能力、供应链金融能力和物流仓储优势，持续给区域合作伙伴赋能，“采全球，供全球”，与合作伙伴一起开拓进口商品新零售市场。<br>
+                            <span class="wxContainer" style="display: block;">
+                                <img class="wxImg" src="/images/platform/qr_shop.png" style="display:block; margin:auto; width:170px; height:170px;" alt="中国供销海外购">
+                                <span class="wxText" style="display:block; margin:auto; text-align: center">中国供销海外购微信公众号</span>
+                            </span>
+                        </p>
+                    </template>
+                    <template v-if="childId == 42">
+                        <h1>联系我们</h1>
+                        <p>{{!siteInfo.name}}<br>
+                            网址：{{!siteInfo.domainName}}<br>
+                            电话：{{!siteInfo.telephone}}<br>
+                            地址：{{!siteInfo.address}}
+                        </p>
+                    </template>
+                    <template v-if="childId == 43">
+                        <h1 class="center">消费者告知书</h1>
+                        <p>
+                            <span class="nickName">尊敬的客户：</span>
+                            <span class="header">
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好！为帮助您更好的选购境外商品，请您在购买前仔细阅读本告知书的全部内容，同意本告知书内容后再下单购买:
+                            </span>
+                            <span class="stage stage1">
+                                <span class="path1">
+                                    (1)
+                                </span>
+                                <span class="path2">
+                                    您在中国供销海外购上购买的商品等同于境外购买，因此商品本身可能无中文标签及说明书。如果需要，您可以通过网站查看商品详情页了解商品详情或咨询客服。
+                                </span>
+                            </span>
+                            <span class="stage stage2">
+                                <span class="path1">
+                                    (2)
+                                </span>
+                                <span class="path2">
+                                    您购买的中国供销海外购商品适用的关于品质、健康、安全、卫生、环保、标识等标准与我国大陆地区相关标准可能有所不同。由于跨境电商特殊性，商品无质量、破损等问题，不支持7天无理由退换货。
+                                </span>
+                            </span>
+                            <span class="stage stage3">
+                                <span class="path1">
+                                    (3)
+                                </span>
+                                <span class="path2">
+                                    您所购买的商品将占用国家规定的每位公民每年2万元跨境电商免税额度，请您知晓。
+                                </span>
+                            </span>
+                            <span class="stage stage4">
+                                <span class="path1">
+                                    (4)
+                                </span>
+                                <span class="path2">
+                                     根据相关法律政策，您所购买的商品仅限于个人自用，不得进行再次销售。
+                                </span>
+                            </span>
+                            <span class="footer">
+                                <span class="block">中国供销海外购精选全球好货，为您提供正品保障。</span>
+                                <span class="block">谢谢！</span>
+                                <span class="block right">中国供销海外购</span>
+                            </span>
+                        </p>
+                    </template>
+                </div>
+            </div>
+            <div region="personalPagination" v-if="childType == 'order'">
+                <div class="pagination-content">
+                    <ul class ="pagination_ul floatRight" v-if="pagination && pagination.totalRows">
+                        <li class="pagination_page" :class="pagination.currentPage ==1? 'lose': ''">
+                            <a class="pagination_btn prevBtn"  @click="paginationBtn">上一页</a>
+                        </li>
+                        <template v-for="item in paginationPageList">
+                            <li class="pagination_page" :class='item.active' v-if="item.jumpBtn">
+                                <a :jumpBtn="item.jumpBtn" class="pagination_btn"  @click="paginationBtn">{{!item.page}}</a>
+                            </li>
+                            <li class="pagination_page" v-if="item.ellipsis">
+                                <a class="pagination_ellipsis">...</a>
+                            </li>
+                        </template>
+                        <li class="pagination_page" :class="pagination.currentPage == pagination.totalPages? 'lose': ''">
+                            <a class="pagination_btn nextBtn" @click="paginationBtn">下一页</a>
+                        </li>
+                        <li class="pagination_page">
+                            <input type="text" class="pagination_searchText" :value="pagination.currentPage" @input="paginationInput" @blur="paginationBlur">
+                        </li>
+                        <li class="pagination_page">
+                            <a class="pagination_btn searchBtn" @click="paginationBtn">确定</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+/*
+ * banner-1样式
+ */
+[id^='banner-1-']{
+  width: 750px;
+  display: block;
+  position: relative;
+}
+.banner-1-content{
+  width: 750px;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  &>.banner-bannerImg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    &>ul{
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      display: block;
+      &>li.bannerImg_li{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        display: block;
+        &>a{
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          display: block;
+          position: relative;
+          &>img{
+            width: 100%;
+            height: 100%;
+            &.adaption{
+              width : auto;
+              max-width: 95%;
+              height: 98%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+  &>.banner-gradientImg{
+    width: 100%;
+    height: 65px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 120;
+    display: inline-block;
+    &>img{
+      width: 100%;
+      height: 65px;
+    }
+  }
+  &>.banner-carousel-spots{
+    width: calc(100% - 100px);
+    height: 16px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 22px;
+    z-index: 150;
+    &>.spot{
+      width: 16px;
+      height: 16px;
+      margin: 0 11px;
+      border-radius: 100%;
+      display: inline-block;
+      background-color: rgba(255,255,255,0.36);
+      &.active{
+        background-color: #ffffff;
+      }
+    }
+  }
+}

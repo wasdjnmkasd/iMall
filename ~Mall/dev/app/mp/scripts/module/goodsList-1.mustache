@@ -1,0 +1,63 @@
+<div id="goodsList-1-{{sign}}" v-cloak>
+    <div class="goodsList-1-content">
+        {{#own.title}}
+            <h1>{{own.title}}</h1>
+        {{/own.title}}
+        <ul class="goodsList-ul">
+            {{#cont}}
+                <li class="goodsList-item">
+                    <a href="{{{href}}}">
+                        <div class="imgBox">
+                            <div>
+                                {{#if picPath}}
+                                    <img src="{{{picPath}}}">
+                                {{else}}
+                                    <span class="noImg">暂无商品图片</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="description">
+                            {{#if description}}
+                                {{description}}
+                            {{else}}
+                                该商品暂无描述
+                            {{/if}}
+                        </div>
+                        <ul class="textGroup">
+                            <li class="name">
+                                {{{title}}}
+                            </li>
+                            <li>
+                                <span class="price" v-html="showPrice({{price}})"></span>
+                                <span class="origin">{{origin}}</span>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+            {{/cont}}
+            <template v-if="isShow({{cont.length}})">
+                <li class="goodsList-item">
+                    <a href="{{{own.href}}}">
+                        <div class="imgBox">
+                            <div>
+                                <img style="max-width:95%;max-height:95%" src="/images/platform/goods/more.png">
+                                <span class="nothing">前往{{own.name}}分类</span>
+                            </div>
+                        </div>
+                        <div class="description">
+                            更多 {{own.name}} 商品
+                        </div>
+                        <ul class="textGroup">
+                            <li class="name"></li>
+                            <li>
+                                <span class="price"></span>
+                                <span class="origin"></span>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+            </template>
+        </ul>
+    </div>
+</div>
+

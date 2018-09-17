@@ -1,0 +1,35 @@
+<div id="goodsList-3-{{sign}}" v-cloak>
+    <div class="goodsList-3-content">
+        <div class="commodity-header">
+            <img src="{{{own.picPath}}}" alt="中国供销海外购">
+        </div>
+        <div class="commodity-center">
+            {{#each cont}}
+                <div class="commodity-item">
+                    <a href="{{{href}}}">
+                        <ul>
+                            <li class="shopImg">
+                                <img class="mainImg" src="{{{picPath}}}" alt="{{{title}}}">
+                                <img class="iconType" :src="imgSrc({{goodsType}})" alt="{{{title}}}">
+                            </li>
+                            <li class="shopName">
+                                {{{title}}}
+                            </li>
+                            <li class="shopIcon" v-if="tagExist('{{tagPath}}')">
+                                <img :src="item" v-for="item in tagHandle('{{tagPath}}')" alt="中国供销海外购">
+                            </li>
+                            <li class="shopPrice">
+                                <span class="origin">
+                                    {{#origin}}
+                                        <img src="/images/platform/city/{{origin}}.png" alt="中国供销海外购-{{origin}}">
+                                    {{/origin}}
+                                </span>
+                                <span class="price" v-html="showPrice({{price}})"></span>
+                            </li>
+                        </ul>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

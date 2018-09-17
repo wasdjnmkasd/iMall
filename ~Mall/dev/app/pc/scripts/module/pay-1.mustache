@@ -1,0 +1,31 @@
+<div id="pay-1-{{sign}}" v-cloak>
+    <div class="pay-1-content" v-if="sendToPay">
+        <div class="pay-header">
+            <p class="pay-info">
+                请您及时付款，以便为您尽快处理哦！
+                <span>订单号：{{!sendToPay.orderId}}</span>
+                <b>￥{{!(sendToPay.orderPrice*1).toFixed(2)}}</b>
+            </p>
+            <p class="timeLimit">
+                请您在提交订单后<span>1小时</span>内完成支付，否则订单会自动取消。 中国供销海外购为您服务。
+                <b status="hide" v-if="sendToPay.info" @click="doOrderDetail">订单详情<i class="fa fa-fw fa-angle-down"></i></b>
+            </p>
+            <div class="showDetail" v-if="sendToPay.info">
+                <p>{{!sendToPay.name}}<span>{{!returnSupplierName(sendToPay.supplierName)}}发货</span></p>
+                <p>{{!sendToPay.info}}</p>
+            </div>
+        </div>
+        <div class="pay-body">
+            <div class="pay-body-left">
+                <p>微信支付</p>
+                <div class="qrcodeImg"></div>
+                <ul class="hint">
+                    <li class="icon"></li>
+                    <li>请使用微信扫一扫</li>
+                    <li>扫描二维码支付</li>
+                </ul>
+            </div>
+            <div class="pay-body-right"></div>
+        </div>
+    </div>
+</div>

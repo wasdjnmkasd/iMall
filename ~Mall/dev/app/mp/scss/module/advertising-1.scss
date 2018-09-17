@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/*
+ * advertising-1部分样式
+ */
+[id^='advertising-1-']{
+  width: 750px;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+}
+.advertising-1-content{
+  width: 750px;
+  height: 100%;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  ::-webkit-scrollbar {
+    display:none;
+  }
+  ul{
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  li{
+    float: left;
+    overflow:hidden;
+    padding:5px;
+    background:#fff;
+    display: block;
+  }
+  li a{
+    width: 140px;
+    height: 140px;
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+  li img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

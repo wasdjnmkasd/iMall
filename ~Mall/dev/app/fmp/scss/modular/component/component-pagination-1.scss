@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+/*
+ * component-pagination-1部分样式
+ */
+component-pagination-1{
+  width: 100%;
+  display: block;
+  &>.component-pagination-content{
+    width: 100%;
+    height: 56px;
+    padding: 0 15px;
+    margin: 20px auto;
+    display: block;
+    &>.pagination_ul{
+      width: 100%;
+      overflow: hidden;
+      border-radius: 5px;
+      border: solid .5px #cfcfcf;
+      box-shadow: 0 0 2px rgba(229,229,229,0.4);
+      -webkit-box-shadow: 0 0 2px rgba(229,229,229,0.4);
+      &>.pagination_page{
+        width: 33.3333333%;
+        height: 56px;
+        float: left;
+        overflow: hidden;
+        background: #ffffff;
+        &>.pagination_select{
+          width: 100%;
+          height: 56px;
+          display: inline-block;
+          background: #ffffff;
+          padding: 0 60px;
+          font-size: 22px;
+          line-height: 56px;
+          text-align: center;
+          color: #333;
+          border: none;
+          appearance:none;
+          -moz-appearance:none;
+          -webkit-appearance:none;
+        }
+        &>.pagination_btn{
+          width: 100%;
+          height: 56px;
+          display: inline-block;
+          cursor: pointer;
+          padding: 0 5px;
+          font-size: 22px;
+          line-height: 56px;
+          text-align: center;
+          color: #333;
+        }
+        &:first-child{
+          border-right: solid .5px #cfcfcf;
+        }
+        &:last-child{
+          border-left: solid .5px #cfcfcf;
+        }
+        &.lose{
+          background: #F8F8F8;
+          border-color: #e5e5e5;
+          &>.pagination_btn{
+            color: #cccccc;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}

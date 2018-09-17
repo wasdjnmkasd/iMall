@@ -1,0 +1,27 @@
+<div class="component-login-content">
+    <div class="component-login-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="tel" pattern="[0-9]*" id="account" name="account" placeholder="请输入手机号码..." can-value="region.request.account"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-login-password {{password_state}}">
+        <span class="iconLeft"></span>
+        <input type="password" id="password" name="password" placeholder="请输入6-12位密码..." can-value="region.request.password"/>
+        <span class="iconRight icon_eye"></span>
+    </div>
+    <a href="javascript:void(0)" class="btn component-login-loginBtn {{loginBtn_state}}">登录</a>
+    <div class="component-login-prompt">
+        <a href="/register.html?jumpUrl={{region.config.jumpUrl}}" target="_self">账号注册</a>
+        <a href="/forgetPassword.html?jumpUrl={{region.config.jumpUrl}}" target="_self">忘记密码</a>
+    </div>
+    <div class="component-login-third">
+        <div class="header">
+            使用其他方式登录
+        </div>
+        <div class="body">
+            <a href="javascript:void(0)" class="img_weChat">
+                <img src="/images/platform/account/weixin.png" alt="福利商城">
+            </a>
+        </div>
+    </div>
+</div>

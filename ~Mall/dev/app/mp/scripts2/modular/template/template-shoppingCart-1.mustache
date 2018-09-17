@@ -1,0 +1,138 @@
+<div class="component-shoppingCart-content">
+    {{scopeConfig region.config}}
+    {{spoceOrder region.response.orders region.config}}
+
+    {{#if region.response.orders.quantity}}
+        {{#region.response.orders}}
+            <div class="component-shoppingCart-ordersDetails" style="min-height: {{region.config.minHeight}}px">
+                {{#each typeObj}}
+                    {{#each .}}
+                        {{#each itemObj}}
+                            <div class="goodsList" type="{{type}}" supplierId="{{supplierId}}" goodsId="{{goodsId}}" ids="{{ids}}">
+                                <div class="body">
+                                    <div class="itemList" itemId="{{itemId}}">
+                                        <div class="commodity-group">
+                                            <span goodsId="{{goodsId}}" itemId="{{itemId}}" class="commodity-select {{#returnItemSelect selected status region.config.optionsOpen}}active{{/returnItemSelect}}">
+                                                {{#if region.config.optionsOpen}}
+                                                    <span class="icon icon_logo"></span>
+                                                {{else}}
+                                                    {{#returnStatus status}}
+                                                        {{#returnStock stock minQuantity}}
+                                                            <span class="icon icon_logo"></span>
+                                                        {{/returnStock}}
+                                                        {{^returnStock stock minQuantity}}
+                                                            <span class="text text_lose">库存不足</span>
+                                                        {{/returnStock}}
+                                                    {{/returnStatus}}
+                                                    {{^returnStatus status}}<span class="text text_lose">已下架</span>{{/returnStatus}}
+                                                {{/if}}
+                                            </span>
+                                            <a class="commodity-img" href="{{{href}}}">
+                                                {{#if itemImg}}
+                                                    <img src="{{{itemImg}}}" alt="{{goodsName}}">
+                                                {{else}}
+                                                    <img src="/images/platform/account/default_img.jpg" alt="{{goodsName}}">
+                                                {{/if}}
+                                                {{#returnIsShow type}}
+                                                    <img class="corner_mark" src="{{returnImgSrc type}}" alt="中国供销海外购">
+                                                {{/returnIsShow}}
+                                            </a>
+                                            <span class="commodity-info">
+                                                <span class="commodity-name">
+                                                    <a href="{{{href}}}">
+                                                        <span class="text">{{#if supplierName}}[{{supplierName}}]{{/if}}{{goodsName}}</span>
+                                                    </a>
+                                                </span>
+                                                {{#returnSpec itemSpecs.info}}
+                                                    <span class="commodity-itemId">
+                                                        <span class="text">规格：{{#each .}} {{.}}、 {{/each}}</span>
+                                                    </span>
+                                                {{/returnSpec}}
+                                                {{#itemSpecs.carton}}
+                                                    <span class="commodity-gauge">
+                                                        <span class="text">箱规：{{itemSpecs.carton}}</span>
+                                                    </span>
+                                                {{/itemSpecs.carton}}
+                                                <span class="commodity-price">
+                                                    <span class="text">￥{{returnPrice price realPrice}}</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="commodity-quantity">
+                                        <span class="inputGroup">
+                                            <span class="btn btn_plus"></span>
+                                            <input type="number" pattern="[0-9]*" class="btn btn_input" can-value="quantity">
+                                            <span class="btn btn_minus"></span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="controlGroup">
+                                    <span class="control control_delete" ids="{{ids}}">删除</span>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/each}}
+                {{/each}}
+            </div>
+        {{/region.response.orders}}
+    {{/if}}
+
+    {{#if region.response.orders.quantity}}
+        <div class="component-shoppingCart-optionsGroup">
+            <div class="content">
+                <span class="control control_selectAll {{#region.response.orders.allSelected}}active{{/region.response.orders.allSelected}}">
+                    <span class="icon icon_selectAll"></span>
+                    <span class="text text_count">已选({{region.response.orders.selectedCount}})</span>
+                </span>
+                {{#if region.config.optionsOpen}}
+                    <span class="btnGroup">
+                        <span class="btn btn_deleteMore {{^if region.response.orders.oneSelected}}lose{{/if}}">删除</span>
+                    </span>
+                {{else}}
+                    <span class="btnGroup">
+                        <span class="btn btn_commitOrder {{^if region.response.orders.oneSelected}}lose{{/if}}">下单</span>
+                        <span class="text text_price">
+                            <!--&lt;!&ndash;￥{{returnOrderPrice region.response.orders}}&ndash;&gt;-->
+                            <!--<p>一般：￥{{returnOrderNormalPrice}}</p>-->
+                            <!--<p>跨境：￥{{returnOrderCrossPrice}}</p>-->
+                            {{#returnNormalShow}}
+                                {{#returnCrossShow}}
+                                    <p>一般：￥{{returnOrderNormalPrice}}</p>
+                                {{/returnCrossShow}}
+                            {{/returnNormalShow}}
+                            {{^returnNormalShow}}
+                                {{#returnCrossShow}}
+                                    跨境：￥{{returnOrderCrossPrice}}
+                                {{/returnCrossShow}}
+                            {{/returnNormalShow}}
+                            {{#returnCrossShow}}
+                                {{#returnNormalShow}}
+                                    <p>跨境：￥{{returnOrderCrossPrice}}</p>
+                                {{/returnNormalShow}}
+                            {{/returnCrossShow}}
+                            {{^returnCrossShow}}
+                                {{#returnNormalShow}}
+                                    一般：￥{{returnOrderNormalPrice}}
+                                {{/returnNormalShow}}
+                            {{/returnCrossShow}}
+                            {{^returnCrossShow}}
+                                {{^returnNormalShow}}
+                                    总价：￥0.00
+                                {{/returnNormalShow}}
+                            {{/returnCrossShow}}
+                        </span>
+                    </span>
+                {{/if}}
+            </div>
+        </div>
+    {{else}}
+        <div class="component-shoppingCart-empty">
+            <img src="/images/platform/shopCart/empty.png" class="img" alt="中国供销海外购">
+            <span class="text">购物车空了，去买点什么吧！</span>
+            {{^region.config.isLogin}}
+                <a class="btn" href="/login.html?jumpUrl={{region.config.pathUrl}}">登录</a>
+            {{/region.config.isLogin}}
+        </div>
+    {{/if}}
+</div>

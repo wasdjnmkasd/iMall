@@ -1,0 +1,96 @@
+<div class="component-searchProduct-content">
+    <div class="searchProduct-header">
+        <ul class="content">
+            <li class="choose_general {{addElementClass region.config.sortType 1 "active"}}">综合</li>
+            <li class="choose_new {{addElementClass region.config.sortType 2 "active"}}">最新</li>
+            <li class="choose_price
+                     {{addElementClass region.config.sortType 3 "sortType3"}}
+                     {{addElementClass region.config.sortType 4 "sortType4"}}">
+                价格
+                {{#returnImg region.config.sortType}}
+                       <img src="/images/platform/product/{{path}}.png" class="sort" alt="福利商城">
+                {{/returnImg}}
+            </li>
+        </ul>
+    </div>
+    {{#if region.response.goodsList}}
+        {{#if region.response.goodsList.length}}
+            <div class="searchProduct-body">
+                <ul class="searchProduct-body-item" style="min-height: {{region.config.minHeight}}px">
+                    {{#each region.response.goodsList}}
+                        <li class="item-content"  isSingleSpec="{{returnIsSingleSpec goodsSpecsList}}" toUrl='{{{href}}}'goodsId="{{goodsId}}">
+                            <a href="{{{href}}}">
+                                <div class="imgBox">
+                                    <div>
+                                        {{#if goodsFileList}}
+                                            {{#each goodsFileList}}
+                                                {{#setRenderRange @index 0 1}}
+                                                    <img src="{{{path}}}" alt="{{{customGoodsName}}}">
+                                                {{/setRenderRange}}
+                                            {{/each}}
+                                        {{else}}
+                                            <img src="/images/platform/account/default_img.jpg" alt="{{{customGoodsName}}}">
+                                        {{/if}}
+                                        {{#returnIsShow type}}
+                                            <img class="corner_mark" src="{{returnImgSrc type}}" alt="福利商城">
+                                        {{/returnIsShow}}
+                                    </div>
+                                </div>
+                                <div class="description">
+                                    <span class="text">
+                                        {{#if description}}
+                                            {{description}}
+                                        {{else}}
+                                            福利商城
+                                        {{/if}}
+                                    </span>
+                                    {{#if goodsSpecsList}}
+                                        <span class="tagBox">
+                                            {{#returnTags goodsSpecsList}}
+                                                {{#each .}}
+                                                    <span class="icon {{.}}"></span>
+                                                {{/each}}
+                                            {{/returnTags}}
+                                        </span>
+                                    {{/if}}
+                                </div>
+                            </a>
+                            <ul class="textGroup">
+                                <li class="name">
+                                    <a href="javascript:void(0)">
+                                        {{{customGoodsName}}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <span class="realPrice">￥{{returnPrice realPrice}}</span>
+                                    <span class="imgBox search_addShoppingCart">
+                                        <img src="/images/platform/search/icon_shoppingCart.png" alt="福利商城">
+                                    </span>
+                                    <span class="price">￥{{returnPrice price}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+                <div class="isLoading">
+                    <div class="component-load-text">
+                        <span>请下拉加载...</span>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+    {{#if region.response.goodsList}}
+        {{^if region.response.goodsList.length}}
+            <div class="empty_search">
+                <img src="/images/platform/product/search.png" alt="福利商城">
+                <span class="text">您寻找的商品还未上架！</span>
+            </div>
+        {{/if}}
+    {{else}}
+        <div class="empty_search">
+            <img src="/images/platform/product/search.png" alt="福利商城">
+            <span class="text">您寻找的商品还未上架！</span>
+        </div>
+    {{/if}}
+</div>

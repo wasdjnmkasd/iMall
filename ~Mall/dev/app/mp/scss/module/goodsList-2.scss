@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+/*
+ * goodsList-2部分样式
+ */
+[id^='goodsList-2-']{
+  width: 750px;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+}
+.goodsList-2-content{
+  width: 750px;
+  & > .mainImg {
+    height: 325px;
+    & > a {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  & > .goodsList-list{
+    top: -60px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    & > .content-list{
+      width: -webkit-max-content;
+      width: -moz-max-content;
+      width: max-content;
+      overflow: hidden;
+      padding: 2px 20px;
+      & > .list-item{
+        float: left;
+        width: 220px;
+        height: 257px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 0 4px rgba(0,0,0,.2);
+        margin-right: 10px;
+        margin-bottom: 10px;
+        &:last-child{
+          margin-right: 0;
+        }
+        & > a {
+          width: 100%;
+          height: 100%;
+          color: #333;
+          padding: 10px;
+          font-size: 18px;
+          text-decoration: none;
+          display: inline-block;
+          & > ul {
+            & > li{
+              width: 200px;
+              height: 148px;
+              position: relative;
+              & > img {
+                max-width: 96%;
+                max-height: 96%;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+              }
+              &.shopName{
+                height: 48px;
+                font-size: 18px;
+                line-height: 25px;
+                overflow: hidden;
+                margin-top: 5px;
+              }
+              &.shopPrice{
+                height: 34px;
+                & > .text {
+                  float: left;
+                  font-size: 20px;
+                  font-weight: 600;
+                  padding-top: 8px;
+                  color: #f00;
+                }
+                & > .img {
+                  float: right;
+                  padding: 10px 5px 0 0;
+                }
+              }
+            }
+          }
+        }
+        &.lookMore{
+          text-align: center;
+          & > a > img {
+            margin-top: 61px;
+          }
+        }
+      }
+    }
+  }
+}

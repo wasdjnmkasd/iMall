@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/*
+ * advertising-2部分样式
+ */
+[id^='advertising-2-']{
+  width: 750px;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+}
+.advertising-2-content{
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  background-color: #fff;
+  & > a {
+    width: 50%;
+    height: 240px;
+    float: left;
+    display: block;
+    position: relative;
+    &:first-child::after{
+      content: '';
+      width: 1px;
+      height: 80%;
+      position: absolute;
+      top: 10%;
+      left: auto;
+      right: 0;
+      background-color: #dfdfdf;
+    }
+    & > img {
+      width: 90%;
+      height: 90%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}

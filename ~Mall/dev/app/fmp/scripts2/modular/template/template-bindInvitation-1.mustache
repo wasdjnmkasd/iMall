@@ -1,0 +1,13 @@
+<div class="component-bindInvitation-content">
+    <div class="component-bindInvitation-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="tel" pattern="[0-9]*" id="account" name="account" placeholder="未获取到手机号..." can-value="region.request.account" {{#if region.config.account}}readonly="readonly"{{/if}}/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-bindInvitation-invitationCode {{invitationCode_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="invitationCode" name="invitationCode" placeholder="请输入邀请码..." can-value="region.request.invitationCode"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <a href="javascript:void(0)" class="btn component-bindInvitation-bingBtn {{bingBtn_state}}">绑定邀请码</a>
+</div>

@@ -1,0 +1,61 @@
+<div id="floor-1-{{sign}}" v-cloak>
+    <div class="floor-1-content">
+        <div class="floor-title">
+            <div class="floor-title-left">
+                <img src="{{{own.tagPath}}}" alt="{{own.title}}">
+                <ul>
+                    <li>{{own.title}}</li>
+                    <li>{{own.enname}}</li>
+                </ul>
+            </div>
+            <div class="floor-title-right">
+                <p>
+                    {{#each own.description}}
+                        <span>{{.}}</span>
+                    {{/each}}
+                    <a href="{{{own.href}}}" target="_blank">
+                        查看更多 >>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="floor-left">
+            {{#each cont}}
+                {{#toRange @index 0 1}}
+                    <a href="{{{href}}}" target="_blank">
+                        <img src="{{{picPath}}}" alt="{{{own.title}}}">
+                    </a>
+                {{/toRange}}
+            {{/each}}
+        </div>
+        <div class="floor-right">
+            <div class="floor-right-top">
+                <ul>
+                    {{#each cont}}
+                        {{#toRange @index 1 3}}
+                            <li><a href="{{{href}}}" target="_blank"><img src="{{{picPath}}}" alt="{{#if title}}{{title}}{{else}}中国供销海外购{{/if}}"></a></li>
+                        {{/toRange}}
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="floor-right-bottom">
+                {{#each cont}}
+                    {{#toRange @index 4 4}}
+                        <div class="floor-item">
+                            <a href="{{{href}}}" target="_blank">
+                                <ul>
+                                    <li><img src="{{{picPath}}}" alt="{{title}}"></li>
+                                    <li>{{title}}</li>
+                                    <li>
+                                        <span class="price">￥{{toFixed price}}</span>
+                                        <span class="iconBox"></span>
+                                    </li>
+                                </ul>
+                            </a>
+                        </div>
+                    {{/toRange}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

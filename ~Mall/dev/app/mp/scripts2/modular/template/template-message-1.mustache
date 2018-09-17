@@ -1,0 +1,59 @@
+{{scopeModule module}}
+{{scopeFunction "cancel" region.config}}
+{{scopeFunction "confirm" region.config}}
+{{scopeFunction "timeOutFun" region.config}}
+{{scopeDOMClick region.config.DOMClick}}
+
+{{#if region.config.content}}
+    {{#returnConfirmBtn region.config.confirmBtn}}
+        <div class="component-message-content completed">
+            <div class="component-message-header">
+            <span class="message-text">
+                {{returnHeaderText region.config.type region.config.language}}
+            </span>
+                <span class="message-icon icon_{{returnHeaderIcon region.config.type}}"></span>
+            </div>
+            <div class="component-message-body">
+                <table class="message-content">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>{{region.config.content}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="component-message-footer">
+            <span class="message-btnGroup">
+                {{#returnConfirmBtn region.config.confirmBtn}}
+                    <a class="btn btn_confirm">
+                        {{returnFooterText "confirm" region.config.language}}
+                    </a>
+                {{/returnConfirmBtn}}
+
+                {{#returnCancelBtn region.config.cancelBtn}}
+                    <a class="btn btn_cancel">
+                        {{returnFooterText "cancel" region.config.language}}
+                    </a>
+                {{/returnCancelBtn}}
+            </span>
+            </div>
+        </div>
+    {{/returnConfirmBtn}}
+    {{^returnConfirmBtn region.config.confirmBtn}}
+        <div class="component-message-content unCompleted">
+            <div class="component-message-body">
+                <table class="message-content">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span>{{region.config.content}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {{/returnConfirmBtn}}
+{{/if}}

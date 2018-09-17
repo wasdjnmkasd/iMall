@@ -1,0 +1,166 @@
+<div id="goodsDetail-1-{{sign}}" v-cloak>
+    {{#cont}}
+        <div class="goodsDetail-1-content">
+            <div region="location">
+                <div class="location-content">
+                    <div class="location-name">
+                        <b class="fa fa-map-marker fa-fw"></b><span>商品详情</span>
+                    </div>
+                </div>
+            </div>
+            <div region="mainMsg">
+                <div class="goodsDetail-mainMsg-content">
+                    <div class="goodsDetail-mainMsg-left">
+                        <div id="img_glass" @mousemove="imgGlassMousemove">
+                            <div id="small" @mouseover="smallMouseover" @mouseout="smallMouseout">
+                                {{#each goodsFileList}}
+                                    {{#toRange @index 0 1}}
+                                        <img src="{{#if path}}{{{path}}}{{else}}/images/platform/default_img.jpg{{/if}}" alt="{{customGoodsName}}">
+                                    {{/toRange}}
+                                {{/each}}
+                                {{^goodsFileList}}
+                                    <img src="/images/platform/default_img.jpg" data-normal="hide" alt="{{customGoodsName}}">
+                                {{/goodsFileList}}
+                                {{#isDef type}}
+                                    <img class="corner_mark" :src="imgSrc({{type}})" alt="中国供销海外购">
+                                {{/isDef}}
+                                <div id="mask"></div>
+                            </div>
+                            <div class="glassList">
+                                <ul>
+                                    {{#each goodsFileList}}
+                                        {{#toRange @index 0 4}}
+                                            <li @mouseover="glassListMouseover">
+                                                <img src="{{{path}}}" alt="{{customGoodsName}}"/>
+                                            </li>
+                                        {{/toRange}}
+                                    {{/each}}
+                                    {{^goodsFileList}}
+                                        <li>
+                                            <img src="/images/platform/default_img.jpg" alt="{{customGoodsName}}">
+                                        </li>
+                                    {{/goodsFileList}}
+                                </ul>
+                            </div>
+                            <div id="big">
+                                {{#each goodsFileList}}
+                                    {{#toRange @index 0 1}}
+                                        <img src="{{{path}}}" alt="{{customGoodsName}}"/>
+                                    {{/toRange}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goodsDetail-mainMsg-middle">
+                        <ul>
+                            <li class="title">
+                                <h1>
+                                    <span class="tagBox" v-if="itemContTagList && itemContTagList.length > 0">
+                                        <span class="icon" :class="item" v-for="item in getTags(itemContTagList)"></span>
+                                    </span>
+                                    {{customGoodsName}}
+                                </h1>
+                            </li>
+                            <li class="description"><p>{{description}}</p></li>
+                            <li class="tagInfo" v-if="itemContTag && itemContTag.preSaleName">
+                                <em style="font-size:13px;color:#e31436;font-weight:normal;">
+                                    {{!itemContTag.preSaleName}}
+                                </em>
+                                <span style="color:#e31436;" v-html="itemContTag.preSaleDesc? itemContTag.preSaleDesc: '预售商品发货需要等待'">
+                                </span>
+                            </li>
+                            <li class="price">
+                                <span><em style="font-size:13px;color:#666;font-weight:normal;">售价</em>￥{{!spcRealPrice}}</span>
+                                <s v-if="itemContCode !== 'itemHide'" v-html="spcPrice > spcRealPrice? ('￥原价:' + spcPrice): ''"></s>
+                            </li>
+                            <li class="tax"><em></em>
+                                {{!returnMsg(spcExciseTax, spcIncrementTax)}}
+                                <b v-if="{{type}} === '0' || {{type}} === 0">
+                                    <span>购买须知</span>
+                                    <div class="alert_box">
+                                        <h2>★收到物品务必先验货后签收！</h2>
+                                        消费者购买跨境贸易电子商务进口商品，以“个人自用、合理数量”为原则，根据财政部、海关总署及国家税务总局的要求，经国务院批准<strong>每次限值为</strong><font style="font-weight:bold; color:#e60211;">2000元人民币</font>，单笔订单超出2000元系统将予以退单，不管数量、单件、多种商品这些条件；<strong>消费者全国跨境城市范围内，个人年度累计消费金额超2万，自动退单；</strong>对于违反规定，超出个人自用合理数量购买的，系统将予以退单，情节严重的，将追究个人法律责任。
+                                    </div>
+                                </b>
+                            </li>
+                            <li class="discount" v-if="couponList.length">
+                                <div>
+                                    <ul>
+                                        <li v-for="(item, index) in couponList">先领{{!item.name}}券，再下单
+                                            <a :couponId="item.couponId" :index="index" href="javascript:void(0)" :class="item.receiveStatus == '1'? 'lose': ''" @click="discountAClick">
+                                                {{!item.receiveStatus == '1'? '已领取': '点击领取'}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <b @click="discountBClick">全部{{!couponList.length}}张优惠券<span class="fa fa-fw fa-angle-down" data-class="fa fa-fw fa-angle-up"></span></b>
+                                </div>
+                            </li>
+                            <li class="country"><em>国家</em>{{origin}}</li>
+                            <li class="warehouse"><em>仓库</em>{{!returnSupplierName()}}</li>
+                            <li class="serve"><em>服务</em>{{toSetAttr type '2' '物流或快递' '快递配送'}}</li>
+                            <li class="gauge" v-if="itemContCode !== 'itemHide' && spcCarton"><em>箱规</em>{{!spcCarton}}</li>
+                            <li class="classifyGroup" v-if="length > 0">
+                                <div v-for="(item, key) in itemKey">
+                                    <span><em>{{!key}}</em></span>
+                                    <ul :classify="key">
+                                        <li class="classify" v-for="it in item" :data-name="key" :data-val="it" @click="classifyClick">{{!it}}</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="number">
+                                <span><em>数量</em></span>
+                                <span class="btn minus" @click="quantityClick"></span>
+                                <input type="text" v-model="quantity" @input="inputInput" @blur="inputBlur">
+                                <span  class="btn add" @click="quantityClick"></span>
+                                <span v-if="itemContCode !== 'itemHide'">当前库存量为: {{!stock}}; {{!quantityDes}}</span>
+                            </li>
+                            <li class="explain"><em>说明</em>不支持七天无理由退货</li>
+                            <li class="btnGroup" :itemContCode="itemContCode">
+                                <span class="btn_addShopCart" @click="addShopCartClick">加入购物车</span>
+                                <span class="btn_toBuy" @click="toBuyClick">立即购买</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="goodsDetail-mainMsg-right">
+                        <div class="mainMsg-right-content">
+                            <div class="mainMsg-right-content-body">
+                                <div class="showErweima"></div>
+                                <p>请用手机扫描商品二维码<br>进入购买页面</p>
+                            </div>
+                            <div class="mainMsg-right-content-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div region="advert">
+                <div class="goodsDetail-advert-content">
+                    <template v-if="advertData && advertData.length > 0">
+                        <h1 class="goodsDetail-advert-title">向你推荐</h1>
+                        <div class="goodsDetail-advert-item" v-for="item in advertData">
+                            <template v-if="item">
+                                <a :href="item.href">
+                                    <img :src="item.picPath" :alt="item.title">
+                                </a>
+                                <ul>
+                                    <li>{{!item.title}}</li>
+                                    <li></li>
+                                    <li>￥{{!returnPrice(item.price)}}</li>
+                                </ul>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div region="showMsg">
+                <img src='/images/platform/notice.jpg' alt="中国供销海外购" v-if='imgType({{type}})'/>
+                <div class="showMsgContent">
+                    {{#toSplit detailPath ";"}}
+                        {{#isFormat . 'image'}}
+                            <img src='http://139.196.74.68:8080/images/orignal/detail/{{.}}' alt="{{customGoodsName}}">
+                        {{/isFormat}}
+                    {{/toSplit}}
+                </div>
+            </div>
+        </div>
+    {{/cont}}
+</div>

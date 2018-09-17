@@ -1,0 +1,26 @@
+
+{{spcRegion region}}
+{{spcModule module}}
+{{#if region.response.pagination}}
+    {{#if region.response.pagination.totalRows}}
+        <div class="component-pagination-content">
+            <ul class ="pagination_ul">
+                <li class="pagination_page {{returnLose region.response.pagination.currentPage 1}}">
+                    <a class="pagination_btn prevBtn">上一页</a>
+                </li>
+                {{#regionProcessing region.response.pagination}}
+                    <li class="pagination_page">
+                        <select class="pagination_select">
+                            {{#pageList}}
+                                <option value ="{{index}}">第 {{index}} 页</option>
+                            {{/pageList}}
+                        </select>
+                    </li>
+                {{/regionProcessing}}
+                <li class="pagination_page {{returnLose region.response.pagination.currentPage region.response.pagination.totalPages}}">
+                    <a class="pagination_btn nextBtn">下一页</a>
+                </li>
+            </ul>
+        </div>
+    {{/if}}
+{{/if}}

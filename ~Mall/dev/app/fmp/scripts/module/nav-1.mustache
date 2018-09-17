@@ -1,0 +1,63 @@
+<div id="nav-1-{{sign}}" v-cloak>
+    <div class="nav-1-content">
+        <div class="content-header">
+            <div class="header-info">
+                <ul>
+                    <li class="shopImg"><img :src="shopHeadImg"></li>
+                    <li class="shopName">{{!shopName}}</li>
+                    <li class="shopAbout">{{!shopAbout}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-bodyer">
+            <div class="bodyer-info">
+                <div class="bodyer-top">
+                    <ul>
+                        {{#each data}}
+                            <li firstId="{{id}}" :class="firstId === '{{id}}'? 'active': ''">{{industryName}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="bodyer-left">
+                    {{#each data}}
+                        <ul firstId="{{id}}" :class="firstId === '{{id}}'? 'active': ''" v-if="firstId === '{{id}}'">
+                            {{#each dictList}}
+                                <li secondId="{{id}}" firstId="{{../id}}" dictName="{{dictName}}" :class="secondId === '{{id}}'? 'active': ''"><span>{{dictName}}</span></li>
+                            {{/each}}
+                        </ul>
+                    {{/each}}
+                </div>
+                <div class="bodyer-right">
+                    <div class="top" v-html="topTitle"></div>
+                    <div class="main" :firstId="showData.id">
+                        <div class="category" :secondId="item.id" :dictName="item.dictName" v-for="item in showData.dictList">
+                            <div class="title">{{!item.dictName}}</div>
+                            <template v-for="item2 in item.entryList">
+                                <div class="item" :goodsId="item3.goodsId" v-for="item3 in item2.goods">
+                                    <a :href="isShowHref? item3.href: 'javascript:void(0)'" class="item-left">
+                                        <template v-for="(fileItem, fileIndex) in item3.goodsFileList">
+                                            <img :src="fileItem.path || '/images/platform/account/default_img.jpg'" :alt="item3.customGoodsName" v-if="fileIndex === 0">
+                                        </template>
+                                        <img src="/images/platform/account/default_img.jpg" data-normal="hide" :alt="item3.customGoodsName" v-if="!item3.goodsFileList || item3.goodsFileList.length == 0">
+                                    </a>
+                                    <a :href="isShowHref? item3.href: 'javascript:void(0)'" class="item-right">
+                                        <ul>
+                                            <li class="shopName">{{!item3.customGoodsName}}</li>
+                                            <li class="showPrice">
+                                                <span class="new" v-html="getNewPrice(item3.goodsId)"></span>
+                                                <span class="old" v-html="getOldPrice(item3.goodsId)"></span>
+                                            </li>
+                                        </ul>
+                                        <div :toUrl="item3.href" :goodsId="item3.goodsId" class="shopCart addShopCart" @touchstart="handleHref" @touchend="addShopCart" :isSingleSpec="isSingleSpec(item3.goodsId)">
+                                            <img class="shopCart" src="/images/platform/shopCart/add.png">
+                                        </div>
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

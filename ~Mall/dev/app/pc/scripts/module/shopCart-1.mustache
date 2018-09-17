@@ -1,0 +1,104 @@
+<div id="shopCart-1-{{sign}}" v-cloak>
+    <div class="shopCart-1-content">
+        <div class="shopCart-list">
+            <template v-if="orders.quantity">
+                <h1>全部购物车 (<span>{{!orders.quantity}}</span>)
+                    <span class="volume">
+                        <i class="fa fa-volume-up fa-fw"></i>
+                        <em class="text">温馨提示：跨境商品单笔订单不得超过{{!crossOrderMaxPrice}}元，一般贸易仓商品订单需满足{{!normalOrderMinPrice}}元。</em>
+                    </span>
+                </h1>
+                <div class="list-header">
+                    <ul>
+                        <li class="btn_selectAll" @click="selectAllClick">
+                            <span class="fa fa-fw" :class="orders.selected? 'fa-check-circle': 'fa-circle-thin'">
+                            </span>全选
+                        </li>
+                        <li>商品</li>
+                        <li>商品编号</li>
+                        <li>仓库</li>
+                        <li>单价</li>
+                        <li>数量</li>
+                        <li>金额</li>
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <div class="list-body">
+                    <template v-for="item1 in orders.typeObj">
+                        <template v-for="item2 in item1">
+                            <template v-for="item3 in item2.itemObj">
+                                <div class="list-body-item" :class="item3.status && item3.stock  && item3.stock >= item3.minQuantity> 0? '': 'item-lose'" :type="item3.type" :supplierId="item3.supplierId" :goodsId="item3.goodsId" :itemId="item3.itemId" :shopCartId="item3.ids">
+                                    <ul>
+                                        <li>
+                                            <span v-if="item3.status && item3.stock > 0 && item3.stock >= item3.minQuantity" class="fa fa-fw" :class="item3.selected? 'fa-check-circle': 'fa-circle-thin'" @click="selectClick"></span>
+                                            <b v-else-if="!item3.status">失效</b>
+                                            <b v-else>库存不足</b>
+                                        </li>
+                                        <li>
+                                            <ul class="item-commodity">
+                                                <li>
+                                                    <img v-if="item3.itemImg" :src="item3.itemImg" :goodsId="item3.goodsId" :itemId="item3.itemId" :shopCartId="item3.ids" :alt="item3.itemName">
+                                                    <img v-else src="/images/platform/default_img.jpg" :goodsId="item3.goodsId" :itemId="item3.itemId" :shopCartId="item3.ids" :alt="item3.itemName">
+                                                    <img v-if="item3.type == 0" class="corner_mark" src="/images/platform/tag/icon_cross.png" :alt="item3.itemName">
+                                                    <img v-else-if="item3.type == 2" class="corner_mark" src="/images/platform/tag/icon_normal.png" :alt="item3.itemName">
+                                                </li>
+                                                <li><a :href="item3.href">{{!item3.itemName}}</a></li>
+                                                <li>
+                                                    <template v-for="item in returnInfoList(item3.itemSpecs.info)">
+                                                        <span>{{!item}}</span>
+                                                    </template>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>{{!item3.itemId}}</li>
+                                        <li>{{!returnSupplierName(item3.supplierName)}}</li>
+                                        <li>￥<span>{{!item3.realPrice*1 < item3.price*1?  (item3.realPrice*1).toFixed(2): (item3.price*1).toFixed(2)}}</span></li>
+                                        <li>
+                                            <span class="minus btn" @click="quantityChange"></span>
+                                            <input type="text" v-model="item3.quantity" @input="quantityInput" @blur="quantityBlur">
+                                            <span class="add btn" @click="quantityChange"></span>
+                                        </li>
+                                        <li>￥<span>{{!item3.realPrice*1 < item3.price*1?  (item3.realPrice*item3.quantity).toFixed(2): (item3.price*item3.quantity).toFixed(2)}}</span></li>
+                                        <li>
+                                            <span class="btn_select_del" @click="selectDelClick">删除</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </template>
+                        </template>
+                    </template>
+                </div>
+                <div class="list-footer">
+                    <div class="list-footer-btn">
+                        <ul>
+                            <li class="btn_selectAll" @click="selectAllClick">
+                                <span class="fa fa-fw" :class="orders.selected? 'fa-check-circle': 'fa-circle-thin'"></span>全选
+                            </li>
+                            <li class="btn_selectAll_del" @click="selectMoreDelClick">删除选中商品</li>
+                            <li class="btn_lose_del" @click="loseDelClick">清除失效商品</li>
+                        </ul>
+                    </div>
+                    <div class="list-footer-msg">
+                        <ul>
+                            <li>已选商品<span> {{!selectedCount}} </span>件</li>
+                            <li>
+                                <p v-if="orderCrossTotalPrice>0 && orderNormalTotalPrice>0">一般贸易总价:<b>￥<span> {{!(orderNormalTotalPrice*1).toFixed(2)}} </span></b></p>
+                                <p v-if="orderCrossTotalPrice>0 && orderNormalTotalPrice>0">跨境商品总价:<b>￥<span> {{!(orderCrossTotalPrice*1).toFixed(2)}} </span></b></p>
+                                <template v-if="orderNormalTotalPrice > 0 && orderCrossTotalPrice <= 0"> 一般贸易总价:<b>￥<span> {{!(orderNormalTotalPrice*1).toFixed(2)}} </span></b></template>
+                                <template v-if="orderNormalTotalPrice <= 0 && orderCrossTotalPrice > 0"> 跨境商品总价:<b>￥<span> {{!(orderCrossTotalPrice*1).toFixed(2)}} </span></b></template>
+                                <template v-if="orderNormalTotalPrice <= 0 && orderCrossTotalPrice <= 0">总价:<b> ￥<span> 0.00 </span></b></template>
+                            </li>
+                            <li><span class="btn_settlement" :class="!orders.oneSelected? 'noSelect': ''" @click="settlementClick">结算</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                <div class="emptyCart">
+                    <img src="/images/platform/icon_emptyCart.png" alt="中国供销海外购">
+                    <p>您的购物车还是空的，马上去 <a href="/">挑选商品</a> 吧！</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>

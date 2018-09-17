@@ -1,0 +1,13 @@
+<div id="searchHistory-1-{{sign}}" v-cloak>
+    <div class="searchHistory-1-content">
+        <div class="searchHistory-cache" v-if="historyCache && historyCache.length">
+            <h1>历史记录</h1>
+            <span class="icon_delete">
+               <img src="/images/platform/header/i_delete.png" alt="中国供销海外购">
+            </span>
+            <ul>
+                <li :firstId="item.firstId" :secondId="item.secondId" :thirdId="item.thirdId" v-for="(item,index) in historyCache" v-if="index < 9">{{!item.goodsName}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

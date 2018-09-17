@@ -1,0 +1,300 @@
+@charset "utf-8";
+
+/*
+ * nav-1部分样式
+ */
+[id^='nav-1-'] {
+  width: 750px;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+}
+.nav-1-content {
+  width: 750px;
+  & > .content-header {
+    width: 100%;
+    height: 220px;
+    background: #fff url('/images/platform/nav/flHeaderBgImg01.png') no-repeat center;
+    background-size: 100%;
+    padding-top: 16px;
+    & > .header-info {
+      text-align: center;
+      color: #333;
+      & > ul {
+        & > li.shopImg{
+          width: 100px;
+          height: 100px;
+          margin: auto;
+          border-radius: 16px;
+          overflow: hidden;
+          & > img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        & > li.shopName{
+          font-size: 32px;
+          font-weight: 600;
+          margin: 10px 0;
+        }
+        & > li.shopAbout{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  & > .content-bodyer {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: #ffffff;
+    z-index: 15;
+    & > .bodyer-info {
+      width: 100%;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      & > .bodyer-top {
+        width: 100%;
+        height: 80px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        background-color: #ffffff;
+        border-top: 1px solid #e3e3e3;
+        border-bottom: 1px solid #e3e3e3;
+        position: relative;
+        z-index: 999;
+        & > ul {
+          overflow: hidden;
+          width: max-content;
+          width: -moz-max-content;
+          width: -webkit-max-content;
+          & > li {
+            height: 80px;
+            float: left;
+            width: 160px;
+            color: #666;
+            font-size: 28px;
+            line-height: 84px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            &.active {
+              &::after {
+                content: '';
+                position: absolute;
+                left: 64px;
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border-width: 16px;
+                border-style: solid;
+                border-color: transparent transparent #60cc91 transparent;
+              }
+            }
+          }
+        }
+      }
+      & > .bodyer-left {
+        width: 160px;
+        height: auto;
+        float: left;
+        overflow: auto;
+        position: relative;
+        border-right: 1px solid #efefef;
+        & > ul {
+          display: none;
+          & > li {
+            width: 160px;
+            height: 90px;
+            color: #666;
+            font-size: 24px;
+            line-height: 90px;
+            text-align: center;
+            overflow: hidden;
+            span {
+              width: 150px;
+              max-height: 68px;
+              line-height: 35px;
+              margin-top: 45px;
+              overflow: hidden;
+              display: inline-block;
+              transform: translateY(-50%);
+            }
+            &.active span{
+              color: #fff;
+              background: #60cc91;
+              border-radius: 10px;
+            }
+          }
+          &.active {
+            display: inline-block;
+          }
+        }
+      }
+      & > .bodyer-right {
+        width: calc(100% - 160px);
+        height: auto;
+        float: left;
+        position: relative;
+        background-color: #ffffff;
+        overflow: hidden;
+        & > .top {
+          width: 100%;
+          height: 60px;
+          color: #333333;
+          font-size: 26px;
+          font-weight: 500;
+          line-height: 60px;
+          padding-left: 24px;
+          background-color: #ffffff;
+          transform: translate3d(0, 0, 0);
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 20;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 10px;
+            height: 24px;
+            width: 5px;
+            background: #60cc91;
+          }
+        }
+        & > .main {
+          width: 100%;
+          height: auto;
+          overflow: auto;
+          & > .category {
+            & > .title {
+              width: 100%;
+              height: 60px;
+              color: #333333;
+              font-size: 26px;
+              font-weight: 500;
+              line-height: 60px;
+              padding-left: 24px;
+              position: relative;
+              &::before {
+                content: '';
+                position: absolute;
+                top: 18px;
+                left: 10px;
+                height: 24px;
+                width: 5px;
+                background: #60cc91;
+              }
+            }
+            & > .item {
+              margin-left: 20px;
+              padding-top: 2px;
+              padding-bottom: 38px;
+              position: relative;
+              overflow: hidden;
+              & > .item-left {
+                width: 124px;
+                height: 124px;
+                float: left;
+                text-align: center;
+                margin-right: 20px;
+                position: relative;
+                border: solid 1px #eeeeee;
+                & > img {
+                  max-width: 98%;
+                  max-height: 98%;
+                  position: relative;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  margin: auto;
+                }
+              }
+              & > .item-right {
+                width: calc(100% - 160px);
+                float: left;
+                height: 125px;
+                position: relative;
+                & > ul {
+                  & > .shopName  {
+                    width: calc(100% - 20px);
+                    min-height: 45px;
+                    max-height: 55px;
+                    color: #333333;
+                    font-size: 28px;
+                    line-height: 28px;
+                    overflow: hidden;
+                  }
+                  & > .showPrice {
+                    width: calc(100% - 80px);
+                    position: absolute;
+                    bottom: 0;
+                    & > .new {
+                      max-width: 100%;
+                      color: #fe4d3d;
+                      margin-right: 10px;
+                      font-size: 24px;
+                      line-height: 24px;
+                      font-weight: 600;
+                      overflow: hidden;
+                      white-space: nowrap;
+                      text-overflow: ellipsis;
+                      display: inline-block;
+                    }
+                    & > .old {
+                      max-width: 100%;
+                      color: #eaeaea;
+                      font-size: 20px;
+                      line-height: 20px;
+                      font-weight: 500;
+                      overflow: hidden;
+                      white-space: nowrap;
+                      text-overflow: ellipsis;
+                      text-decoration: line-through;
+                      display: inline-block;
+                    }
+                  }
+                }
+                & > .addShopCart {
+                  width: 32px;
+                  height: 32px;
+                  position: absolute;
+                  top: auto;
+                  left: auto;
+                  right: 25px;
+                  bottom: 6px;
+                  & > img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+              }
+              &::after{
+                content: "";
+                width: 96%;
+                height: 1px;
+                background-color: #f0f0f0;
+                position: absolute;
+                bottom: 18px;
+                left: 0;
+              }
+              &:last-child {
+                &::after{
+                  content: "";
+                  width: 100%;
+                  height: 0;
+                }
+              }
+            }
+          }
+          &.active {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

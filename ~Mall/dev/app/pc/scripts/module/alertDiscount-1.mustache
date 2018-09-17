@@ -1,0 +1,8 @@
+<div id="alertDiscount-1-{{sign}}" v-cloak>
+    <div class="alertDiscount-1-content" v-if="isShow">
+        <div class="alertDiscount-msg">
+            <div class="msg-btn" :couponId="couponId" @click="msgBtnClick"></div>
+            <div class="cancel-btn" @click="cancelBtnClick"></div>
+        </div>
+    </div>
+</div>

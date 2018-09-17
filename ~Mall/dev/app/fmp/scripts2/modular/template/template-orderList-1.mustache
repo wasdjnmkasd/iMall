@@ -1,0 +1,141 @@
+<div class="component-orderList-content">
+    <div class="component-orderList-stateGroup">
+        <div class = "stateGroup-content">
+            <span class="state state_all {{region.config.orderAll}}">
+                所有订单
+            </span>
+            <span class="state state_needPay {{region.config.orderNeedPay}}">
+            待付款
+                {{#if region.config.isLogin}}
+                    {{#if region.response.orderStatus.needPay}}
+                        <span class="number">{{region.response.orderStatus.needPay}}</span>
+                    {{/if}}
+                {{/if}}
+        </span>
+            <span class="state state_needDeliver {{region.config.orderNeedDeliver}}">
+            待发货
+                {{#if region.config.isLogin}}
+                    {{#if region.response.orderStatus.needDeliver}}
+                        <span class="number">{{region.response.orderStatus.needDeliver}}</span>
+                    {{/if}}
+                {{/if}}
+        </span>
+            <span class="state state_needReceive {{region.config.orderNeedReceive}}">
+            待收货
+                {{#if region.config.isLogin}}
+                    {{#if region.response.orderStatus.needReceived}}
+                        <span class="number">{{region.response.orderStatus.needReceived}}</span>
+                    {{/if}}
+                {{/if}}
+        </span>
+            <span class="state state_finished {{region.config.orderFinished}}">已完成</span>
+        </div>
+    </div>
+
+    {{#returnList region.response.orderInfo.orderList}}
+        <div class="component-orderList-orderDetails" style="min-height:{{region.config.minHeight}}px">
+            {{#each .}}
+                <div class="orderItem">
+                    <div class="header">
+                        <span class="circle"></span>
+                        <span class="text">
+                        <span>订单号: {{orderId}}</span>
+                        <span>({{returnNewTime createTime}})</span>
+                    </span>
+                        <span class="state {{returnStatusClass status}}">
+                            {{returnStatusText status orderExpressList orderDetail.payType}}
+                        </span>
+                    </div>
+                    <div class="body">
+                        {{#each orderGoodsList}}
+                            <span class="order-commodity">
+                                <span class="commodity-img">
+                                    <a href="{{{href}}}" itemId="{{itemId}}">
+                                        {{#if itemImg}}
+                                            <img src="{{{itemImg}}}" alt="{{itemName}}">
+                                        {{else}}
+                                            <img src="/images/platform/account/default_img.jpg" alt="{{itemName}}">
+                                        {{/if}}
+                                        {{#returnIsShow orderFlag}}
+                                            <img class="corner_mark" src="{{returnImgSrc orderFlag}}" alt="福利商城">
+                                        {{/returnIsShow}}
+                                    </a>
+                                </span>
+                                <span class="commodity-info">
+                                    <span class="commodity-name">
+                                        <a href="{{{href}}}">
+                                            <span class="text">{{itemName}}</span>
+                                        </a>
+                                    </span>
+                                    {{#returnSpec itemInfo}}
+                                        <span class="commodity-itemId">
+                                            <span class="text">规格：{{#each .}}{{.}}、 {{/each}}</span>
+                                        </span>
+                                    {{/returnSpec}}
+                                </span>
+                                <span class="commodity-number">
+                                    <span class="commodity-price">{{returnPrice actualPrice}}</span>
+                                    <span class="commodity-quantity">{{itemQuantity}}</span>
+                                </span>
+                            </span>
+                        {{/each}}
+                        {{#orderDetail}}
+                            <span class="commodity-totalPrice">
+                            <span class="commodity-totalAmount {{^returnDeliverCls ../status}}isMiddle{{/returnDeliverCls}}">
+                                <span class="logistics">配送费:￥{{returnPrice postFee}}</span>
+                                <span class="taxFee">综合税:￥{{returnPrice taxFee}}</span>
+                                <span class="money">{{returnPrice payment}}</span>
+                                <span class="symbol">￥</span>
+                                <span class="text">总金额</span>
+                            </span>
+                            <span class="commodity-deliverDes">
+                                {{returnDeliverDes ../createType ../status orderFlag}}
+                            </span>
+                        </span>
+                        {{/orderDetail}}
+                        <span class="order-btnControl">
+                        <span class="btnBox">
+                            {{#returnBtnDelivery status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_confirmDelivery">确认收货</a>
+                            {{/returnBtnDelivery}}
+                            {{#returnBtnToPay status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_toPay">立即付款</a>
+                            {{/returnBtnToPay}}
+                            {{#returnBtnRefund status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_refund">申请退款</a>
+                            {{/returnBtnRefund}}
+                            {{#returnBtnDel status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_delOrder">删除订单</a>
+                            {{/returnBtnDel}}
+                            {{#returnBtnCancelOrder status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_cancelOrder">取消订单</a>
+                            {{/returnBtnCancelOrder}}
+                            {{#returnBtnCloseOrder status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_closeOrder">关闭订单</a>
+                            {{/returnBtnCloseOrder}}
+                            {{#returnBtnLogistics status}}
+                                <a href="javascript:void(0)" orderId="{{orderId}}" class="btn btn_viewLogistics">查看物流</a>
+                            {{/returnBtnLogistics}}
+                            <a href="/orderDetail.html?orderId={{orderId}}" target="_self" class="btn btn_viewDetail">查看详情</a>
+                        </span>
+                    </span>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="isLoading">
+            <div class="component-load-text">
+                <span>请下拉加载...</span>
+            </div>
+        </div>
+        <div region="payChoose"></div>
+    {{/returnList}}
+
+    {{^returnList region.response.orderInfo.orderList}}
+        <div class="order-empty">
+            <img src="/images/platform/order/empty.png" alt="福利商城">
+            <span class="text">还没有这类订单呢！</span>
+        </div>
+    {{/returnList}}
+
+</div>

@@ -1,0 +1,136 @@
+<div id="orderDetail-1-{{sign}}" v-cloak>
+    <div class="orderDetail-1-content" v-if="orderInfo.orderDetail && orderInfo.orderGoodsList">
+        <div region="location"></div>
+        <div class="" style="margin-top:10px;"></div>
+        <div class="orderDetail-btn">
+            <div class="orderDetail-btn-header">
+                <p>当前订单状态：{{!returnStatus(orderInfo)}}</p>
+            </div>
+            <div class="orderDetail-btn-body" v-if="orderInfo.status === 0">
+                <p>您还有<span>{{!endTime}}</span>来付款，超时订单将自动关闭！</p>
+                <div class="do_btn">
+                    <!--银联支付-->
+                    <!--<span class="btn btn_pay btn_yl" orderId="{{!orderInfo.orderId}}" @click="toPayClick('yl', orderInfo.orderId, orderInfo.orderDetail.payment)" style="width:96px;height:38px;padding:0;">-->
+                    <!--<img src="/images/platform/yl.png" style="height:36px;width:86px">-->
+                    <!--</span>-->
+                    <span class="btn btn_pay btn_zfb" orderId="{{!orderInfo.orderId}}" @click="toPayClick('zfb', orderInfo.orderId, orderInfo.orderDetail.payment)" style="width:96px;height:38px;padding:0;">
+                        <img src="/images/platform/zfb.png" style="height:36px;width:86px" alt="中国供销海外购">
+                    </span>
+                    <span class="btn btn_pay btn_wx" orderId="{{!orderInfo.orderId}}" @click="toPayClick('wx', orderInfo.orderId, orderInfo.orderDetail.payment)" style="width:96px;height:38px;padding:0;">
+                        <img src="/images/platform/wx.png" style="height:36px;width:86px" alt="中国供销海外购">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="orderDetail-msg">
+            <div class="order-msg">
+                <h1>订单信息</h1>
+                <ul>
+                    <li>订 单 编 号：{{!orderInfo.orderId}}</li>
+                    <li>支付交易号： {{!orderInfo.orderDetail.payNo}}</li>
+                    <li>创 建 时 间：{{!orderInfo.createTime}}</li>
+                    <li>付 款 时 间：{{!orderInfo.orderDetail.payTime}}</li>
+                    <li v-if="orderInfo.status !== 0 && orderInfo.status !== 8 && orderInfo.status !== 9">支 付 方 式：{{!returnPayType(orderInfo.orderDetail.payType)}}</li>
+                </ul>
+            </div>
+            <div class="order-detail">
+                <div class="list-header">
+                    <ul>
+                        <li>商品名称</li>
+                        <li>商品编号</li>
+                        <li>单价</li>
+                        <li>数量</li>
+                        <li>价格</li>
+                    </ul>
+                </div>
+                <div class="list-body">
+                    <div class="list-body-item" v-for="item in orderInfo.orderGoodsList">
+                        <ul>
+                            <li>
+                                <ul class="item-commodity">
+                                    <li>
+                                        <img :src="item.itemImg" v-if="item.itemImg" :alt="item.itemName">
+                                        <img src="/images/platform/default_img.jpg" v-else :alt="item.itemName">
+                                        <img v-if="orderInfo.orderFlag == 0" class="corner_mark" src="/images/platform/tag/icon_cross.png" :alt="item.itemName">
+                                        <img v-else-if="orderInfo.orderFlag == 2" class="corner_mark" src="/images/platform/tag/icon_normal.png" :alt="item.itemName">
+                                    </li>
+                                    <li>
+                                        <a :href="item.itemName">
+                                            {{!item.itemName}}
+                                        </a>
+                                        <div>
+                                            <template v-for="spec in ergodicInfoList(item.itemInfo)">
+                                                <span>{{!spec}}</span>
+                                            </template>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>{{!item.itemId}}</li>
+                            <li>￥<span>{{!(item.actualPrice * 1 || 0).toFixed(2)}}</span></li>
+                            <li>{{!item.itemQuantity}}</li>
+                            <li>￥<span>{{!(item.actualPrice * item.itemQuantity || 0).toFixed(2)}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="list-footer">
+                    <ul>
+                        <li>税费：￥{{!(orderInfo.orderDetail.taxFee*1 || 0).toFixed(2)}}</li>
+                        <li>运输方式（普通配送快递）：￥{{!(orderInfo.orderDetail.postFee*1 || 0).toFixed(2)}}</li>
+                    </ul>
+                    <p>
+                        总价（含运费￥{{!(orderInfo.orderDetail.postFee*1 || 0).toFixed(2)}}，
+                        含税费：￥{{!(orderInfo.orderDetail.taxFee*1 || 0).toFixed(2)}}）：
+                        <span>￥{{!(orderInfo.orderDetail.payment*1 || 0).toFixed(2)}}</span>
+                    </p>
+                </div>
+            </div>
+            <!--<div class="seller-msg">-->
+            <!--<h1>卖家信息</h1>-->
+            <!--<ul>-->
+            <!--<li>网站：中国供销海外购</li>-->
+            <!--<li>城市：浙江 宁波</li>-->
+            <!--<li>联系电话：400-11111111</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <div class="buyer-msg">
+                <h1>买家信息</h1>
+                <ul v-if="orderInfo.orderDetail != null">
+                    <li>收货人：{{!orderInfo.orderDetail.receiveName}}，{{!orderInfo.orderDetail.receivePhone}}</li>
+                    <li>收货地址：{{!orderInfo.orderDetail.receiveProvince}} {{!orderInfo.orderDetail.receiveCity}} {{!orderInfo.orderDetail.receiveArea}} {{!orderInfo.orderDetail.receiveAddress}}</li>
+                    <li>邮编：{{!orderInfo.orderDetail.receiveZipCode}}</li>
+                    <li>买家留言：{{!orderInfo.orderDetail.remark}}</li>
+                </ul>
+            </div>
+            <div class="logistics-msg" v-if="orderInfo && orderInfo.orderExpressList && orderInfo.orderExpressList.length>0">
+                <h1>物流信息</h1>
+                <template v-for="(item,index) in orderInfo.orderExpressList">
+                    <ul>
+                        <li>商品名称：{{!item.itemName}}</li>
+                        <li v-if="item.expressName">物流公司：{{!item.expressName}}</li>
+                        <li v-else="item.expressName">物流公司：暂无物流公司</li>
+                        <li v-if="item.expressId">运单编号：{{!item.expressId}}</li>
+                        <li v-else>运单编号：暂无运单号</li>
+                    </ul>
+                    <div class="logistics-msg-detail-content">
+                        <div class="logistics-msg-detail" >
+                            <template v-if="infoArr.length">
+                                <div class="detail-item" v-for="(_item,_index) in infoArr[index].Traces">
+                                    <div class="detail-item-left">
+                                        <span style="opacity: 0;">{{!_index}}</span>
+                                    </div>
+                                    <div class="detail-item-right">
+                                        <ul v-for="__item in _item">
+                                            <li v-if="__item != null">{{!__item}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div region="payAlert"></div>
+    </div>
+</div>

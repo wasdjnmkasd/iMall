@@ -1,0 +1,13 @@
+{{spoceConfig region.config}}
+<div class="component-pay-choose-content" style="display:{{#if region.config.payChooseShow}}block{{else}}none{{/if}}">
+    <div class="component-pay-choose-btnGroup">
+        <ul>
+            {{#returnShow "btn_wx"}}<li class="btn_wx">微信支付</li>{{/returnShow}}
+            {{#returnShow "btn_zfb"}}<li class="btn_zfb">支付宝支付</li>{{/returnShow}}
+            {{#notShow}}
+                {{#returnShow "btn_yl"}}<li class="btn_yl">银联支付</li>{{/returnShow}}
+            {{/notShow}}
+            <li class="btn_cancel">取消</li>
+        </ul>
+    </div>
+</div>

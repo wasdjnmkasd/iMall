@@ -1,0 +1,33 @@
+<div id="amount-access-1-{{sign}}" v-cloak>
+    <div class="amount-access-1-title">
+        <img src="/images/platform/joinUs/titleImg_01.png" alt="中国供销海外购">
+    </div>
+    <div class="amount-access-1-content">
+        <div class="list-item userName">
+            <input id="itemUserName" type="text" placeholder="请输入您的姓名（必填）" @input="changeName">
+        </div>
+        <div class="list-item userPhone">
+            <input id="itemUserPhone" type="text" placeholder="请输入手机号码（必填）" @input="changePhone" maxlength="11">
+        </div>
+        <div class="list-item userWechat">
+            <input id="itemUserWechat" type="text" placeholder="请输入微信帐号（选填）" @input="changeWechat">
+        </div>
+        <div class="list-item visitTime">
+            <select id="itemVisitTime" @input="changeVisit">
+                <option value="-1" style="color:#999;">请选择回访时间</option>
+                <option value="0">00:00 ~ 06:00</option>
+                <option value="1">06:00 ~ 12:00</option>
+                <option value="2">12:00 ~ 18:00</option>
+                <option value="3">18:00 ~ 24:00</option>
+            </select>
+        </div>
+        <div class="list-item userAddress">
+            <select id="itemUserProvince" class="picker-province userAddress-province" @input="changeProvince"></select>
+            <select id="itemUserCity" class="picker-city userAddress-city" @input="changeCity"></select>
+        </div>
+        <div class="list-item userContent">
+            <textarea id="itemUserContent" placeholder="请输入留言内容（必填）" @input="changeContent"></textarea>
+        </div>
+        <a href="javascript:void(0)" class="btn btn-submit" @touchend="listSubmit">提交申请</a>
+    </div>
+</div>

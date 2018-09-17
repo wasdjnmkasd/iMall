@@ -1,0 +1,50 @@
+<div id="nav-1-{{sign}}" v-cloak>
+    <div class="nav-1-content">
+        <div class="nav-showCont">
+            {{#if data}}
+                <div class="contType inlineBlock" :class="mode"  @mouseenter='contTypeMouseenter' @mouseleave='contTypeMouseleave'>
+                    <img src="/images/platform/nav/off/1.png" alt="中国供销海外购">
+                    <span class="classify inlineBlock">商品分类</span>
+                    <ul :style="{height: 50*{{data.length}}}"  @mouseenter='contTypeUlMouseenter' @mouseleave='contTypeUlMouseleave'>
+                        {{#each data}}
+                            <li id="{{id}}" @mouseenter='contTypeUlLiMouseenter'>
+                            <span class="contTypeTitle" @click='contTypeTitleClick'>
+                                <img src="{{{tagPath}}}" class="mark" alt="中国供销海外购">
+                                <span>{{{industryName}}}</span>
+                                <img src="/images/platform/nav/off/2.png" class="arrow" alt="中国供销海外购">
+                            </span>
+                                <div class="showContItemList">
+                                    <div>
+                                        <ul class="inlineBlock">
+                                            {{#each dictList}}
+                                                <li dictId="{{id}}">
+                                                <span class="title" @click='titleClick'>
+                                                    <span>{{{dictName}}}</span>
+                                                </span>
+                                                    <div class="content">
+                                                        {{#each entryList}}
+                                                            <a href="javascript:void(0)" class="{{toSetAttr popular 1 'active'}}" entryId="{{id}}" @click='entryIdClick'>
+                                                                {{{entryName}}}
+                                                            </a>
+                                                        {{/each}}
+                                                    </div>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+            {{#if cont}}
+                <div class="contNav inlineBlock">
+                    {{#each cont}}
+                        <a href="{{{href}}}" class="inlineBlock" sortId="{{@index}}" :class="sortId == {{@index}}? 'active': ''">{{{title}}}</a>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div id="footer-1-{{sign}}" v-cloak>
+    <div class="footer-1-content">
+        <div class="footer-shortcutIcon icon_3" v-if="home">
+            <a href="/index.html" class="icon icon_home" :class="home"></a>
+        </div>
+        <div class="footer-shortcutIcon icon_3" v-if="shoppingCart">
+            <a href="/shoppingCart.html" class="icon icon_shoppingCart" :class="shoppingCart">
+                <span class="number" v-if="isLogin && count">{{!count}}</span>
+            </a>
+        </div>
+        <div class="footer-shortcutIcon icon_3" v-if="personalCenter">
+            <a href="/personal-center.html" class="icon icon_personal" :class="personalCenter"></a>
+        </div>
+        <div class="footer-goodsDetail" v-if="goodsDetail">
+            <div class="btnBox">
+                <a href="javascript:void(0)" class="btn icon_top small"></a>
+                <a href="javascript:void(0)" class="btn icon_back small"></a>
+                <a href="javascript:void(0)" class="btn text_toBuy large">立即购买</a>
+                <a href="javascript:void(0)" class="btn text_addShopCart large">加入购物车</a>
+            </div>
+        </div>
+    </div>
+</div>

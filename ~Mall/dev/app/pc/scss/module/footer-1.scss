@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+/*
+ * footer-1样式
+ */
+[id^="footer-1-"] {
+  width: 100%;
+  min-width: 1240px;
+  display: block;
+  background-color: #f8f7f4;
+  border-top: solid 4px #dfdfdf;
+}
+.footer-1-content {
+  width: 1240px;
+  display: block;
+  padding: 0 0 15px 0;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  .footer-main{
+    overflow:hidden;
+    font-size:13px;
+    color:#333;
+    border-bottom: solid 1px #d5d5d5;
+    padding-bottom: 30px;
+    margin-top: 40px;
+  }
+  .footer-main > div{
+    float:left;
+  }
+  .footer-link{
+    width:64%;
+  }
+  .footer-link a{
+    color:#333;
+    text-decoration:none;
+  }
+  .footer-link a:hover{
+    text-decoration: underline;
+  }
+  .link-content{
+    overflow:hidden;
+  }
+  .link-content > li{
+    float:left;
+    width:25%;
+    text-align:center;
+  }
+  .link-content > li h1{
+    color:#85642a;
+    font-size:16px;
+    margin-bottom:11.5%;
+  }
+  .link-content > li li{
+    margin-bottom:3%;
+  }
+  .footer-phone{
+    width:18%;
+    text-align:center;
+  }
+  .footer-phone ul{
+    margin-top:10%;
+    &>li:nth-of-type(1){
+      font-size: 20px;
+      color: #85642a;
+      font-weight: 800;
+      margin-top: 1%;
+    }
+    &>li:nth-of-type(2){
+      font-size: 18px;
+      color: #85642a;
+      font-weight: 800;
+      margin-top: 1%;
+    }
+    &>li:nth-of-type(3){
+      font-size: 14px;
+      color: #85642a;
+      font-weight: 800;
+      margin-top: 1%;
+    }
+  }
+  .footer-qrcode{
+    width:18%;
+    text-align:center;
+    margin-top:0.5%;
+    & > img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .footer-cpy{
+    text-align:center;
+    color:#333;
+    font-size:12px;
+    padding-top: 10px;
+  }
+  .footer-cpy > p{
+    margin-top:0.3%;
+  }
+  &>.myKf{
+    position:fixed;
+    right:0;
+    top:40%;
+    overflow:hidden;
+    z-index:9999;
+    cursor:pointer;
+    width:58px;
+    -webkit-transform: translateZ(0);
+    &>a{
+      display:block;
+      width:58px;
+      &.kf{
+        background:url('/images/platform/icon_kf01.png') no-repeat center;
+        border:1px solid #eee;
+        height:57px;
+        &:hover{
+          background:url('/images/platform/icon_kf02.png') no-repeat center;
+        }
+      }
+    }
+    &>.top{
+      background:url('/images/platform/icon_toTop.png') no-repeat center;
+      height:36px;
+    }
+  }
+}

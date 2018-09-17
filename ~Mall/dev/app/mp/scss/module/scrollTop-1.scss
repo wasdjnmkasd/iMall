@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/*
+ * scrollTop-1样式
+ */
+[id^='scrollTop-1-']{
+  width: 750px;
+  display: block;
+  position: relative;
+}
+.scrollTop-1-content{
+  width: 100%;
+  height: auto;
+  &>.scrollTop{
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    z-index: 999998;
+    position: fixed;
+    bottom: 120px;
+    right: 10px;
+    &>img{
+      width: 85px;
+      height: 85px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

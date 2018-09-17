@@ -1,0 +1,608 @@
+@charset "utf-8";
+
+/*
+ * component-apply-1部分样式
+ */
+component-apply-1{
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  &>.component-apply-content{
+    width: 100%;
+    height: auto;
+    padding-top: 80px;
+    &>.component-apply-userName{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/people.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-apply-account{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/people.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-apply-validation{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/validation.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.textRight{
+        width: 170px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 26px;
+        color: #777777;
+        padding: 0 0 0 20px;
+        vertical-align: middle;
+        display: table-cell;
+        position: relative;
+        cursor: pointer;
+        &::before{
+          content: "";
+          width: 1px;
+          height: 44px;
+          background-color: #cfcfcf;
+          position: absolute;
+          top: 22px;
+          left: 0;
+        }
+        &.getValidation{
+          &>.control{
+            display: inline-block;
+          }
+          &>.doing{
+            display: none;
+          }
+        }
+        &:not(.getValidation){
+          &>.control{
+            display: none;
+          }
+          &>.doing{
+            display: inline-block;
+          }
+        }
+      }
+    }
+    &>.component-apply-password{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #ffffff;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/lock.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        border: none;
+        outline: none;
+        background-color: #fff;
+        background-image: none;
+        display: table-cell;
+        &:focus{
+          outline: 0;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/eye.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+        &.active{
+          background-image: url("/images/platform/account/eye_active.png");
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    &>.component-apply-confirmPassword{
+      width: calc(100% - 88px);
+      margin: 0 auto 60px auto;
+      border: solid 1px #cccccc;
+      background-color: #ffffff;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/lock.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        border: none;
+        outline: none;
+        background-color: #fff;
+        background-image: none;
+        display: table-cell;
+        &:focus{
+          outline: 0;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/eye.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+        &.active{
+          background-image: url("/images/platform/account/eye_active.png");
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    &>.component-apply-promotion{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/validation.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-apply-inviter{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/people.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-apply-shopName{
+      width: calc(100% - 88px);
+      margin: 0 auto 40px auto;
+      border: solid 1px #cccccc;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 15px;
+      display: table;
+      &.state_error{
+        border-color: #f34d4d;
+      }
+      &>.iconLeft{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/validation.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+      &>input{
+        width: 100%;
+        height: 86px;
+        font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        font-size: 30px;
+        line-height: inherit;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: table-cell;
+        &:focus{
+          outline: none;
+        }
+        &::-moz-focus-inner {
+          padding: 0;
+          border: 0;
+        }
+        &::-webkit-input-placeholder {
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 30px;
+          color:#bdbdbd;
+        }
+      }
+      &>.iconRight{
+        width: 80px;
+        text-align: center;
+        vertical-align: middle;
+        background-image: url("/images/platform/account/close_circle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+      }
+    }
+    &>.component-apply-submitBtn{
+      width: calc(100% - 88px);
+      height: 92px;
+      font-family: PingFangSC-Light,helvetica,'Heiti SC';
+      font-size: 36px;
+      color: #ffffff;
+      line-height: 92px;
+      text-align: center;
+      margin: 0 auto 60px auto;
+      background-color: #b4282d;
+      border-radius: 15px;
+      display: block;
+    }
+  }
+}

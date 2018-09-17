@@ -1,0 +1,22 @@
+<div id="banner-1-{{sign}}" v-cloak>
+    <div class="banner-1-content">
+        <div class="banner-bannerImg" @mouseenter="imgMouseenter" @mouseleave="imgMouseleave">
+            {{#each cont}}
+                {{#if picPath}}
+                    <a href="{{{href}}}" target="_blank" class="imgBox" :style="{ zIndex: 100-{{@index}} }">
+                        <img src="{{{picPath}}}" alt="中国供销海外购">
+                    </a>
+                {{/if}}
+            {{/each}}
+            {{#if cont}}
+                <span class="carousel_list">
+                    {{#each cont}}
+                        {{#if picPath}}
+                            <i class="carousel_i" :class="{{@index}} === 0? 'showing': false" @click="carouselIClick"></i>
+                        {{/if}}
+                    {{/each}}
+                </span>
+            {{/if}}
+        </div>
+    </div>
+</div>

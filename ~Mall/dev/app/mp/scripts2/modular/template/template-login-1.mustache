@@ -1,0 +1,70 @@
+<div class="component-login-content">
+    <div class="component-login-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="tel" pattern="[0-9]*" id="account" name="account" placeholder="请输入手机号码..." can-value="region.request.account"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-login-password {{password_state}}">
+        <span class="iconLeft"></span>
+        <input type="password" id="password" name="password" placeholder="请输入6-12位密码..." can-value="region.request.password"/>
+        <span class="iconRight icon_eye"></span>
+    </div>
+    {{#notSow}}
+        {{^region.config.shopId}}
+            <div class="component-login-shopInfo {{#if region.config.isOpen}}isOpen{{/if}}">
+                <span class="iconLeft"></span>
+                <input type="text" id="shopInfo" name="shopInfo" shopId="{{region.config.iShopId}}" domain="{{region.config.iDomain}}" can-value="region.config.iShopName"
+                       {{^region.config.isOpen}}readonly="readonly"{{/region.config.isOpen}}
+                       placeholder="{{#if region.config.isOpen}}请输入店铺名称/店铺ID...{{else}}店铺选项未开启...{{/if}}"/>
+                <span class="textRight btn_change">
+                    <span>{{#if region.config.isOpen}}关闭{{else}}启用{{/if}}</span>
+                </span>
+                {{#returnShow region.config.isOpen region.config.isFocus}}
+                    <ul class="choose">
+                        {{#region.config.iShopArr}}
+                            <li centerId="{{centerId}}" shopId="{{id}}" level="{{level}}" shopName="{{name}}" domain="{{{mobileUrl}}}">{{name}}</li>
+                        {{/region.config.iShopArr}}
+                    </ul>
+                {{/returnShow}}
+            </div>
+        {{/region.config.shopId}}
+    {{/notSow}}
+    <a href="javascript:void(0)" class="btn component-login-loginBtn {{loginBtn_state}}">登录</a>
+    <div class="component-login-prompt">
+        <a href="/register.html?jumpUrl={{region.config.jumpUrl}}" target="_self">账号注册</a>
+        <a href="/forgetPassword.html?jumpUrl={{region.config.jumpUrl}}" target="_self">忘记密码</a>
+    </div>
+    <div class="component-login-third">
+        <div class="header">
+            使用其他方式登录
+        </div>
+        <div class="body">
+            <a href="javascript:void(0)" class="img_weChat">
+                <img src="/images/platform/account/weixin.png" alt="中国供销海外购">
+            </a>
+        </div>
+    </div>
+    {{#if region.config.bombBox}}
+        <div class="component-login-bombBox">
+            <div class="content">
+                <div class="header">
+                    <input type="text" id="bShopInfo" name="bShopInfo" placeholder="请从如下列表中选择店铺..."
+                           shopId="{{region.config.bShopId}}" domain="{{region.config.bDomain}}"
+                           can-value="region.config.bShopName" readonly="readonly"/>
+                    <a href="javascript:void(0)" class="btn btn_ignore">跳过</a>
+                    <a href="javascript:void(0)" class="btn btn_sure">确认</a>
+                </div>
+                <ul class="body">
+                    {{#returnArray region.config.bShopArr}}
+                        {{#each .}}
+                            <li shopId="{{id}}" level="{{level}}" shopName="{{name}}" domain="{{{mobileUrl}}}">{{name}}</li>
+                        {{/each}}
+                    {{/returnArray}}
+                    {{^returnArray region.config.bShopArr}}
+                        <li class="lose">暂无店铺信息，请选择跳过！</li>
+                    {{/returnArray}}
+                </ul>
+            </div>
+        </div>
+    {{/if}}
+</div>

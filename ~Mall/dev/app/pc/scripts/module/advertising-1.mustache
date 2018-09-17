@@ -1,0 +1,13 @@
+<div id="advertising-1-{{sign}}" v-cloak>
+    <div class="advertising-1-content">
+        {{#each cont}}
+            {{#toRange @index 0 4}}
+                <div class="advertising-item">
+                    <a href="{{{href}}}">
+                        <img src="{{{picPath}}}" alt="中国供销海外购">
+                    </a>
+                </div>
+            {{/toRange}}
+        {{/each}}
+    </div>
+</div>

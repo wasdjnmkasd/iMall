@@ -1,0 +1,44 @@
+<div id="message-1-{{sign}}" v-cloak>
+    <div class="message-1-content completed" v-show="content && confirmBtn">
+        <div class="message-header">
+                <span class="message-text">
+                    {{!getHeaderText}}
+                </span>
+            <span class="message-icon" :class="typeClass"></span>
+        </div>
+        <div class="message-body">
+            <table class="message-table">
+                <tbody>
+                <tr>
+                    <td>
+                        <span>{{!content}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="message-footer">
+              <span class="message-btnGroup">
+                <a class="btn btn_confirm" v-show="confirmBtn">
+                    {{!language === 'en'? 'confirm': '确定'}}
+                </a>
+                <a class="btn btn_cancel" v-show="cancelBtn">
+                    {{!language === 'en'? 'cancel': '取消'}}
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="message-1-content unCompleted" v-show="content && !confirmBtn">
+        <div class="message-body">
+            <table class="message-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span>{{!content}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div id="sideFixed-1-{{sign}}" v-cloak>
+    <div class="sideFixed-1-content">
+        <ul class ="ScrollMonitor">
+            <li v-for="item in list">
+                <a :monitor="item.id" style="height:100%">{{!item.name}}</a>
+            </li>
+            <li class="toTop">
+                <a monitor class="bottom toTop">
+                    <span class="fa fa-caret-up"></span> 顶部
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

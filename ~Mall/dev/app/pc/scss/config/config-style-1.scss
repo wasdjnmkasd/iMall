@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/* html样式 */
+html {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* body样式 */
+body{
+  height: 100%;
+  font-size: 12px;
+  background-color: #ffffff;
+  -webkit-overflow-scrolling: touch;
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  -webkit-font-smoothing: antialiased; /*chrome、safari*/
+  -moz-osx-font-smoothing: grayscale;  /*firefox*/
+  &>#body-header{}
+  &>#body-center{
+    width: 100%;
+    min-width: 1240px;
+    min-height: 600px;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  &>#body-footer{}
+}
+
+/* 所有元素通用样式 */
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  *zoom: 1;
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  &[v-cloak]{
+    display: none!important;
+  }
+  &::before,
+  &::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+
+
+

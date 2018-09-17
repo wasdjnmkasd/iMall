@@ -1,0 +1,59 @@
+<div id="header-1-{{sign}}" v-cloak>
+    <div class="header-1-content">
+        <span class="header-left">
+            <a href="javascript:void(0)" class="btn text text_login" v-if="text_login">返回登录</a>
+            <a href="javascript:void(0)" class="btn icon icon_back"  v-if="icon_back"></a>
+            <a href="javascript:void(0)" class="btn icon icon_home"  v-if="icon_home"></a>
+            <a href="javascript:void(0)" class="btn icon icon_scan"  v-if="icon_scan"></a>
+        </span>
+        <div class="header-title title_shop" v-if="title_shop">
+            <div class="shopImg">
+                <img :src="shopInfo.headImg" alt="中国供销海外购">
+            </div>
+            <div class="shopText">
+                <span>{{!shopInfo.name}}</span>
+                <span>{{!shopInfo.description}}</span>
+            </div>
+        </div>
+        <span class="header-title title_text" v-if="!title_shop && title_text">
+            {{!title_text}}
+        </span>
+        <template v-if="input">
+            <span class="header-input">
+                <form action="javascript:void(0)">
+                    <i class="i_search"></i>
+                    <input type="search" :placeholder="title">
+                    <i class="i_clear"></i>
+                </form>
+            </span>
+        </template>
+        <span class="header-right">
+            <a href="javascript:void(0)" class="btn icon icon_search" v-if="icon_search"></a>
+            <template v-if="icon_shopCart">
+                <a href="javascript:void(0)" class="icon icon_shopCart">
+                     <span class="shopCartCount" v-if="shopCartCount">{{!shopCartCount}}</span>
+                </a>
+            </template>
+            <a href="javascript:void(0)" class="btn icon icon_AddressManage" v-if="icon_AddressManage"></a>
+            <a href="javascript:void(0)" class="btn icon icon_AddressSure"   v-if="icon_AddressSure"></a>
+            <a href="javascript:void(0)" class="btn icon icon_shopCartEdit"  v-if="icon_shopCartEdit"></a>
+            <a href="javascript:void(0)" class="btn icon icon_shopCartSave"  v-if="icon_shopCartSave"></a>
+            <a href="javascript:void(0)" class="btn icon icon_orderList"     v-if="icon_orderList"></a>
+            <a href="javascript:void(0)" class="btn icon icon_choose"        v-if="icon_choose"></a>
+            <a href="javascript:void(0)" class="btn icon icon_close"         v-if="icon_close"></a>
+            <a href="javascript:void(0)" class="btn icon icon_news"          v-if="icon_news"></a>
+            <a href="javascript:void(0)" class="btn text input_cancel"       v-if="input_cancel">取消</a>
+            <template v-if="info_shop">
+                <div class="info_shop">
+                    <div class="shopImg">
+                        <img :src="shopInfo.headImg" alt="中国供销海外购">
+                    </div>
+                    <div class="shopText">
+                        <span>{{!shopInfo.name}}</span>
+                        <span>{{!shopInfo.description}}</span>
+                    </div>
+                </div>
+            </template>
+        </span>
+    </div>
+</div>

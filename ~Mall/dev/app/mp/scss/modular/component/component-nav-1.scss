@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/*
+ * component-nav-1部分样式
+ */
+component-nav-1{
+  width: 100%;
+  height: 100%;
+  display: block;
+  &>.component-nav-content{
+    width: 100%;
+    height: 100%;
+    .component-nav-list{
+      height: 100%;
+      border-top: solid 2px #e4e4e4;
+      background-color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      &::after{
+        content: "";
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 160px;
+        background-color: #e4e4e4;
+        z-index: 10;
+      }
+    }
+    .component-nav-list > div{
+      height: 100%;
+      float:left;
+      overflow:scroll;
+    }
+    .component-nav-list > div::-webkit-scrollbar{
+      display:none;
+    }
+    .classify-list-left{
+      width:162px;
+    }
+    .classify-list-left li{
+      font-size:26px;
+      height:88px;
+      line-height:88px;
+      text-align: center;
+      padding: 0 3px;
+      color:#666;
+      background:#ffffff;
+      overflow:hidden;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      position: relative;
+    }
+    .classify-list-left li.active{
+      font-size: 28px;
+      color: #ab2b2b;
+      &::before{
+        content: "";
+        width: 10px;
+        height: 50px;
+        position: absolute;
+        top: 17px;
+        left: 2px;
+        background-color: #ab2b2b;
+      }
+    }
+    .classify-list-right{
+      width:588px;
+      padding:0 10px 0 23px;
+    }
+    .classify-list-right-item h1{
+      color: #999;
+      font-size: 26px;
+      font-weight: 400;
+      position: relative;
+      padding: 40px 0 20px 0;
+    }
+    .classify-list-right-item h1:after{
+      content: '';
+      width: 375px;
+      height: 1px;
+      background: #e7e7e7;
+      position: absolute;
+      right: 20px;
+      top: 58px;
+    }
+    .classify-list-right-item ul{
+      overflow:hidden;
+    }
+    .classify-list-right-item li{
+      float: left;
+      min-width: 135px;
+      max-width: 245px;
+      margin: 0 15px;
+      color: #333;
+      height: 76px;
+      display: inline-block;
+      &>span{
+        width: 100%;
+        display: inline-block;
+        height: 45px;
+        padding: 0 10px;
+        font-size: 24px;
+        font-weight: 400;
+        text-align: center;
+        line-height: 45px;
+        border-radius: 5px;
+        border: solid 1px #cccccc;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Chrome/Safari/Opera */
+        -khtml-user-select: none; /* Konqueror */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently not supported by any browser */
+      }
+      &:active{
+        &>span{
+          color: #ffffff;
+          background-color: #ab2b2b;
+        }
+      }
+    }
+  }
+}

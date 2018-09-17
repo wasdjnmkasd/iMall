@@ -1,0 +1,169 @@
+<div id="goodsDetail-1-{{sign}}" v-cloak>
+    {{#cont}}
+        <div class="goodsDetail-1-content">
+            <div class="goodsDetail-banner">
+                <div class="banner-bannerImg">
+                    <ul>
+                        {{#each goodsFileList}}
+                            <li class="bannerImg_li">
+                                <a href="javascript:void(0)" target="_blank">
+                                    <img src="{{#if path}}{{{path}}}{{else}}/images/platform/account/default_img.jpg{{/if}}" alt="{{customGoodsName}}">
+                                </a>
+                            </li>
+                        {{/each}}
+                        {{^goodsFileList}}
+                            <li class="bannerImg_li">
+                                <a href="javascript:void(0)" target="_blank">
+                                    <img src="/images/platform/account/default_img.jpg" style="width:100%;height:100%;" alt="{{customGoodsName}}">
+                                </a>
+                            </li>
+                        {{/goodsFileList}}
+                        {{#isDef type}}
+                            <img class="corner_mark" :src="imgSrc({{type}})" alt="{{customGoodsName}}">
+                        {{/isDef}}
+                    </ul>
+                </div>
+                <span class="banner-carousel-text">
+                    <span class="index">1</span>
+                    /
+                    <span class="total">
+                        {{#if goodsFileList.length}}{{goodsFileList.length}}{{else}}1{{/if}}
+                    </span>
+                </span>
+            </div>
+            <div class="goodsDetail-description">
+                <div class="text">
+                    <img src="/images/platform/commodity/descript.png" style="margin-right:10px" alt="{{customGoodsName}}">
+                    {{#if description}}
+                        <span>{{description}}</span>
+                    {{else}}
+                        <span>暂无商品相关描述</span>
+                    {{/if}}
+                </div>
+                <div class="tagBox" v-if="itemContTagList">
+                    <span class="icon" :class="item" v-for="item in getTags(itemContTagList)"></span>
+                </div>
+            </div>
+            <div class="goodsDetail-goodsMsg">
+                <ul>
+                    <li>
+                        {{customGoodsName}}
+                    </li>
+                    <li>
+                        <template v-if="itemContTag && itemContTag.preSaleName">
+                            <span class="corner_icon" v-html="itemContTag.preSaleName"></span>
+                            {{!itemContTag.preSaleDesc? (itemContTag.preSaleDesc): '预售商品发货需要等待'}}
+                        </template>
+                    </li>
+                    <li>
+                        <span class="price">￥{{!spcRealPrice}}</span>
+                        <span class="real" v-if="itemContCode !== 'itemHide'" v-html="spcPrice > spcRealPrice? ('￥原价:' + spcPrice): ''"></span>
+                    </li>
+                    <li>
+                        <template v-if="itemContCode !== 'itemHide'">
+                            <span>当前库存量: {{!stock}}{{!quantityDes? ',': ''}}</span>
+                        </template>
+                        <span v-if="!quantityDes">{{!quantityDes}}</span>
+                    </li>
+                </ul>
+                <div class="btnGroup">
+                    {{#origin}}
+                        <img src="/images/platform/city/{{origin}}.png" alt="中国供销海外购-{{origin}}">
+                    {{/origin}}
+                    <span>{{origin}}</span>
+                </div>
+            </div>
+            <div class="goodsDetail-discount close" v-if="couponList && couponList.length">
+                <ul>
+                    <li :couponId="item.couponId" v-for="item in couponList">
+                        <img src="/images/platform/goods/icon_discounts.png" alt="中国供销海外购">
+                        <span>{{!item.name}}</span>
+                        <span class="btn btn_needReceive" v-if="item.receiveStatus != '1'">领取</span>
+                        <span class="received" v-if="item.receiveStatus == '1'">已领取</span>
+                    </li>
+                </ul>
+                <span class="btn btn_lookDetail" v-if="couponList && couponList.length > 2">展开</span>
+            </div>
+            <div class="goodsDetail-moreMsg">
+                <ul>
+                    <li>发货仓库：<span>{{!returnSupplierName()}}</span></li>
+                    <li>配送服务：<span>{{toSetAttr type '2' '物流或快递' '快递配送'}}</span></li>
+                    <template v-html="returnMsg({{spcExciseTax}}, {{spcIncrementTax}})"></template>
+                    <li class="gauge" v-if="itemContCode !== 'itemHide' && spcCarton">产品箱规：<span>{{!spcCarton}}</span></li>
+                </ul>
+            </div>
+            <div class="goodsDetail-detailMsg">
+                <h1>商品详情</h1>
+                <div class="detailMsg">
+                    <img src='/images/platform/goods/notice.jpg' v-if='imgType({{type}})' alt="{{customGoodsName}}"/>
+                    <div class="detailMsgContent">
+                        {{#toSplit detailPath ";"}}
+                            {{#isFormat . 'image'}}
+                                <img src='http://139.196.74.68:8080/images/orignal/detail/{{.}}' alt="{{customGoodsName}}">
+                            {{/isFormat}}
+                        {{/toSplit}}
+                    </div>
+                </div>
+            </div>
+            <div class="goodsDetail-alert" v-show="alertShow" :itemContCode="itemContCode">
+                <div class="goodsDetail-alert-body">
+                    <div class="goodsDetail-alert-body-msg">
+                        <div class="goodsDetail-alert-body-msg-left">
+                            <a href="javascript:void(0)">
+                                {{#each goodsFileList}}
+                                    {{#toRange @index 0 1}}
+                                        <img src="{{{path}}}" alt="{{customGoodsName}}">
+                                    {{/toRange}}
+                                {{/each}}
+                                {{^goodsFileList}}
+                                    <img src="/images/platform/account/default_img.jpg" alt="{{customGoodsName}}">
+                                {{/goodsFileList}}
+                                {{#isDef type}}
+                                    <img class="corner_mark" :src="imgSrc({{type}})" alt="{{customGoodsName}}">
+                                {{/isDef}}
+                            </a>
+                        </div>
+                        <div class="goodsDetail-alert-body-msg-right">
+                            <ul>
+                                <li class="name">
+                                    <span class="corner_icon" v-if="itemContTag && itemContTag.preSaleName" v-html="itemContTag.preSaleName"></span>
+                                    {{customGoodsName}}
+                                </li>
+                                <li class="price">
+                                    <span>￥{{!spcRealPrice}}</span>
+                                    <span class="real" v-if="itemContCode !== 'itemHide'" v-html="spcPrice > spcRealPrice? ('￥原价:' + spcPrice): ''"></span>
+                                </li>
+                                <li>
+                                    <template v-if="itemContCode !== 'itemHide'">当前库存量为: {{!stock}}</template>
+                                </li>
+                                <li>{{!quantityDes}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="goodsDetail-alert-body-list" v-if="length">
+                        <div class="goodsDetail-alert-body-item classifyGroup">
+                            <template v-for="(item, key) in itemKey">
+                                <h1>{{!key}}</h1>
+                                <ul>
+                                    <li class="classify" :data-name="key" :data-val="it" v-for="it in item" v-if="it" @touchend="classifyTouchend">{{!it}}</li>
+                                </ul>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="goodsDetail-quantity-group">
+                        <div class="goodsDetail-quantity">
+                            <span class="text">购买数量</span>
+                            <span class="inputGroup">
+                                <span class="btn btn_plus" @touchend="quantityTouchend"></span>
+                                    <input type="number" pattern="[0-9]*" class="btn btn_input" v-model="quantity" @input="inputInput" @blur="inputBlur"/>
+                                    <span class="btn btn_minus" @touchend="quantityTouchend"></span>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <img src="/images/platform/goods/icon_cancel.png" class="btn_cancel" alt="中国供销海外购">
+            </div>
+            <div class="goodsDetail-alert-bg" v-show="alertBgShow"></div>
+        </div>
+    {{/cont}}
+</div>

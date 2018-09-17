@@ -1,0 +1,36 @@
+<div id="goodsList-2-{{sign}}" v-cloak>
+    <div class="goodsList-2-content">
+        <div class="mainImg">
+            <a href="javascript:void(0)">
+                <img src="{{{own.picPath}}}" alt="{{{own.title}}}">
+            </a>
+        </div>
+        <div class="goodsList-list">
+            <div class="content-list">
+                {{#each cont}}
+                    <div class="list-item">
+                        <a href="{{{href}}}">
+                            <ul>
+                                <li class="shopImg">
+                                    <img src="{{{picPath}}}" alt="{{{title}}}">
+                                </li>
+                                <li class="shopName">{{{title}}}</li>
+                                <li class="shopPrice">
+                                    <span v-html="showPrice({{price}})" class="text"></span>
+                                    {{#notShow}}
+                                        <span class="img"><img src="/images/platform/goodsList/goodsList-shopCart.png" alt="中国供销海外购"></span>
+                                    {{/notShow}}
+                                </li>
+                            </ul>
+                        </a>
+                    </div>
+                {{/each}}
+                <div class="list-item lookMore">
+                    <a href="{{{own.href}}}">
+                        <img src="/images/platform/goodsList/goodsList-more.png" alt="中国供销海外购">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--[if lte IE 7]><html lang="zh-CN" class="ie lte-ie9 lte-ie8 lte-ie7"><![endif]-->
+<!--[if lte IE 8]><html lang="zh-CN" class="ie lte-ie9 lte-ie8"><![endif]-->
+<!--[if lte IE 9]><html lang="zh-CN" class="ie lte-ie9"><![endif]-->
+<!--[if gte IE 9]><html lang="zh-CN" class="ie gte-ie9"><![endif]-->
+ <html lang="zh-CN">
+   <head>
+     <title></title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+     <meta name="viewport" id="viewport" content="width=750, user-scalable=no">
+     <meta name="keywords" content="中国供销海外购,海淘网站,跨境购,母婴用品,进口商品,网上购物,保税区,跨境电商,跨境贸易">
+     <meta name="description" content="中国供销海外购, 跨境电商, 跨境贸易, 提供丰富的正品海外商品, 欢迎广大顾客光临购买！">
+   </head>
+
+   <body>
+   </body>
+
+   <script src="/frames/jquery/dist/jquery.min.js"></script>
+
+   <script type="text/javascript">
+       var sendToAliPay = window.localStorage.getItem('sendToAliPay');
+       var sendToYinLian = window.localStorage.getItem('sendToYinLian');
+       window.localStorage.removeItem('sendToYinLian');
+       window.localStorage.removeItem('sendToAliPay');
+       if(sendToAliPay){
+           sendToAliPay = JSON.parse(sendToAliPay) || {};
+           sendToAliPay.htmlStr && $('body').html(sendToAliPay.htmlStr);
+       }else if(sendToYinLian){
+           sendToYinLian = JSON.parse(sendToYinLian) || {};
+           sendToYinLian.htmlStr && $('body').html(sendToYinLian.htmlStr);
+       }else{
+           window.history.go(-1);
+       }
+   </script>
+
+ </html>

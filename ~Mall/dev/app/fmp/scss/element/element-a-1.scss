@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* 元素a样式 */
+a,
+a:link,
+a:hover,
+a:hover,
+a:active,
+a:focus,
+a:visited,
+a:hover:active,
+a:hover:focus,
+a:hover:focus:active{
+  text-decoration: none;
+  outline: 0;
+}
+

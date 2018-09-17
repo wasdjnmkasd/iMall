@@ -1,0 +1,29 @@
+<div class="component-nav-content">
+    <div class="component-nav-list">
+        <div class="classify-list-left">
+            <ul>
+                {{#each region.response}}
+                    <li index={{@index}} class="{{addElementClass @index showIndex 'active'}}">{{{industryName}}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="classify-list-right">
+            {{#each region.response}}
+                {{#returnCont @index showIndex}}
+                    {{#each dictList}}
+                        <div class="classify-list-right-item">
+                            <h1>{{{dictName}}}</h1>
+                            <ul>
+                                {{#each entryList}}
+                                    <li thirdId="{{id}}">
+                                        <span>{{{entryName}}}</span>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/each}}
+                {{/returnCont}}
+            {{/each}}
+        </div>
+    </div>
+</div>

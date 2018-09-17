@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+/*
+ * alertDiscount-1样式
+ */
+[id^='alertDiscount-1-']{
+  width: 750px;
+  display: block;
+  overflow: hidden;
+}
+.alertDiscount-1-content{
+  position: fixed;
+  top:0;left:0;
+  z-index:999999;
+  background:rgba(0,0,0,.72);
+  width:100%;
+  height:100%;
+  &>.alertDiscount-show{
+    width:678px;
+    height:960px;
+    position:absolute;
+    left:50%;top:50%;
+    margin-left:-365px;
+    margin-top:-480px;
+    background:url('/images/platform/discount/discount_bgImg.png') no-repeat center;
+    &>.msg-btn{
+      width:320px;
+      height:105px;
+      position:absolute;
+      bottom:190px;left:210px;
+    }
+    &>.cancel-btn{
+      width:70px;
+      height:70px;
+      position:absolute;
+      bottom:0;left:330px;
+    }
+  }
+}

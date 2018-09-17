@@ -1,0 +1,195 @@
+<div id="search-1-{{sign}}" v-cloak>
+    <div class="search-1-content">
+        <div region="searchLocation">
+            <div class="searchLocation-content">
+                <div class="searchLocation-name">
+                    <b class="fa fa-map-marker fa-fw"></b><span>{{!rootPath}}</span>
+                    <template v-for="(item, index) in locations">
+                        > <span
+                            :index="index"
+                            :firstCategory='firstCategory(index, locationId)'
+                            :categoryName='categoryName(index, locations)'
+                            :secondCategory='secondCategory(index, locationId)'
+                            :dictName='dictName(index, locations)'
+                            :thirdCategory='thirdCategory(index, locationId)'
+                            :entryName='entryName(index, locations)'
+                          >{{!item}}</span>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div region="searchFiltrate">
+            <div class="searchFiltrate-content" v-if="isShow">
+                <div class="searchFiltrate-catalog">
+                    <ul>
+                        <li>{{!position}} ></li>
+                        <li v-for="(item, key) in filtrateObj" v-if="item">
+                            <abbr :title="item">
+                                {{!item}}<span :class="key" @click="liSpanClick">&times;</span>
+                            </abbr>
+                        </li>
+                    </ul>
+                </div>
+                <div class="searchFiltrate-list">
+                    <div class="list-item brand" v-if="filtrate && filtrate.brand && filtrate.brand.length > 0">
+                        <div class="list-item-header">
+                            <span data-status="hide"><span>品牌</span><b class="fa fa-angle-down fa-fw" data-class="fa fa-angle-up fa-fw"></b></span>
+                            <i data-status="hide">多选</i>
+                        </div>
+                        <div class="list-item-body">
+                            <ul class="typeLetter" v-if="filtrate && filtrate.brandpy" style="display: none">
+                                <li class="selected" keyId="all" @click="typeLetter">全部</li>
+                                <li v-for="(item, key) in filtrate.brandpy" :keyId="key" @click="typeLetter">{{!key}}</li>
+                            </ul>
+                            <ul  class="typeList">
+                                <li v-for="item in filtrate.brand" v-if="item" @click="itemBodyLiClick" titleName="品牌" :itemName="item" v-show="brandStatus(item, filtrateShow.brandShow)">
+                                    <span class="fa fa-fw" :class="returnSelected(item, selectedList.brand)"></span><span>{{!item}}</span>
+                                </li>
+                            </ul>
+                            <div class="do_btn">
+                                <div class="submit" @click="submitClick">提交</div>
+                                <div class="cancel" @click="cancelClick">取消</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-item origin" v-if="filtrate && filtrate.origin && filtrate.origin.length > 0">
+                        <div class="list-item-header">
+                            <span data-status="hide"><span>产地</span><b class="fa fa-angle-down fa-fw" data-class="fa fa-angle-up fa-fw"></b></span>
+                            <i data-status="hide">多选</i>
+                        </div>
+                        <div class="list-item-body">
+                            <ul class="typeList">
+                                <li v-for="item in filtrate.origin" v-if="item" @click="itemBodyLiClick" titleName="产地" :itemName="item">
+                                    <span class="fa fa-fw" :class="returnSelected(item, selectedList.origin)"></span><span>{{!item}}</span>
+                                </li>
+                            </ul>
+                            <div class="do_btn">
+                                <div class="submit" @click="submitClick">提交</div>
+                                <div class="cancel" @click="cancelClick">取消</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="list-item category" v-if="filtrate && filtrate.category && filtrate.category.length > 0">
+                        <div class="list-item-header">
+                            <span data-status="hide"><span>分类</span><b class="fa fa-angle-down fa-fw" data-class="fa fa-angle-up fa-fw"></b></span>
+                            <i data-status="hide">多选</i>
+                        </div>
+                        <div class="list-item-body">
+                            <ul class="typeList">
+                                <li v-for="item in filtrate.category" v-if="item" @click="itemBodyLiClick" titleName="分类" :itemName="item.name">
+                                    <span class="fa fa-fw" :class="returnSelected(item, selectedList.category)"></span><span>{{!item.name}}</span>
+                                </li>
+                            </ul>
+                            <div class="do_btn">
+                                <div class="submit" @click="submitClick">提交</div>
+                                <div class="cancel" @click="cancelClick">取消</div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div region="searchClassifyBox">
+            <div region="searchClassify">
+                <div class="searchClassify-content">
+                    <div class="searchClassify-content-right">
+                        <div class="searchClassify-content-right-top">
+                            <ul>
+                                <li><span v-if="typeName">{{!typeName}}, </span>总共<span>{{!pagination.totalRows}}</span>个商品</li>
+                                <li class="filterLi">排序:
+                                    <select class="filter" @change="selectFilter">
+                                        <option value="1"   :selected="sortType == '1'">综合</option>
+                                        <option value="2"   :selected="sortType == '2'">时间 ↓</option>
+                                        <option value="3"   :selected="sortType == '3'">价格 ↓</option>
+                                        <option value="4"   :selected="sortType == '4'">价格 ↑</option>
+                                    </select>
+                                </li>
+                                <li class="screenLi">选择:
+                                    <select class="screen" @change="selectScreen">
+                                        <option value="1"   :selected="screenType == '1'">全部</option>
+                                        <option value="2"   :selected="screenType == '2'">新品推荐</option>
+                                        <option value="3"   :selected="screenType == '3'">热销榜单</option>
+                                        <option value="4"   :selected="screenType == '4'" v-if="type !== '0'">一般贸易(包邮)</option>
+                                        <option value="5"   :selected="screenType == '5'">明星同款</option>
+                                    </select>
+                                </li>
+                                <li class="priceAreaLi">
+                                    <div class="priceAreaBox">
+                                        <p>
+                                            <input type="text" placeholder="￥" class="priceMin" v-model="priceAreaMin" @input="priceMinInput" @blur="priceAreaBlur">
+                                            <span>-</span>
+                                            <input type="text" placeholder="￥" class="priceMax" v-model="priceAreaMax" @input="priceMaxInput" @blur="priceAreaBlur">
+                                        </p>
+                                        <p class="priceAreaBtns">
+                                            <span class="btn btn_clear" @click="priceAreaClear">清空</span>
+                                            <span class="btn btn_sure" @click="priceAreaSure">确认</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="pageLi">
+                                    <span class="show_num"><i>{{!pagination.currentPage}}</i> / <b>{{!pagination.totalPages}}</b></span>
+                                    <img @click='pageImgClick' class="pageImg prev" :src="pagination.currentPage != 1? '/images/platform/icon_prv_set.jpg': '/images/platform/icon_prv_nor.jpg'" alt="中国供销海外购">
+                                    <img @click='pageImgClick' class="pageImg next" :src="pagination.currentPage != pagination.totalPages? '/images/platform/icon_next_set.jpg': '/images/platform/icon_next_nor.jpg'" alt="中国供销海外购">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="searchClassify-content-right-list">
+                            <template v-if="goodsList && goodsList.length">
+                                <div class="img_shrink" :goodsId="item.goodsId" v-for="item in goodsList" :toUrl='item.href' :isSingleSpec="item.goodsSpecsList && item.goodsSpecsList.length  > 1? 'no': 'yes'">
+                                    <a :href="item.href" target="_blank" class="imgBox">
+                                        <img class="goodsImg" :src="getPath(item.goodsFileList, '/images/platform/default_img.jpg')" alt="中国供销海外购">
+                                        <img class="corner_mark" :src="returnImgSrc(item.type)" alt="中国供销海外购">
+                                    </a>
+                                    <a :href="item.href" target="_blank" class="infoBox">
+                                        <div class="img_shrink_address">
+                                            <span class="origin">{{!item.origin}}</span>
+                                            <span class="tagBox" v-if="item.goodsSpecsList">
+                                                <span class="icon" :class="spec" v-for="spec in getTags(item.goodsSpecsList)"></span>
+                                            </span>
+                                        </div>
+                                        <div class="img_shrink_msg" v-html="item.customGoodsName"></div>
+                                    </a>
+                                    <div class="img_shrink_group">
+                                        <div class="img_shrink_price">
+                                            <strong><b><span>￥</span>{{!returnPrice(item.realPrice)}}</b><s v-html="returnOldPrice(item.realPrice, item.price)"></s></strong>
+                                        </div>
+                                        <div class="img_shrink_btnBox">
+                                            <img class="search_addShopCart" src="/images/platform/icon_shoppingCart.png" @click="toAddShopCart" alt="中国供销海外购">
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <div class="empty_search" v-if="!goodsList || !goodsList.length">没找到相关商品，请更改搜索条件！</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div region="searchPagination">
+                <div class="pagination-content">
+                    <ul class ="pagination_ul floatRight" v-if="pagination && pagination.totalRows">
+                        <li class="pagination_page" :class="pagination.currentPage ==1? 'lose': ''">
+                            <a class="pagination_btn prevBtn"  @click="paginationBtn">上一页</a>
+                        </li>
+                        <template v-for="item in paginationPageList">
+                            <li class="pagination_page" :class='item.active' v-if="item.jumpBtn">
+                                <a :jumpBtn="item.jumpBtn" class="pagination_btn"  @click="paginationBtn">{{!item.page}}</a>
+                            </li>
+                            <li class="pagination_page" v-if="item.ellipsis">
+                                <a class="pagination_ellipsis">...</a>
+                            </li>
+                        </template>
+                        <li class="pagination_page" :class="pagination.currentPage == pagination.totalPages? 'lose': ''">
+                            <a class="pagination_btn nextBtn" @click="paginationBtn">下一页</a>
+                        </li>
+                        <li class="pagination_page">
+                            <input type="text" class="pagination_searchText" :value="pagination.currentPage" @input="paginationInput" @blur="paginationBlur">
+                        </li>
+                        <li class="pagination_page">
+                            <a class="pagination_btn searchBtn" @click="paginationBtn">确定</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

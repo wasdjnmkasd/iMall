@@ -1,0 +1,118 @@
+<div class="component-personal-center-content">
+    <div class="component-personal-center-header">
+        <div class="content">
+            <span class="defaultHeadPortrait">
+                <span class="imgBox">
+                    <span class="img" style="background-image:
+                            url('{{region.config.shopInfo.headImg}}');"></span>
+                </span>
+            </span>
+            <span class="userName">
+                {{#if region.config.isLogin}}
+                    {{#if region.response.userInfo.userDetail}}
+                        {{#if region.response.userInfo.userDetail.nickName}}
+                            <span class="text">{{region.response.userInfo.userDetail.nickName}}(用户)</span>
+                        {{else}}
+                            {{#if region.response.userInfo.userDetail.name}}
+                                <span class="text">{{region.response.userInfo.userDetail.name}}(用户)</span>
+                            {{else}}
+                                {{#if region.response.userInfo.phone}}
+                                    <span class="text">{{region.response.userInfo.phone}}(用户)</span>
+                                {{else}}
+                                    <span class="text">游客(未登录)</span>
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    {{else}}
+                        {{#if region.response.userInfo.phone}}
+                            <span class="text">{{region.response.userInfo.phone}}(用户)</span>
+                        {{else}}
+                            <span class="text">游客(未登录)</span>
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    <span class="text">游客(未登录)</span>
+                {{/if}}
+            </span>
+            <span class="aboutus">
+               <span class="text">微店简介：{{region.config.shopInfo.aboutus}}</span>
+            </span>
+        </div>
+    </div>
+    <div class="component-personal-center-order">
+        <div class="body">
+            <a href="/orderList.html" class="order order_all">
+                <span class="icon icon_order_all"></span>
+            </a>
+            <a href="/orderList.html?queryType=needPay" class="order order_needPay">
+                <span class="icon icon_order_needPay">
+                    {{#if region.config.isLogin}}
+                        {{#if region.response.orderStatus.needPay}}
+                            <span class="number">{{region.response.orderStatus.needPay}}</span>
+                        {{/if}}
+                    {{/if}}
+                </span>
+            </a>
+            <a href="/orderList.html?queryType=needDeliver" class="order order_needDeliver">
+                <span class="icon icon_order_needDeliver">
+                    {{#if region.config.isLogin}}
+                        {{#if region.response.orderStatus.needDeliver}}
+                            <span class="number">{{region.response.orderStatus.needDeliver}}</span>
+                        {{/if}}
+                    {{/if}}
+                </span>
+            </a>
+            <a  href="/orderList.html?queryType=needReceived" class="order order_needReceived">
+                <span class="icon icon_order_needReceived">
+                    {{#if region.config.isLogin}}
+                        {{#if region.response.orderStatus.needReceived}}
+                            <span class="number">{{region.response.orderStatus.needReceived}}</span>
+                        {{/if}}
+                    {{/if}}
+                </span>
+            </a>
+            <a  href="/orderList.html?queryType=finished" class="order order_finish">
+                <span class="icon icon_order_finished">
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="component-personal-center-function">
+        <a href="/address-manage.html?jumpUrl={{region.config.pathUrl}}" class="function needSign editDeliveryAddress">
+            <span class="icon icon_deliveryAddress"></span>
+            <span class="text">收货地址</span>
+            <span class="icon icon_right icon_href"></span>
+        </a>
+        <a href="/personal-information.html?jumpUrl={{region.config.pathUrl}}" class="function needSign information">
+            <span class="icon icon_information"></span>
+            <span class="text">个人信息</span>
+            <span class="icon icon_right icon_href"></span>
+        </a>
+        <a href="/customerService.html?jumpUrl={{region.config.pathUrl}}" class="function customerService">
+            <span class="icon icon_customerService"></span>
+            <span class="text">客服信息</span>
+            <span class="icon icon_right icon_href"></span>
+        </a>
+        <a href="javascript:void(0)" class="function mpMall">
+            <span class="icon icon_welfare"></span>
+            <span class="text">微店商城</span>
+            <span class="icon icon_right icon_href"></span>
+        </a>
+        {{#notShow}}
+            <a href="/discount.html?jumpUrl={{region.config.pathUrl}}?type=personalCenter" class="function discount">
+                <img src="/images/platform/personal/icon_discount.png" alt="福利商城">
+                <span class="text">我的优惠券</span>
+                <span class="icon icon_right icon_href"></span>
+            </a>
+        {{/notShow}}
+    </div>
+    {{#if region.config.isLogin}}
+        <div class="component-personal-center-logout">
+            <span class="text">退出当前账号</span>
+        </div>
+    {{else}}
+        <a class="component-personal-center-login">
+            <span class="text">登 录</span>
+        </a>
+    {{/if}}
+</div>

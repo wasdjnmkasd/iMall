@@ -1,0 +1,46 @@
+<div class="component-register-content">
+    <div class="component-register-account {{account_state}}">
+        <span class="iconLeft"></span>
+        <input type="tel" pattern="[0-9]*" id="account" name="account" placeholder="请输入手机号码..." can-value="region.request.account"/>
+        <span class="iconRight icon_clear"></span>
+    </div>
+    <div class="component-register-validation {{validation_state}}">
+        <span class="iconLeft"></span>
+        <input type="text" id="validation" name="validation" placeholder="请输入验证码..." can-value="region.request.validation"/>
+        <span class="textRight getValidation">
+            <span class="doing">发送中<span class="val" style="color:red;padding:0 3px;"></span>s</span>
+            <span class="control">获取验证码</span>
+        </span>
+    </div>
+    <div class="component-register-password {{password_state}}">
+        <span class="iconLeft"></span>
+        <input type="password" id="password" name="password" placeholder="请输入6-12位密码..." can-value="region.request.password"/>
+        <span class="iconRight icon_eye"></span>
+    </div>
+    <div class="component-register-confirmPassword  {{confirmPassword_state}}">
+        <span class="iconLeft"></span>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次确认密码..." can-value="region.request.confirmPassword"/>
+        <span class="iconRight icon_eye"></span>
+    </div>
+    {{#notSow}}
+        {{^region.config.shopId}}
+            <div class="component-register-shopInfo {{#if region.config.isOpen}}isOpen{{/if}}">
+                <span class="iconLeft"></span>
+                <input type="text" id="shopInfo" name="shopInfo" shopId="{{region.config.iShopId}}" domain="{{region.config.iDomain}}" can-value="region.config.iShopName"
+                       {{^region.config.isOpen}}readonly="readonly"{{/region.config.isOpen}}
+                       placeholder="{{#if region.config.isOpen}}请输入店铺名称/店铺ID...{{else}}店铺选项未开启...{{/if}}"/>
+                <span class="textRight btn_change">
+                <span>{{#if region.config.isOpen}}关闭{{else}}启用{{/if}}</span>
+            </span>
+                {{#returnShow region.config.isOpen region.config.isFocus}}
+                    <ul class="choose">
+                        {{#region.config.iShopArr}}
+                            <li centerId="{{centerId}}" shopId="{{id}}" level="{{level}}" shopName="{{name}}" domain="{{{mobileUrl}}}">{{name}}</li>
+                        {{/region.config.iShopArr}}
+                    </ul>
+                {{/returnShow}}
+            </div>
+        {{/region.config.shopId}}
+    {{/notSow}}
+    <a href="javascript:void(0)" class="btn component-register-registerBtn {{registerBtn_state}}">确认注册</a>
+</div>

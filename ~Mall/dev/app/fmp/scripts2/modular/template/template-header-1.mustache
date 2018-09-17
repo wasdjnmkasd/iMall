@@ -1,0 +1,112 @@
+<div class="component-header-content">
+    <span class="component-header-left">
+        {{#region.config.text_mpMall}}
+            <a href="javascript:void(0)" class="btn text text_mpMall">前往微店</a>
+        {{/region.config.text_mpMall}}
+
+        {{#region.config.text_login}}
+            <a href="javascript:void(0)" class="btn text text_login">返回登录</a>
+        {{/region.config.text_login}}
+
+        {{#region.config.icon_back}}
+            <a href="javascript:void(0)" class="btn icon icon_back"></a>
+        {{/region.config.icon_back}}
+
+        {{#region.config.icon_home}}
+            <a href="javascript:void(0)" class="btn icon icon_home"></a>
+        {{/region.config.icon_home}}
+
+        {{#region.config.icon_scan}}
+            <a href="javascript:void(0)" class="btn icon icon_scan"></a>
+        {{/region.config.icon_scan}}
+    </span>
+
+    {{#if region.config.title_shop}}
+        <div class="component-header-title title_shop">
+            <div class="shopImg">
+                <img src="{{{region.config.shopInfo.headImg}}}" alt="{{region.config.shopInfo.name}}">
+            </div>
+            <div class="shopText">
+                <span>{{region.config.shopInfo.name}}</span>
+                <span>{{region.config.shopInfo.description}}</span>
+            </div>
+        </div>
+    {{else}}
+        {{#if region.config.title_text}}
+            <span class="component-header-title title_text">{{region.config.title_text}}</span>
+        {{/if}}
+    {{/if}}
+
+    {{#region.config.input}}
+        <span class="component-header-input">
+            <form action="javascript:void(0)" >
+                <i class="i_search"></i>
+                <input type="search" placeholder="{{region.config.placeholder}}" can-value="region.request.searchCont">
+                <i class="i_clear"></i>
+            </form>
+        </span>
+    {{/region.config.input}}
+
+
+    <span class="component-header-right">
+        {{#region.config.icon_search}}
+            <a href="javascript:void(0)" class="btn icon icon_search"></a>
+        {{/region.config.icon_search}}
+
+        {{#region.config.icon_shopCart}}
+            <a href="javascript:void(0)" class="icon icon_shopCart">
+                {{#region.response.shopCartCount}}
+                    <span class="shopCartCount">{{region.response.shopCartCount}}</span>
+                {{/region.response.shopCartCount}}
+            </a>
+        {{/region.config.icon_shopCart}}
+
+        {{#region.config.icon_AddressManage}}
+            <a href="javascript:void(0)" class="btn icon icon_AddressManage"></a>
+        {{/region.config.icon_AddressManage}}
+
+        {{#region.config.icon_AddressSure}}
+            <a href="javascript:void(0)" class="btn icon icon_AddressSure"></a>
+        {{/region.config.icon_AddressSure}}
+
+        {{#region.config.icon_shopCartEdit}}
+            <a href="javascript:void(0)" class="btn icon icon_shopCartEdit"></a>
+        {{/region.config.icon_shopCartEdit}}
+
+        {{#region.config.icon_shopCartSave}}
+            <a href="javascript:void(0)" class="btn icon icon_shopCartSave"></a>
+        {{/region.config.icon_shopCartSave}}
+
+        {{#region.config.icon_orderList}}
+            <a href="javascript:void(0)" class="btn icon icon_orderList"></a>
+        {{/region.config.icon_orderList}}
+
+        {{#region.config.icon_choose}}
+            <a href="javascript:void(0)" class="btn icon icon_choose"></a>
+        {{/region.config.icon_choose}}
+
+        {{#region.config.icon_close}}
+            <a href="javascript:void(0)" class="btn icon icon_close"></a>
+        {{/region.config.icon_close}}
+
+        {{#region.config.icon_news}}
+            <a href="javascript:void(0)" class="btn icon icon_news"></a>
+        {{/region.config.icon_news}}
+
+        {{#region.config.input_cancel}}
+            <a href="javascript:void(0)" class="btn text input_cancel">取消</a>
+        {{/region.config.input_cancel}}
+
+        {{#region.config.info_shop}}
+            <div class="info_shop">
+                <div class="shopImg">
+                    <img src="{{{region.config.shopInfo.headImg}}}" alt="{{region.config.shopInfo.name}}">
+                </div>
+                <div class="shopText">
+                    <span>{{region.config.shopInfo.name}}</span>
+                    <span>{{region.config.shopInfo.description}}</span>
+                </div>
+            </div>
+        {{/region.config.info_shop}}
+    </span>
+</div>

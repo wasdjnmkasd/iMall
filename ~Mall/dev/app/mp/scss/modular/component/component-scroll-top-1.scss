@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/*
+ * component-scroll-top-1部分样式
+ */
+component-scroll-top-1{
+  width: 100%;
+  height: auto;
+  display: block;
+  &>.component-scroll-top-content{
+    width: 100%;
+    height: auto;
+    &>.scrollTop{
+      width: 120px;
+      height: 120px;
+      text-align: center;
+      z-index: 999998;
+      position: fixed;
+      bottom: 120px;
+      right: 10px;
+      &>img{
+        width: 85px;
+        height: 85px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+}

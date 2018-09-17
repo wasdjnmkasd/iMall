@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+/*
+ * module-header-1部分样式
+ */
+[class^='module-header-1-']{
+  width: 750px;
+  height: 88px;
+  display: block;
+  position: relative;
+}

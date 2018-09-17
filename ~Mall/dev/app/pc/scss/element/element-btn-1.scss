@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+/* 按钮样式 */
+.btn {
+  background-image: none;
+  border: 1px solid transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  &:active{
+    box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.36) inset;
+    -webkit-box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.36) inset;
+    -moz-box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.36) inset;
+    -ms-box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.36) inset;
+  }
+  &:hover, &.hover,
+  &:active, &.active,
+  &:focus, &.focus,
+  &:hover:focus, &.hover:focus,
+  &:active.focus, &.active.focus {
+    text-decoration: none;
+    background-image: none;
+    outline: 0;
+  }
+}
+
+
+.btn.disabled,
+.btn[disabled],
+[disabled] .btn {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  filter: alpha(opacity=65);
+  opacity: .65;
+  cursor: not-allowed;
+  pointer-events: none;
+}

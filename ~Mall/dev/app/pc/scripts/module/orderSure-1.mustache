@@ -1,0 +1,174 @@
+<div id="orderSure-1-{{sign}}" v-cloak>
+    <div class="orderSure-1-content">
+        <div region="location">
+            <div class="location-1-content">
+                <div class="location-name">
+                    <b class="fa fa-map-marker fa-fw"></b><span>{{!rootPath}}</span>
+                    <template v-for="(item, index) in locations">
+                        > <span>{{!item}}</span>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div region="address">
+            <div class="orderSure-address-1-content">
+                <h1 class="component-orderSure-address-title">
+                    <span class="title">选择收货地址</span>
+                    <span class="volume">
+                        <i class="fa fa-volume-up fa-fw"></i>
+                        <em class="text">温馨提示：如果您购买的是跨境保税商品，则您须提交的身份证号码，且与订单支付人、收货人保持一致，以确保订单顺利清关，尽快到达您的身边。</em>
+                    </span>
+                    <b @click="showMore" v-if="isClick">收起列表</b>
+                    <b @click="showMore" v-else>显示更多</b>
+                </h1>
+                <div class="component-orderSure-address-list" :class="addClass()">
+                    <div class="address-item"  v-for="(item,index) in addressList" :class="addElementClass(index)" :addressId="item.id">
+                        <h2>
+                            {{!item.province}}{{!item.city}}<span>（{{!item.receiveName}} 收）</span>
+                            <i v-if="item.setDefault" class="active">默认地址</i>
+                            <i v-else>设置默认</i>
+                        </h2>
+                        <p>
+                            {{!item.area}}{{!item.address}}<b>{{!item.receivePhone}}</b>
+                        </p>
+                        <div class="item-btn btn_edit" @click="editAddress">
+                            <span>再次修改</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-orderSure-address-btnGroup">
+                    <ul>
+                        <li class="btn btn_newAddress" @click="addNewAddress">使用新地址</li>
+                    </ul>
+                </div>
+                <div class="component-orderSure-address-alert" v-if="alertInfo">
+                    <div class="address-add">
+                        <p>新增地址<b class="btn_close" @click="closeAlertAddress">&times;</b></p>
+                        <div class="address-add-list" :addressId="alertInfo.id">
+                            <ul>
+                                <li>
+                                    <span>所在地区</span>
+                                    <div class="picker-country">
+                                        <select class="picker-province province_state" @change="validation_province" :data-name="alertInfo.province"></select>
+                                        <select class="picker-city city_state" @change="validation_city" :data-name="alertInfo.city"></select>
+                                        <select class="picker-area area_state" @change="validation_area" :data-name="alertInfo.area"></select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>详细地址</span>
+                                    <textarea cols="30" rows="10" class="address_state" v-model="alertInfo.address" @blur="validation_address"></textarea>
+                                </li>
+                                <li>
+                                    <span>邮政编码</span>
+                                    <input type="text" maxlength="6" v-model="alertInfo.zipCode"  class="zipCode_state" @blur="validation_zipCode">
+                                </li>
+                                <li>
+                                    <span>真实姓名</span>
+                                    <input type="text" v-model="alertInfo.receiveName" class="receiveName_state" @blur="validation_receiveName">
+                                </li>
+
+                                <li>
+                                    <span>手机号码</span>
+                                    <input type="text" maxlength="11" v-model="alertInfo.receivePhone"  class="receivePhone_state" @blur="validation_receivePhone">
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="checkDefault" v-if="setDefault" checked="checked">
+                                    <input type="checkbox" class="checkDefault" v-else>
+                                    <i>设置为默认地址</i>
+                                </li>
+                            </ul>
+                            <div class="address-add-list-btn">
+                                <span class="btn btn_save" @click="saveAddress">保存</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div region="detail">
+            <div class="orderSure-detail-1-content">
+                <h1 class="component-orderSure-detail-title">确认订单信息</h1>
+                <template v-for="(item1,key1) in orders.typeObj">
+                    <template v-for="(item2,key2) in item1">
+                        <div class="component-orderSure-detail-list-header">
+                            <ul>
+                                <li>商品名称</li>
+                                <li>商品编号</li>
+                                <li>仓库名称</li>
+                                <li>单价</li>
+                                <li>数量</li>
+                                <li>价格</li>
+                            </ul>
+                        </div>
+                        <div class="component-orderSure-detail-list-body">
+                            <ul v-for="item3 in item2.itemObj" :type="item3.type" :supplierId="item3.supplierId" :itemId="item3.itemId" :shopCartId="item3.ids">
+                                <li>
+                                    <ul>
+                                        <li>
+                                            <img v-if="item3.itemImg" :src="item3.itemImg" :goodsId="item3.goodsId" :itemId="item3.itemId" :shopCartId="item3.ids" :alt="item3.itemName">
+                                            <img v-else src="/images/platform/default_img.jpg" :goodsId="item3.goodsId" :itemId="item3.itemId" :shopCartId="item3.ids" :alt="item3.itemName">
+                                            <img v-if="item3.type == 0" class="corner_mark" src="/images/platform/tag/icon_cross.png" :alt="item3.itemName">
+                                            <img v-else-if="item3.type == 2" class="corner_mark" src="/images/platform/tag/icon_normal.png" :alt="item3.itemName">
+                                        </li>
+                                        <li>{{!item3.itemName}}</li>
+                                        <li>
+                                            <template v-for="item in returnInfoList(item3.info)">
+                                                <span style="margin-right: 10px;">{{!item}}</span>
+                                            </template>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>{{!item3.itemId}}</li>
+                                <li>{{!returnSupplierName(item3.supplierName)}}</li>
+                                <li>
+                                    <ul>
+                                        <li v-if="isHaveStyle" style="margin-top:12px;width:146px;">￥<span>{{!returnPrice1(item3.realPrice)}}</span></li>
+                                        <li v-else>￥<span>{{!returnPrice1(item3.realPrice)}}</span></li>
+                                        <li><s>{{!returnPrice2(item3.price,item3.realPrice)}}</s></li>
+                                    </ul>
+                                </li>
+                                <li><b>{{!item3.quantity}}</b></li>
+                                <li><b>￥<span>{{!returnTotalPrice(item3.price,item3.realPrice,item3.quantity)}}</span></b></li>
+                            </ul>
+                        </div>
+                        <div class="component-orderSure-detail-list-footer">
+                            <p>税费: ￥<span>{{!item2.taxFee}}</span></p>
+                            <p v-html="returnPostFee(key1,item2.postFee)"></p>
+                            <div class="component-orderSure-detail-list-discount" v-if="eShowDiscount.unSuperposition">
+                                <ul>
+                                    <li><span>优惠券：</span></li>
+                                    <li>
+                                        <select autocomplete="off">
+                                            <option value="-1">请选择优惠券</option>
+                                            <template v-for="item4 in eShowDiscount.unSuperposition.pool">
+                                                <option :value="item4.couponId" :selected="returnSelect(item4.eShowDiscount.unSuperposition,item4.couponId)" :deductibleValue="item4.rule.deductibleValue" :condition="item4.rule.condition" :disabled="returnDisabled(showDiscount.unSuperposition,item4.couponId,item4.eShowDiscount.unSuperposition.choose)">{{!item4.name}}</option>
+                                            </template>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2 class="component-orderSure-detail-orderPrice">
+                                总价: <b>￥<i>{{!item2.orderPrice}}</i></b>
+                            </h2>
+                            <div class="component-orderSure-detail-payType">
+                                <ul>
+                                    <!--<li payType="3"><img src="/images/platform/yl.png"></li>-->
+                                    <li class="active" payType="2"><img src="/images/platform/zfb.png" alt="中国供销海外购"></li>
+                                    <li payType="1"><img src="/images/platform/wx.png" alt="中国供销海外购"></li>
+                                </ul>
+                                <span>支付方式：</span>
+                            </div>
+                            <div class="component-orderSure-detail-leavingMessage">
+                                <input type="text" placeholder="买家留言：选填，填写内容已和客服确认">
+                            </div>
+                        </div>
+                        <div class="component-orderSure-detail-list-btn-submit">
+                            <span class="order_submit" :typeId="key1" :supplierId="key2" @click="submitOrder" :class="select && item2.submitState? '': 'error_state'">{{!item2.submitText}}</span>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </div>
+</div>

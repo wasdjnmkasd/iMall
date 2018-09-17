@@ -1,0 +1,121 @@
+{{#region.response.orderInfo}}
+    <div class="component-orderDetail-content">
+        <div class="component-orderDetail-thanks">
+            <span class="icon icon_ok"></span>
+            <span class="text">
+                    感谢您的使用，期待再次为您服务！
+                </span>
+        </div>
+        <div class="component-orderDetail-deliveryInfo">
+            <span class="icon icon_address"></span>
+            <span class="textGroup">
+                    <span class="text delivery-title">
+                        <span class="name delivery-name font_blod">{{orderDetail.receiveName}}</span>
+                        <span class="value delivery-iphone font_blod">{{orderDetail.receivePhone}}</span>
+                    </span>
+                    <span class="text delivery-address">
+                        <span class="name">收货地址</span>
+                        <span class="value">
+                            {{orderDetail.receiveProvince}}{{orderDetail.receiveCity}}{{orderDetail.receiveArea}}{{orderDetail.receiveAddress}}
+                        </span>
+                    </span>
+                </span>
+        </div>
+        <div class="component-orderDetail-log">
+            <span class="text order-code">
+                <span class="name">订单编码</span>
+                <span class="value">{{orderId}}</span>
+            </span>
+            <span class="text logisticsFee">
+                <span class="name">订单时间</span>
+                <span class="value">{{returnNewTime2 createTime}}</span>
+            </span>
+            <span class="text order-state">
+                <span class="name">订单状态</span>
+                <span class="value">{{returnOrderState status orderExpressList}}</span>
+                {{#returnPay status}}
+                    <span class="btnBox">
+                       <span class="btn btn_toPay" orderId="{{orderId}}">去支付</span>
+                    </span>
+                {{/returnPay}}
+            </span>
+        </div>
+        {{#returnPaymentMethod status orderDetail.payType}}
+            <div class="component-orderDetail-paymentMethod">
+                <span class="name">支付方式</span>
+                <span class="value">{{paymentMethod}}</span>
+            </div>
+        {{/returnPaymentMethod}}
+        <div class="component-orderDetail-show">
+            <div class="orderItem">
+                <div class="header">
+                    <span class="circle"></span>
+                    <span class="text">
+                        <span>订单号: {{orderId}}</span>
+                        <span>({{returnNewTime createTime}})</span>
+                    </span>
+                    <span class="btnBox">
+                        {{#returnLogistics status}}
+                            <span class="btn btn_viewLogistics" orderId="{{orderId}}">看物流</span>
+                        {{/returnLogistics}}
+                    </span>
+                </div>
+                <div class="body">
+                    {{#each orderGoodsList}}
+                        <span class="commodity-info">
+                            <span class="commodity-img">
+                                <a href="{{{href}}}" itemId="{{itemId}}">
+                                  {{#if itemImg}}
+                                      <img src="{{{itemImg}}}" alt="{{itemName}}">
+                                  {{else}}
+                                      <img src="/images/platform/account/default_img.jpg" alt="{{itemName}}">
+                                  {{/if}}
+                                  {{#returnIsShow orderFlag}}
+                                      <img class="corner_mark" src="{{returnImgSrc orderFlag}}" alt="福利商城">
+                                  {{/returnIsShow}}
+                                </a>
+                            </span>
+                            <span class="commodity-info">
+                                    <span class="commodity-name">
+                                        <span class="text">{{itemName}}</span>
+                                    </span>
+                                    {{#returnSpec itemInfo}}
+                                        <span class="commodity-itemId">
+                                            <span class="text">规格：{{#each .}}{{.}}、 {{/each}}</span>
+                                        </span>
+                                    {{/returnSpec}}
+                                </span>
+                            <span class="commodity-number">
+                                <span class="commodity-price">{{returnPrice actualPrice}}</span>
+                                <span class="commodity-quantity">{{itemQuantity}}</span>
+                            </span>
+                        </span>
+                    {{/each}}
+                    <span class="commodity-priceList">
+                        <span class="text shopTotalPrice">
+                            <span class="value">￥{{returnShopPrice orderGoodsList}}</span>
+                            <span class="name">商品总额</span>
+                        </span>
+                        <span class="text shopTotalPrice">
+                            <span class="value">￥{{returnTaxFee orderDetail.taxFee}}</span>
+                            <span class="name">税费总额</span>
+                        </span>
+                        <span class="text logisticsFee">
+                            <span class="value">￥{{returnPostFee orderDetail.postFee}}</span>
+                            <span class="name" style="letter-spacing:9px;">物流费</span>
+                        </span>
+                    </span>
+                    <span class="commodity-totalPrice">
+                        <span class="commodity-attention"></span>
+                        <span class="commodity-totalAmount">
+                            <span class="money">{{orderDetail.payment}}</span>
+                            <span class="symbol">￥</span>
+                            <span class="text">金额</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div region="payChoose"></div>
+{{/region.response.orderInfo}}

@@ -1,0 +1,187 @@
+@charset "utf-8";
+
+/*
+ * component-address-manage-1部分样式
+ */
+component-address-manage-1{
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  &>.component-address-manage-content{
+    width: 100%;
+    height: auto;
+    padding-top: 5px;
+    overflow: hidden;
+    &>.component-address-manage-list{
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      &>li.item{
+        width: 100%;
+        background-color: #ffffff;
+        margin-bottom: 20px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &>.info{
+          width: 100%;
+          height: auto;
+          padding: 0 25px 0 30px;
+          overflow: hidden;
+          border-bottom: solid 1px #dfdfdf;
+          &>.name{
+            height: 75px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 93px;
+            color: #333333;
+            float: left;
+            display: inline-block;
+          }
+          &>.mobilePhone{
+            height: 75px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 28px;
+            line-height: 93px;
+            color: #333333;
+            float: right;
+            display: inline-block;
+          }
+          &>.address{
+            width: 100%;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 28px;
+            line-height: 38px;
+            color: #333333;
+            float: left;
+            margin-bottom: 18px;
+            display: inline-block;
+          }
+        }
+        &>.setting{
+          width: 100%;
+          height: 76px;
+          padding: 0 15px 0 30px;
+          &>.btnBox_left{
+            width: 180px;
+            height: 100%;
+            float: left;
+            position: relative;
+            &>.icon.btn{
+              width: 40px;
+              height: 40px;
+              border: solid 1px #dfdfdf;
+              border-radius: 20px;
+              position: absolute;
+              top: 50%;
+              left: 3px;
+              margin-top: -20px;
+              display: inline-block;
+            }
+            &>.text{
+              height: 76px;
+              position: absolute;
+              top: 0;
+              left: 54px;
+              display: inline-block;
+              &::before{
+                content: "设为默认";
+                font-family: PingFangSC-Light,helvetica,'Heiti SC';
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 76px;
+                color: #666666;
+              }
+            }
+            &.active{
+              &>.icon.btn{
+                background-color: #b4282d;
+                border: solid 1px #b4282d;
+                background-image: url("/images/platform/address/defaultAddress.png");
+                background-position: center center;
+                background-repeat: no-repeat;
+              }
+              &>.text::before{
+                content: "默认地址";
+              }
+            }
+          }
+          &>.btnBox_right{
+            width: calc(100% - 180px);
+            height: 100%;
+            float: right;
+            overflow: hidden;
+            &>.btn{
+              width: 90px;
+              height: 76px;
+              float: right;
+              font-family: PingFangSC-Light,helvetica,'Heiti SC';
+              text-align: center;
+              font-size: 28px;
+              color: #333333;
+              line-height: 76px;
+              background-color: transparent;
+              border-radius: 15px;
+            }
+          }
+        }
+        &.select:active{
+          border: solid 1px #0e5ea1;
+          box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.36);
+          -webkit-box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.36);
+          -moz-box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.36);
+          -ms-box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.36);
+        }
+      }
+    }
+    &>.component-address-manage-empty{
+      text-align: center;
+      &>img{
+        width: 650px;
+        height: auto;
+        margin: 30px auto;
+        display: block;
+      }
+      &>span{
+        width: 650px;
+        height: 50px;
+        display: block;
+        margin: 20px auto;
+        font-size: 36px;
+        line-height: 50px;
+        color: #999;
+        letter-spacing: 5px;
+      }
+    }
+    &>.component-address-manage-create{
+      width: 100%;
+      height: 120px;
+      margin-bottom: 20px;
+      &>.box{
+        width: 100%;
+        height: 120px;
+        background-color: #eeeeee;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        &>.content{
+          width: 662px;
+          height: 90px;
+          margin-left: 44px;
+          font-family: PingFangSC-Light,helvetica,'Heiti SC';
+          font-size: 36px;
+          color: #ffffff;
+          line-height: 92px;
+          text-align: center;
+          background-color: #b4282d;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}

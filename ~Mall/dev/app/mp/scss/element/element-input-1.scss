@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+/* 元素 input、select 样式*/
+input, select{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: PingFangSC-Light,helvetica,'Heiti SC';
+    color:#bdbdbd;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: PingFangSC-Light,helvetica,'Heiti SC';
+    color:#bdbdbd;
+  }
+  &::-webkit-input-placeholder {
+    font-family: PingFangSC-Light,helvetica,'Heiti SC';
+    color:#bdbdbd;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-family: PingFangSC-Light,helvetica,'Heiti SC';
+    color:#bdbdbd;
+  }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button,
+  &::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+  }
+  &[type="number"]{
+    -moz-appearance: textfield;
+  }
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+  &:focus{
+    outline: none;
+  }
+}

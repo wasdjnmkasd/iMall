@@ -1,0 +1,310 @@
+@charset "utf-8";
+
+/*
+ *  login-1样式
+ */
+[id^="login-1-"] {
+  width: 100%;
+  min-width: 1240px;
+  overflow:hidden;
+  margin: 80px auto 0 auto;
+}
+.login-1-content {
+  width: 1240px;
+  height: 470px;
+  font-size:14px;
+  color:#333;
+  display: block;
+  margin: auto;
+  position:relative;
+  .login-list{
+    width:368px;
+    margin:0 auto;
+    border:1px solid #e7e7e7;
+    background:#fff;
+    box-shadow: 0 0 10px #e7e7e7;
+    padding:30px 50px;
+  }
+  .login-list-header ul{
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .login-list-header li{
+    float:left;
+    font-size:20px;
+    font-weight:600;
+  }
+  .login-list-header li:last-child{
+    margin-left:20px;
+    font-weight:normal;
+    color:#666;
+    cursor:pointer;
+  }
+  .login-list-header p{
+    margin-bottom:20px;
+  }
+  .login-list-header h1{
+    margin-bottom:20px;
+    font-weight:600;
+    font-size:20px;
+  }
+  .login-list-header p span{
+    display: inline-block;
+    font-size:18px;
+    color:#666;
+    padding-left:38px;
+    height:28px;
+    line-height:28px;
+    background:url("/images/platform/login_back_normal.png") no-repeat left center;
+    cursor:pointer;
+  }
+  .login-list-header p span:hover{
+    background:url("/images/platform/login_back_hover.png") no-repeat left center;
+  }
+  .login-list-body ul li{
+    input{
+      width:266px;
+      height:36px;
+      border:1px solid #dfdfdf;
+      border-radius:5px;
+      padding-left:10px;
+      font-size:16px;
+      color:#333;
+      outline:none;
+    }
+    &.state_error input{
+      //border:1px solid #f34d4d;
+    }
+  }
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color:#999;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#999;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#999;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#999;
+  }
+  .login-list-enter li:first-child{
+    margin-bottom:16px;
+  }
+  .login-list-enter li:nth-child(2){
+    margin-bottom:16px;
+  }
+  .login-list-enter > ul > li:nth-child(3){
+    margin-bottom:24px;
+    cursor: pointer;
+    position:relative;
+    display:none;
+  }
+  .login-list-enter li:nth-child(3) ul{
+    border:1px solid #dfdfdf;
+    background:#fff;
+    border-top:none;
+    position:absolute;
+    width:100%;
+    max-height: 93px;
+    overflow: auto;
+    display:none;
+  }
+  .login-list-enter li:nth-child(3).active ul{
+    display:block;
+  }
+  .login-list-enter li:nth-child(3) li{
+    margin:0;
+    cursor: pointer;
+    padding:5px 10px;
+    font-size:16px;
+  }
+  .login-list-enter li:nth-child(3) li:hover{
+    background:#eee;
+  }
+  .login-list-enter li:nth-child(3).active input{
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+  }
+  .login-list-enter li:nth-child(4){
+    margin-top:24px;
+    cursor: pointer;
+  }
+  .login-list-enter li:nth-child(5){
+    overflow: hidden;
+    color:#666;
+  }
+  .login-list-enter li:nth-child(5) input{
+    width:14px;
+    height:14px;
+    float:left;
+    margin:3px 10px 0 0;
+  }
+  .login-list-enter li:nth-child(5) b{
+    float:right;
+    font-weight:normal;
+    cursor:pointer;
+  }
+  .login-list-enter li:last-child{
+    margin-top:12px;
+    cursor:pointer;
+  }
+  .login-list-enter li:last-child img {
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  .login-list-sign{
+    display:none;
+  }
+  .login-list-sign li{
+    margin-bottom:16px;
+  }
+  .login-list-sign li:last-child{
+    margin:24px 0 0 0;
+    cursor:pointer;
+  }
+  .login-list-sign li:nth-child(2) input{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+    width:182px;
+  }
+  .login-list-sign li:nth-child(2)>span{
+    float:right;
+    width:84px;
+    height:36px;
+    line-height:36px;
+    color:#666;
+    text-align:center;
+    border:.5px solid #dfdfdf;
+    border-left:none;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    cursor:pointer;
+    &.getValidation{
+      &>.control{
+        display: inline-block;
+      }
+      &>.doing{
+        display: none;
+      }
+    }
+    &:not(.getValidation){
+      &>.control{
+        display: none;
+      }
+      &>.doing{
+        display: inline-block;
+      }
+    }
+  }
+  .login-list-sign li.state_error:nth-child(2)>input{
+    border-right-color:#eeeeee;
+  }
+  .login-list-sign li.state_error>.btn_register{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  }
+  .login-list-sign li:nth-child(5){
+    position:relative;
+    display:none;
+  }
+  .login-list-sign li:nth-child(5) ul{
+    border:1px solid #dfdfdf;
+    background:#fff;
+    border-top:none;
+    position:absolute;
+    width:100%;
+    max-height: 93px;
+    overflow: auto;
+    display:none;
+  }
+  .login-list-sign li:nth-child(5).active ul{
+    display:block;
+  }
+  .login-list-sign li:nth-child(5) li{
+    margin:0;
+    cursor: pointer;
+    padding:5px 10px;
+    font-size:16px;
+  }
+  .login-list-sign li:nth-child(5) li:hover{
+    background:#eee;
+  }
+  .login-list-sign li:nth-child(5).active input{
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+  }
+  .login-list-forget{
+    display:none;
+  }
+  .login-list-forget li{
+    margin-bottom:16px;
+  }
+  .login-list-forget li:last-child{
+    margin:24px 0 0 0;
+    cursor:pointer;
+  }
+  .login-list-forget li:nth-child(2) input{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+    width:182px;
+  }
+  .login-list-forget li:nth-child(2)>span{
+    float:right;
+    width:84px;
+    height:36px;
+    line-height:36px;
+    color:#666;
+    text-align:center;
+    border:.5px solid #dfdfdf;
+    border-left:none;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    cursor:pointer;
+    &.getValidation{
+      &>.control{
+        display: inline-block;
+      }
+      &>.doing{
+        display: none;
+      }
+    }
+    &:not(.getValidation){
+      &>.control{
+        display: none;
+      }
+      &>.doing{
+        display: inline-block;
+      }
+    }
+  }
+  .login-list-forget li.state_error:nth-child(2)>input{
+    border-right-color:#eeeeee;
+  }
+  .login-list-forget li.state_error>.btn_submit{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  }
+  .chooseShop{
+    width: 115px;
+    height: 36px;
+    background: url(/images/platform/chooseShop.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 10px;
+    right: 440px;
+    line-height: 29px;
+    text-align: center;
+    color: #fff;
+    cursor:pointer;
+  }
+}
+
