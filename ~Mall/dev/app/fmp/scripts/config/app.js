@@ -1000,7 +1000,7 @@
             enumerable: true,
             writable: false,
             value: {
-                path:          DB.debug === true? "http://testapi.cncoopbuy.com": "http://api.cncoopbuy.com",
+                path:          DB.debug === true? "https://testapi.cncoopbuy.com": "https://api.cncoopbuy.com",
                 method:        "POST",
                 context:       "",
                 contType:      "application/x-www-form-urlencoded;charset=UTF-8",
@@ -1030,7 +1030,7 @@
                  *    visit_json    访问统计    VISIT_JSON_CREATE_NODE ---------- shopId
                  */
                 GOODS_ID_QUERY_NODE:        {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/goods/{goodsId}d.json",
                     method:       "GET",
                     context:      "",
@@ -1042,7 +1042,7 @@
                     data:         { centerId: DB.centerId }
                 },
                 GOODS_NAV_QUERY_NODE:       {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/nav/1p.json",
                     method:       "GET",
                     context:      "",
@@ -1054,7 +1054,7 @@
                     data:         { dataType: 'navData', centerId: DB.centerId }
                 },
                 GOODS_NAV_MAP_QUERY_NODE:   {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/nav/1m.json",
                     method:       "GET",
                     context:      "",
@@ -1066,7 +1066,7 @@
                     data:         { dataType: 'navData', centerId: DB.centerId }
                 },
                 GOODS_NAV_FIRST_QUERY_NODE: {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/nav/1f.json",
                     method:       "GET",
                     context:      "",
@@ -1078,7 +1078,7 @@
                     data:         { dataType: 'navData', centerId: DB.centerId }
                 },
                 PAGE_HEADER1_QUERY_NODE:    {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/header/1p.json",
                     method:       "GET",
                     context:      "",
@@ -1090,7 +1090,7 @@
                     data:         { centerId: DB.centerId }
                 },
                 PAGE_HEADER2_QUERY_NODE:    {
-                    host:         DB.debug === true? "http://test3.cncoopbuy.com": "http://fl.cncoopbuy.com",
+                    host:         DB.debug === true? "https://test3.cncoopbuy.com": "https://fl.cncoopbuy.com",
                     path:         "/data/header/2p.json",
                     method:       "GET",
                     context:      "",
@@ -1102,7 +1102,7 @@
                     data:         { centerId: DB.centerId }
                 },
                 GOODS_REBATE_QUERY_REDIS:   {
-                    host:         DB.debug === true? "http://testfront.cncoopbuy.com": "http://front.cncoopbuy.com",
+                    host:         DB.debug === true? "https://testfront.cncoopbuy.com": "https://front.cncoopbuy.com",
                     path:         "/Redis/handle/rebate",
                     method:       "POST",
                     context:      "",
@@ -1114,7 +1114,7 @@
                     data:         {}
                 },
                 GRADE_GRADEBO_QUERY_REDIS:  {
-                    host:         DB.debug === true? "http://testfront.cncoopbuy.com": "http://front.cncoopbuy.com",
+                    host:         DB.debug === true? "https://testfront.cncoopbuy.com": "https://front.cncoopbuy.com",
                     path:         "/Redis/handle/gradeBO",
                     method:       "POST",
                     context:      "",
@@ -1126,7 +1126,7 @@
                     data:         { shopId: DB.shopId || DB.gradeId }
                 },
                 VISIT_JSON_CREATE_NODE:     {
-                    host:         DB.debug === true? "http://testfront.cncoopbuy.com": "http://front.cncoopbuy.com",
+                    host:         DB.debug === true? "https://testfront.cncoopbuy.com": "https://front.cncoopbuy.com",
                     path:         "/Data/handle/visit/json",
                     method:       "POST",
                     context:      "",
