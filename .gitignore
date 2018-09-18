@@ -8,5 +8,6 @@
 cache_modules/
 install_modules/
 server_modules/
+package-lock.json
 out
 gen
